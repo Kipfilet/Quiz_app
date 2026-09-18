@@ -1,0 +1,902 @@
+[
+  {
+    "id": 1,
+    "difficulty": "easy",
+    "question": "Which country is known for the traditional celebration of Midsummer?",
+    "options": {
+      "A": "Croatia",
+      "B": "Sweden",
+      "C": "Netherlands",
+      "D": "Belgium"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 2,
+    "difficulty": "easy",
+    "question": "What is the capital of the Netherlands?",
+    "options": {
+      "A": "Rotterdam",
+      "B": "Utrecht",
+      "C": "Amsterdam",
+      "D": "Eindhoven"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 3,
+    "difficulty": "easy",
+    "question": "Which sea borders Croatia's long eastern coastline?",
+    "options": {
+      "A": "Baltic Sea",
+      "B": "North Sea",
+      "C": "Adriatic Sea",
+      "D": "Black Sea"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 4,
+    "difficulty": "easy",
+    "question": "Which animal appears on Sweden's coat of arms as part of the Three Crowns' heraldic symbolism?",
+    "options": {
+      "A": "Lion",
+      "B": "Eagle",
+      "C": "Bear",
+      "D": "Elk"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 5,
+    "difficulty": "easy",
+    "question": "Which country is famous for tulips and extensive networks of canals?",
+    "options": {
+      "A": "Sweden",
+      "B": "Croatia",
+      "C": "Netherlands",
+      "D": "Norway"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 6,
+    "difficulty": "easy",
+    "question": "What is the capital of Croatia?",
+    "options": {
+      "A": "Split",
+      "B": "Dubrovnik",
+      "C": "Zagreb",
+      "D": "Zadar"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 7,
+    "difficulty": "easy",
+    "question": "Which of these is Sweden's currency?",
+    "options": {
+      "A": "Euro",
+      "B": "Swedish krona",
+      "C": "Danish krone",
+      "D": "Norwegian krone"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 8,
+    "difficulty": "easy",
+    "question": "Which famous Swedish company is known for furniture?",
+    "options": {
+      "A": "Philips",
+      "B": "IKEA",
+      "C": "Heineken",
+      "D": "Shell"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 9,
+    "difficulty": "easy",
+    "question": "Which country has a blue flag with a yellow Nordic cross?",
+    "options": {
+      "A": "Netherlands",
+      "B": "Croatia",
+      "C": "Sweden",
+      "D": "Estonia"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 10,
+    "difficulty": "easy",
+    "question": "Which city is the largest in Croatia?",
+    "options": {
+      "A": "Split",
+      "B": "Dubrovnik",
+      "C": "Zagreb",
+      "D": "Rijeka"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 11,
+    "difficulty": "easy",
+    "question": "What language is primarily spoken in the Netherlands?",
+    "options": {
+      "A": "Dutch",
+      "B": "Swedish",
+      "C": "Croatian",
+      "D": "German"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 12,
+    "difficulty": "easy",
+    "question": "Which famous Dutch artist painted The Starry Night?",
+    "options": {
+      "A": "Rembrandt",
+      "B": "Vincent van Gogh",
+      "C": "Johannes Vermeer",
+      "D": "Piet Mondrian"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 13,
+    "difficulty": "easy",
+    "question": "Which country has the island of Gotland?",
+    "options": {
+      "A": "Croatia",
+      "B": "Sweden",
+      "C": "Netherlands",
+      "D": "Germany"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 14,
+    "difficulty": "easy",
+    "question": "Which traditional Croatian dish consists of grilled minced meat, commonly served with bread or onions?",
+    "options": {
+      "A": "Köttbullar",
+      "B": "Ćevapi",
+      "C": "Stroopwafel",
+      "D": "Poffertjes"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 15,
+    "difficulty": "easy",
+    "question": "Which city is famous for its canals and is the largest city in the Netherlands?",
+    "options": {
+      "A": "Amsterdam",
+      "B": "Rotterdam",
+      "C": "The Hague",
+      "D": "Groningen"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 16,
+    "difficulty": "easy",
+    "question": "What is the capital of Sweden?",
+    "options": {
+      "A": "Malmö",
+      "B": "Gothenburg",
+      "C": "Stockholm",
+      "D": "Uppsala"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 17,
+    "difficulty": "easy",
+    "question": "Which country has a red-white-blue horizontal flag?",
+    "options": {
+      "A": "Sweden",
+      "B": "Croatia",
+      "C": "Netherlands",
+      "D": "Finland"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 18,
+    "difficulty": "easy",
+    "question": "Which Swedish author created Pippi Longstocking?",
+    "options": {
+      "A": "Selma Lagerlöf",
+      "B": "Astrid Lindgren",
+      "C": "Tove Jansson",
+      "D": "Karin Boye"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 19,
+    "difficulty": "easy",
+    "question": "Which famous Croatian city is located on the Adriatic coast and is surrounded by historic walls?",
+    "options": {
+      "A": "Osijek",
+      "B": "Varaždin",
+      "C": "Dubrovnik",
+      "D": "Karlovac"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 20,
+    "difficulty": "easy",
+    "question": "Which Dutch holiday is celebrated on 27 April?",
+    "options": {
+      "A": "King's Day",
+      "B": "Liberation Day",
+      "C": "St Nicholas Day",
+      "D": "Remembrance Day"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 21,
+    "difficulty": "easy",
+    "question": "Which country is famous for the traditional dessert called stroopwafel?",
+    "options": {
+      "A": "Croatia",
+      "B": "Sweden",
+      "C": "Netherlands",
+      "D": "Denmark"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 22,
+    "difficulty": "easy",
+    "question": "Which mountain is the highest point in Sweden?",
+    "options": {
+      "A": "Kebnekaise",
+      "B": "Mount Elbrus",
+      "C": "Dinara",
+      "D": "Velebit"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 23,
+    "difficulty": "easy",
+    "question": "Which famous Swedish pop group won Eurovision in 1974?",
+    "options": {
+      "A": "Roxette",
+      "B": "ABBA",
+      "C": "Europe",
+      "D": "Ace of Base"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 24,
+    "difficulty": "easy",
+    "question": "Which country has a red-and-white checkerboard pattern on its coat of arms?",
+    "options": {
+      "A": "Sweden",
+      "B": "Netherlands",
+      "C": "Croatia",
+      "D": "Belgium"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 25,
+    "difficulty": "easy",
+    "question": "Which city is famous for the Anne Frank House?",
+    "options": {
+      "A": "Rotterdam",
+      "B": "Amsterdam",
+      "C": "The Hague",
+      "D": "Haarlem"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 26,
+    "difficulty": "normal",
+    "question": "Which country borders Sweden to the west?",
+    "options": {
+      "A": "Finland",
+      "B": "Norway",
+      "C": "Denmark",
+      "D": "Estonia"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 27,
+    "difficulty": "normal",
+    "question": "Which river is one of the most important waterways in the Netherlands?",
+    "options": {
+      "A": "Rhine",
+      "B": "Volga",
+      "C": "Danube",
+      "D": "Seine"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 28,
+    "difficulty": "normal",
+    "question": "Which Croatian national park is famous for its series of interconnected lakes and waterfalls?",
+    "options": {
+      "A": "Brijuni",
+      "B": "Paklenica",
+      "C": "Plitvice Lakes",
+      "D": "Mljet"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 29,
+    "difficulty": "normal",
+    "question": "Which Swedish city is located on the west coast and is the country's second-largest city?",
+    "options": {
+      "A": "Uppsala",
+      "B": "Gothenburg",
+      "C": "Västerås",
+      "D": "Lund"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 30,
+    "difficulty": "normal",
+    "question": "Which country has the largest port in Europe at Rotterdam?",
+    "options": {
+      "A": "Sweden",
+      "B": "Croatia",
+      "C": "Netherlands",
+      "D": "Denmark"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 31,
+    "difficulty": "normal",
+    "question": "Which mountain is the highest point in Croatia?",
+    "options": {
+      "A": "Velebit",
+      "B": "Dinara",
+      "C": "Biokovo",
+      "D": "Medvednica"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 32,
+    "difficulty": "normal",
+    "question": "Which famous Swedish company is associated with telecommunications and mobile technology?",
+    "options": {
+      "A": "Ericsson",
+      "B": "Philips",
+      "C": "ASML",
+      "D": "Heineken"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 33,
+    "difficulty": "normal",
+    "question": "Which Dutch painter is famous for Girl with a Pearl Earring?",
+    "options": {
+      "A": "Vincent van Gogh",
+      "B": "Rembrandt",
+      "C": "Johannes Vermeer",
+      "D": "Piet Mondrian"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 34,
+    "difficulty": "normal",
+    "question": "Which Croatian scientist is strongly associated with the development of alternating-current electrical technology?",
+    "options": {
+      "A": "Ruđer Bošković",
+      "B": "Nikola Tesla",
+      "C": "Marin Držić",
+      "D": "Faust Vrančić"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 35,
+    "difficulty": "normal",
+    "question": "Which Swedish celebration traditionally involves a maypole, flowers and dancing?",
+    "options": {
+      "A": "Lucia",
+      "B": "Midsummer",
+      "C": "Walpurgis Night",
+      "D": "National Day"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 36,
+    "difficulty": "normal",
+    "question": "Which Dutch province is famous for its Frisian language and the Wadden Islands?",
+    "options": {
+      "A": "Limburg",
+      "B": "Friesland",
+      "C": "Zeeland",
+      "D": "Utrecht"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 37,
+    "difficulty": "normal",
+    "question": "Which Croatian region includes cities such as Split and Dubrovnik?",
+    "options": {
+      "A": "Slavonia",
+      "B": "Dalmatia",
+      "C": "Zagorje",
+      "D": "Baranja"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 38,
+    "difficulty": "normal",
+    "question": "What is the largest lake in Sweden by surface area?",
+    "options": {
+      "A": "Mälaren",
+      "B": "Vättern",
+      "C": "Vänern",
+      "D": "Hjälmaren"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 39,
+    "difficulty": "normal",
+    "question": "Which of these countries has the largest land area?",
+    "options": {
+      "A": "Netherlands",
+      "B": "Croatia",
+      "C": "Sweden",
+      "D": "All are approximately the same size"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 40,
+    "difficulty": "normal",
+    "question": "Which city is the seat of the Dutch government and parliament?",
+    "options": {
+      "A": "Amsterdam",
+      "B": "Rotterdam",
+      "C": "The Hague",
+      "D": "Utrecht"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 41,
+    "difficulty": "normal",
+    "question": "What is the official language of Croatia?",
+    "options": {
+      "A": "Serbian",
+      "B": "Croatian",
+      "C": "Slovenian",
+      "D": "Bosnian"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 42,
+    "difficulty": "normal",
+    "question": "Which Swedish region is strongly associated with the Sami people?",
+    "options": {
+      "A": "Skåne",
+      "B": "Lapland",
+      "C": "Småland",
+      "D": "Gotland"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 43,
+    "difficulty": "normal",
+    "question": "Which Croatian city contains Diocletian's Palace?",
+    "options": {
+      "A": "Zadar",
+      "B": "Pula",
+      "C": "Split",
+      "D": "Šibenik"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 44,
+    "difficulty": "normal",
+    "question": "Which country is famous for the traditional Christmas buffet known as julbord?",
+    "options": {
+      "A": "Croatia",
+      "B": "Netherlands",
+      "C": "Sweden",
+      "D": "Belgium"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 45,
+    "difficulty": "normal",
+    "question": "Which Dutch company is a major manufacturer of semiconductor lithography equipment?",
+    "options": {
+      "A": "Philips",
+      "B": "ASML",
+      "C": "Heineken",
+      "D": "Shell"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 46,
+    "difficulty": "normal",
+    "question": "In which year did Croatia join the European Union?",
+    "options": {
+      "A": "2004",
+      "B": "2007",
+      "C": "2010",
+      "D": "2013"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 47,
+    "difficulty": "normal",
+    "question": "In which year did Sweden join the European Union?",
+    "options": {
+      "A": "1991",
+      "B": "1995",
+      "C": "1999",
+      "D": "2004"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 48,
+    "difficulty": "normal",
+    "question": "Which of these countries uses the euro?",
+    "options": {
+      "A": "Sweden only",
+      "B": "Croatia and the Netherlands",
+      "C": "Sweden and Croatia",
+      "D": "All three"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 49,
+    "difficulty": "normal",
+    "question": "Which Croatian island is one of the country's most famous tourist destinations and is known for its distinctive crescent shape?",
+    "options": {
+      "A": "Brač",
+      "B": "Krk",
+      "C": "Pag",
+      "D": "Hvar"
+    },
+    "answer": "D"
+  },
+  {
+    "id": 50,
+    "difficulty": "normal",
+    "question": "Which Swedish athlete is famous for becoming an Olympic and world champion in pole vaulting?",
+    "options": {
+      "A": "Zlatan Ibrahimović",
+      "B": "Armand \"Mondo\" Duplantis",
+      "C": "Henrik Larsson",
+      "D": "Björn Borg"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 51,
+    "difficulty": "hard",
+    "question": "Which Swedish lake is the third-largest lake in Europe by surface area?",
+    "options": {
+      "A": "Mälaren",
+      "B": "Vättern",
+      "C": "Vänern",
+      "D": "Hjälmaren"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 52,
+    "difficulty": "hard",
+    "question": "Which Dutch province is famous for having much of its land below sea level?",
+    "options": {
+      "A": "Zeeland",
+      "B": "Flevoland",
+      "C": "Limburg",
+      "D": "Drenthe"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 53,
+    "difficulty": "hard",
+    "question": "Which major Croatian river forms part of the country's border with Serbia?",
+    "options": {
+      "A": "Neretva",
+      "B": "Sava",
+      "C": "Danube",
+      "D": "Kupa"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 54,
+    "difficulty": "hard",
+    "question": "Which Swedish island is home to the medieval town of Visby, a UNESCO World Heritage Site?",
+    "options": {
+      "A": "Öland",
+      "B": "Gotland",
+      "C": "Bornholm",
+      "D": "Åland"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 55,
+    "difficulty": "hard",
+    "question": "Which Dutch city is famous for its International Court of Justice?",
+    "options": {
+      "A": "Amsterdam",
+      "B": "Rotterdam",
+      "C": "The Hague",
+      "D": "Delft"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 56,
+    "difficulty": "hard",
+    "question": "Which Croatian peninsula is located in the northwestern part of the country?",
+    "options": {
+      "A": "Pelješac",
+      "B": "Istria",
+      "C": "Pag",
+      "D": "Kvarner"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 57,
+    "difficulty": "hard",
+    "question": "Which of these is a Swedish Nobel Prize institution?",
+    "options": {
+      "A": "Swedish Academy",
+      "B": "Swedish Parliament",
+      "C": "Royal Swedish Navy",
+      "D": "Stockholm Stock Exchange"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 58,
+    "difficulty": "hard",
+    "question": "Which famous Swedish scientist developed the Celsius temperature scale?",
+    "options": {
+      "A": "Anders Celsius",
+      "B": "Alfred Nobel",
+      "C": "Carl Linnaeus",
+      "D": "Svante Arrhenius"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 59,
+    "difficulty": "hard",
+    "question": "Which Dutch scientist and microscopist is often called one of the pioneers of microbiology?",
+    "options": {
+      "A": "Christiaan Huygens",
+      "B": "Antonie van Leeuwenhoek",
+      "C": "Erasmus",
+      "D": "Hugo Grotius"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 60,
+    "difficulty": "hard",
+    "question": "Which Croatian scientist and polymath is associated with early ideas concerning atomic theory and the structure of matter?",
+    "options": {
+      "A": "Nikola Tesla",
+      "B": "Ruđer Bošković",
+      "C": "Lavoslav Ružička",
+      "D": "Andrija Mohorovičić"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 61,
+    "difficulty": "hard",
+    "question": "Which Swedish scientist is famous for creating the modern biological system of naming organisms?",
+    "options": {
+      "A": "Carl Linnaeus",
+      "B": "Alfred Nobel",
+      "C": "Anders Celsius",
+      "D": "Svante Arrhenius"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 62,
+    "difficulty": "hard",
+    "question": "Which Dutch painter created The Night Watch?",
+    "options": {
+      "A": "Vincent van Gogh",
+      "B": "Johannes Vermeer",
+      "C": "Rembrandt",
+      "D": "Piet Mondrian"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 63,
+    "difficulty": "hard",
+    "question": "Which Croatian city was historically known as Ragusa?",
+    "options": {
+      "A": "Split",
+      "B": "Dubrovnik",
+      "C": "Zadar",
+      "D": "Trogir"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 64,
+    "difficulty": "hard",
+    "question": "Which Swedish city is historically associated with the Hanseatic League and has a famous medieval city wall?",
+    "options": {
+      "A": "Visby",
+      "B": "Kiruna",
+      "C": "Malmö",
+      "D": "Umeå"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 65,
+    "difficulty": "hard",
+    "question": "Which Dutch province is famous for the Delta Works and is located in the southwest of the country?",
+    "options": {
+      "A": "Zeeland",
+      "B": "Groningen",
+      "C": "Overijssel",
+      "D": "Gelderland"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 66,
+    "difficulty": "hard",
+    "question": "Which Croatian national park is famous for the Skradinski buk waterfall?",
+    "options": {
+      "A": "Krka",
+      "B": "Risnjak",
+      "C": "Paklenica",
+      "D": "Mljet"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 67,
+    "difficulty": "hard",
+    "question": "Which Swedish company originally began as a steel and engineering company and is now known for heavy trucks and construction equipment?",
+    "options": {
+      "A": "Volvo",
+      "B": "H&M",
+      "C": "Spotify",
+      "D": "Electrolux"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 68,
+    "difficulty": "hard",
+    "question": "Which Dutch company was historically founded as a major electronics company and is headquartered in Eindhoven?",
+    "options": {
+      "A": "ASML",
+      "B": "Philips",
+      "C": "Heineken",
+      "D": "KLM"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 69,
+    "difficulty": "hard",
+    "question": "Which Croatian inventor is associated with the mechanical pencil and early fountain pen designs?",
+    "options": {
+      "A": "Slavoljub Penkala",
+      "B": "Nikola Tesla",
+      "C": "Ruđer Bošković",
+      "D": "Ivan Meštrović"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 70,
+    "difficulty": "hard",
+    "question": "Which of these statements about the Swedish political system is correct?",
+    "options": {
+      "A": "Sweden is an absolute monarchy",
+      "B": "Sweden is a constitutional monarchy",
+      "C": "Sweden is a presidential republic",
+      "D": "Sweden is a theocracy"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 71,
+    "difficulty": "hard",
+    "question": "Which of these statements about Croatia's political system is correct?",
+    "options": {
+      "A": "Croatia is an absolute monarchy",
+      "B": "Croatia is a parliamentary republic",
+      "C": "Croatia is a presidential monarchy",
+      "D": "Croatia is a federal kingdom"
+    },
+    "answer": "B"
+  },
+  {
+    "id": 72,
+    "difficulty": "hard",
+    "question": "Which organization did Sweden join in 2024?",
+    "options": {
+      "A": "NATO",
+      "B": "OPEC",
+      "C": "ASEAN",
+      "D": "Mercosur"
+    },
+    "answer": "A"
+  },
+  {
+    "id": 73,
+    "difficulty": "hard",
+    "question": "Which of these three countries was a founding member of NATO in 1949?",
+    "options": {
+      "A": "Croatia",
+      "B": "Sweden",
+      "C": "Netherlands",
+      "D": "None of them"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 74,
+    "difficulty": "hard",
+    "question": "Which country has the unusual geographical feature of a significant amount of territory reclaimed from the sea through polders?",
+    "options": {
+      "A": "Sweden",
+      "B": "Croatia",
+      "C": "Netherlands",
+      "D": "None of them"
+    },
+    "answer": "C"
+  },
+  {
+    "id": 75,
+    "difficulty": "hard",
+    "question": "Which statement correctly matches all three countries with a notable geographical feature?",
+    "options": {
+      "A": "Sweden — thousands of islands; Netherlands — extensive polders; Croatia — long Adriatic coastline",
+      "B": "Sweden — tropical rainforest; Netherlands — Himalayan mountains; Croatia — Arctic tundra",
+      "C": "Sweden — Sahara Desert; Netherlands — Amazon River; Croatia — Great Barrier Reef",
+      "D": "Sweden — Mediterranean islands only; Netherlands — active volcanoes; Croatia — North Sea coastline"
+    },
+    "answer": "A"
+  }
+]
