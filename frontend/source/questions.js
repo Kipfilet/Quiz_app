@@ -83,17 +83,24 @@ function showCorrectAnswer() {
         }
     }
 }
+let countdownUse = false;
+let countdownInterval;
 function countdownNextQuestion(countdownDuration, countdownExtraText) {
     let timerText = document.getElementById('timerText');
     timerText.textContent = countdownExtraText;
     let timer = document.getElementById('timer');
     let timeLeft = countdownDuration;
     timer.textContent = timeLeft;
-    let countdownInterval = setInterval(() => {
-        timer.textContent = timeLeft;
+    if (countdownUse) {
+        clearInterval(countdownInterval);
+    }
+    countdownUse = true;
+    countdownInterval = setInterval(() => {
         timeLeft--;
+        timer.textContent = timeLeft;
         console.log('Countdown: ', timeLeft);
         if (timeLeft <= -1) {
+            countdownUse = false;
             clearInterval(countdownInterval);
             resetButtonColors();
             loadQuestions();
