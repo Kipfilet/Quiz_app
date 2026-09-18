@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="navbar bg-blue-500 shadow-sm">
+        <div class="navbar-start  gap-2">
+            <a href="index.html"><img src="/slike/logo123.png" alt="logo" class="size-8"></a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal gap-4 px-1">
+                <li><a href="#"
+                        class="text-xl text-white bg-blue-500 hover:bg-blue-600 p-2 rounded-2xl"><b>Play</b></a></li>
+                <li><a href="#"
+                        class="text-xl text-white bg-blue-500 hover:bg-blue-600 p-2 rounded-2xl"><b>Leaderboard</b></a></li>
+                <li><a href="#"
+                        class="text-xl text-white bg-blue-500 hover:bg-blue-600 p-2 rounded-2xl"><b>Rules</b></a></li>
+            </ul>
+        </div>
+        <div class="navbar-end">
+            <div class="dropdown dropdown-end bg-blue-500 lg:hidden">
+                <div tabindex="0" role="button"
+                    class="btn bg-blue-500 border-blue-500 shadow-none ">
+                    <img src="/frontend/images/menu.svg" class="size-8">
+                </div>
+                <ul tabindex="-1" class="menu menu-sm dropdown-content bg-blue-500 rounded-box z-1 mt-3 w-52 px-1">
+                    <li><a href="#"
+                        class="text-xl text-white bg-blue-500 hover:bg-blue-600 p-2 lg:hidden rounded-xl"><b>Play</b></a></li>
+                    <li><a href="#"
+                        class="text-xl text-white bg-blue-500 hover:bg-blue-600 p-2 lg:hidden rounded-xl"><b>Leaderboard</b></a></li>
+                    <li><a href="#"
+                        class="text-xl text-white   bg-blue-500 hover:bg-blue-600 p-2 lg:hiddenrounded-xl"><b>Rules</b></a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="my-10 flex m-36 justify-items-center">
+        <h1 class="text-3xl font-semibold"> Which statement correctly matches all three countries with a notable geographical feature?</h1>
+    </div>
+    <div class="flex justify-center "    >
+        <div class="grid grid-cols-1 gap-4 w-ful max-w-4xl justify-items-center ">
+            <button class="btn text-white  bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-lg w-11/20 h-16 rounded-xl">Sweden - thousands of islands; Netherlands — extensive polders; Croatia — long Adriatic coastline</button>
+            <button class="btn text-white  bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-lg w-11/20 h-16 rounded-xl">Sweden - tropical rainforest; Netherlands — Himalayan mountains; Croatia — Arctic tundra</button>
+            <button class="btn text-white  bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-lg w-11/20 h-16 rounded-xl">Sweden - Sahara Desert; Netherlands — Amazon River; Croatia — Great Barrier Reef</button>
+            <button class="btn text-white  bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-lg w-11/20 h-16 rounded-xl">Sweden - Mediterranean islands only; Netherlands — active volcanoes; Croatia — North Sea coastline</button>
+        </div>
+    </div>
+    <div class="rating rating-xl flex justify-center gap-2 mt-5">
+        <div class="mask mask-heart bg-red-600" aria-label="1 star"></div>
+        <div class="mask mask-heart bg-red-600" aria-label="2 star"></div>
+        <div class="mask mask-heart bg-red-600" aria-label="3 star" aria-current="true"></div>
+    </div> 
+    <div class="flex w-full items-center justify-center">
+        <div class="stats shadow flex justify-center mt-5">
+            <div class="stat">
+                <div class="stat-title">Quiz Score</div>
+                <div class="stat-value">25</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
