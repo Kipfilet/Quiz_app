@@ -11,6 +11,7 @@ let questionArray = [];
 let questionMaxIndex = 0;
 let randomQuestionIndex = 0;
 let scoreDisplay = document.getElementById('score');
+let correctAnswers = 0
 function loadQuestions() {
     fetch('source/questions.json')
         .then(res => res.json())
@@ -47,6 +48,7 @@ async function checkAnswer(selectedOption, questionId) {
             score += 20;
         }
         scoreDisplay.textContent = score;
+        correctAnswers++;
         disableButtons();
         showCorrectAnswer();
         await countdownNextQuestion(5, 'Next question in: ');
@@ -54,9 +56,9 @@ async function checkAnswer(selectedOption, questionId) {
         questionId.classList.remove('bg-blue-500', 'hover:bg-blue-600', 'active:bg-blue-700');
         questionId.classList.add('bg-red-500');
         disableButtons();
-        removeHeart();
         showCorrectAnswer();
         await countdownNextQuestion(5, 'Next question in: ');
+        removeHeart();
     }
 }
 function disableButtons() {
@@ -100,7 +102,7 @@ function countdownNextQuestion(countdownDuration, countdownExtraText) {
         timeLeft--;
         timer.textContent = timeLeft;
         console.log('Countdown: ', timeLeft);
-        if (timeLeft <= -1) {
+        if (timeLeft <= 0) {
             countdownUse = false;
             clearInterval(countdownInterval);
             resetButtonColors();
@@ -110,7 +112,18 @@ function countdownNextQuestion(countdownDuration, countdownExtraText) {
     }, 1000);
     
 }
-function removeHeart() {}
-    heartContainer.children[heartContainer.children.length - 1].ariaCurrent = "false";
-    heartContainer.children[heartContainer.children.length - 2].ariaCurrent = "true";
-
+let heartCount = 3
+function removeHeart() {
+    if (heartCount > 1){
+        heartContainer.children[heartCount - 1].ariaCurrent = "false";
+        heartContainer.children[heartCount - 2].ariaCurrent = "true";
+        heartCount--
+    }
+    else{
+        heartContainer.children[heartCount - 1].ariaCurrent="false"
+        gameOver()
+    }
+}
+function gameOver() {
+    console.log("gameOver")
+}
