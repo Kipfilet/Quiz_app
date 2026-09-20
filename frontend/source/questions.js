@@ -54,6 +54,7 @@ async function checkAnswer(selectedOption, questionId) {
         questionId.classList.remove('bg-blue-500', 'hover:bg-blue-600', 'active:bg-blue-700');
         questionId.classList.add('bg-red-500');
         disableButtons();
+        removeHeart();
         showCorrectAnswer();
         await countdownNextQuestion(5, 'Next question in: ');
     }
@@ -109,5 +110,7 @@ function countdownNextQuestion(countdownDuration, countdownExtraText) {
     }, 1000);
     
 }
-
+function removeHeart() {}
+    heartContainer.children[heartContainer.children.length - 1].ariaCurrent = "false";
+    heartContainer.children[heartContainer.children.length - 2].ariaCurrent = "true";
 
