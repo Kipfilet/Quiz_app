@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Trip - Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Barlow', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-yellow-100/20 font-sans text-gray-800">
+
+    <nav class="fixed top-0 w-full bg-white shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+
+                <div class="flex-shrink-0 flex items-center">
+                    <a class="text-xl sm:text-2xl font-extrabold text-sky-600 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-8 sm:w-8" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        Quiz Trip
+                    </a>
+                </div>
+
+                <div class="hidden md:flex gap-4 items-center">
+                    <a href="#" class="text-sky-600 border-b-2 border-sky-600 px-3 py-2 font-semibold">Home</a>
+                    <a href="categories_logout.html"
+                        class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Categories</a>
+                    <a href="leaderboard_logout.html"
+                        class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Leaderboard</a>
+                    <a href="rules2.html"
+                        class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Rules</a>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="login_user.html"
+                        class="text-gray-600 hover:text-sky-600 font-medium transition-colors">Sign
+                        in</a>
+                    <a href="signup_user.html"
+                        class="bg-sky-600 hover:opacity-90 text-white px-5 py-2 rounded-lg font-bold transition-all duration-300 shadow-md">Sign
+                        up</a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-sky-600 focus:outline-none p-2">
+                        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-sky-300 shadow-lg absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="rules2.html"
+                    class="block px-3 py-3 text-base font-medium text-sky-600 bg-sky-300/30 rounded-md">Rules</a>
+                <a href="categories_logout.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Categories</a>
+                <a href="leaderboard_logout.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Leaderboard</a>
+                <hr class="my-2 border-gray-200">
+                <a href="login_user.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Sign
+                    in</a>
+                <a href="signup_user.html"
+                    class="block px-3 py-3 text-base font-medium text-white bg-sky-600 hover:opacity-90 rounded-md text-center mt-2">Sign
+                    up</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-20 sm:pt-28 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen">
+
+        <div class="text-center py-8 sm:py-16">
+            <h1
+                class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 tracking-tight mb-4 sm:mb-6 leading-tight">
+                Test your knowledge and <br class="hidden sm:block"> <span class="text-sky-600">reach the top!</span>
+            </h1>
+            <p
+                class="mt-4 text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-8 sm:mb-10 px-2 sm:px-0 font-medium">
+                Join thousands of players. Choose your favorite category, answer questions, and show everyone what you
+                know!
+            </p>
+            <a href="login_user.html"
+                class="inline-block w-full sm:w-auto bg-red-500 hover:bg-red-400 text-white font-bold text-lg py-3 sm:py-4 px-8 sm:px-10 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105">
+                Start Quiz Now
+            </a>
+        </div>
+
+        <div class="mt-6 sm:mt-12">
+            <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-6 text-center">Popular Categories</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+
+                <div
+                    class="bg-white p-5 sm:p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border-2 border-sky-300 cursor-pointer">
+                    <div
+                        class="w-10 h-10 sm:w-12 sm:h-12 bg-sky-300 text-sky-600 rounded-lg flex items-center justify-center mb-3 sm:mb-4 text-xl sm:text-2xl">
+                        🌍
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-1 sm:mb-2">Geography</h3>
+                    <p class="text-gray-600 text-sm font-medium">Capitals, mountains, rivers, and flags of the world.
+                    </p>
+                </div>
+
+                <div
+                    class="bg-white p-5 sm:p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border-2 border-amber-300 cursor-pointer">
+                    <div
+                        class="w-10 h-10 sm:w-12 sm:h-12 bg-yellow-100 text-amber-300 rounded-lg flex items-center justify-center mb-3 sm:mb-4 text-xl sm:text-2xl">
+                        💻
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-1 sm:mb-2">Technology</h3>
+                    <p class="text-gray-600 text-sm font-medium">Programming, hardware, internet, and modern
+                        innovations.</p>
+                </div>
+
+                <div
+                    class="bg-white p-5 sm:p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border-2 border-red-400 cursor-pointer">
+                    <div
+                        class="w-10 h-10 sm:w-12 sm:h-12 bg-red-400 text-white rounded-lg flex items-center justify-center mb-3 sm:mb-4 text-xl sm:text-2xl">
+                        🎬
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-1 sm:mb-2">Movies & TV Shows</h3>
+                    <p class="text-gray-600 text-sm font-medium">Cult movies, actors, directors, and famous quotes.</p>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-white border-t border-sky-300 mt-8 sm:mt-12 py-6 sm:py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-xs sm:text-sm font-medium">
+            &copy; 2026 Quiz Trip. All rights reserved.
+        </div>
+    </footer>
+    <script>
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+
+</html>
