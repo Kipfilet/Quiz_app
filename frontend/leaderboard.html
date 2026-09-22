@@ -78,10 +78,10 @@
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="home-logedin.html"
                     class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Home</a>
-                <a href="#"
-                    class="block px-3 py-3 text-base font-medium text-sky-600 bg-sky-300/30 rounded-md">Leaderboard</a>
                 <a href="categories.html"
                     class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Categories</a>
+                <a href="rules_logedin.html"
+                    class="block px-3 py-3 text-base font-medium text-sky-600 bg-sky-300/30 rounded-md">Rules</a>
                 <hr class="my-2 border-gray-200">
                 <a href="login_user.html"
                     class="block px-3 py-3 text-base font-bold text-red-500 hover:bg-red-400 hover:text-white rounded-md flex items-center gap-2 transition-colors">
@@ -214,6 +214,14 @@
             &copy; 2026 Quiz Trip. All rights reserved.
         </div>
     </footer>
+    <script>
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
 </body>
 
 </html>
