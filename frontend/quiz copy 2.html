@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+</head>
+<body onload="loadQuestions()">
+    <div class="navbar bg-blue-500 shadow-sm">
+        <div class="navbar-start  gap-2">
+            <a href="index.html"><img src="/slike/logo.jpg" alt="logo" class="size-8"></a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal gap-4 px-1">
+                <li><a href="#"
+                        class="text-xl text-white bg-blue-500 hover:bg-blue-600 p-2 rounded-2xl"><b>Play</b></a></li>
+                <li><a href="#"
+                        class="text-xl text-white bg-blue-500 hover:bg-blue-600 p-2 rounded-2xl"><b>Leaderboard</b></a></li>
+                <li><a href="#"
+                        class="text-xl text-white bg-blue-500 hover:bg-blue-600 p-2 rounded-2xl"><b>Rules</b></a></li>
+            </ul>
+        </div>
+        <div class="navbar-end">
+            <div class="dropdown dropdown-end bg-blue-500 lg:hidden">
+                <div tabindex="0" role="button"
+                    class="btn bg-blue-500 border-blue-500 shadow-none ">
+                    <img src="/frontend/images/pfp.jpg" class="size-8">
+                </div>
+                <ul tabindex="-1" class="menu menu-sm dropdown-content bg-blue-500 rounded-box z-1 mt-3 w-52 px-1">
+                    <li><a href="#"
+                        class="text-xl text-white bg-blue-500 hover:bg-blue-600 p-2 lg:hidden rounded-xl"><b>Play</b></a></li>
+                    <li><a href="#"
+                        class="text-xl text-white bg-blue-500 hover:bg-blue-600 p-2 lg:hidden rounded-xl"><b>Leaderboard</b></a></li>
+                    <li><a href="#"
+                        class="text-xl text-white bg-blue-500 hover:bg-blue-600 p-2 lg:hiddenrounded-xl"><b>Rules</b></a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="card bg-neutral-50 mx-auto w-150 my-5 shadow-xl rounded-2xl pb-10    ">
+        <div class="card-body">
+            <div class="flex justify-between">
+                <div id="heartContainer"class="rating rating-xl flex justify-center gap-2 mt-5">
+                    <div class="mask mask-heart bg-red-600" aria-label="1 star" aria-current="false"></div>
+                    <div class="mask mask-heart bg-red-600" aria-label="2 star" aria-current="false"></div>
+                    <div class="mask mask-heart bg-red-600" aria-label="3 star" aria-current="true"></div>
+                </div>
+                <div class="mt-5 join font-bold gap-1">
+                    <p id="timerText" class="text-xl"></p>
+                    <p id="timer" class="text-xl"><b>15</b></p>
+                    <p class="text-xl"><b>s</b></p>
+                </div>
+                <div class="mt-5 join font-bold gap-1">
+                    <p class="text-xl"><b>Score: </b></p>
+                    <p id="score" class="text-xl">0</p>
+                </div>
+
+             
+            </div>
+             <div class="my-5 text-center text-wrap max-w-md mx-auto">
+                <h1 id="questionText" class="text-2xl font-semibold"></h1>
+            </div>
+             <div class="flex justify-center "    >
+                <div class="grid grid-cols-1 gap-4 w-full max-w-4xl justify-items-center ">
+                    <button onclick="checkAnswer('A', this )" id="option1" class="btn text-white  bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-md w-2/3 shrink-0 h-16 rounded-xl"></button>
+                    <button onclick="checkAnswer('B', this )" id="option2" class="btn text-white  bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-md w-2/3 shrink-0 h-16 rounded-xl"></button>
+                    <button onclick="checkAnswer('C', this )" id="option3" class="btn text-white  bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-md w-2/3 shrink-0 h-16 rounded-xl"></button>
+                    <button onclick="checkAnswer('D', this )" id="option4" class="btn text-white  bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-md w-2/3 shrink-0 h-16 rounded-xl"></button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="/frontend/source/questions.js">
+    </script>
+</body>
+</html>
