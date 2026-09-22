@@ -1,4 +1,5 @@
 let questionText = document.getElementById('questionText');
+let isOver = false;
 let questionOptions = [
     document.getElementById('option1'),
     document.getElementById('option2'),
@@ -125,5 +126,6 @@ function removeHeart() {
     }
 }
 function gameOver() {
-    console.log("gameOver")
-}
+    
+    
+}  
