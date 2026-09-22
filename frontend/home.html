@@ -7,14 +7,15 @@
     <title>Quiz Trip - Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
                     }
                 }
             }
@@ -22,85 +23,97 @@
     </script>
 </head>
 
-<body class="bg-yellow-100/20 font-sans text-gray-800">
-
+<body class="font-inter bg-[#f7f7f8]">
     <nav class="fixed top-0 w-full bg-white shadow-md z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
 
                 <div class="flex-shrink-0 flex items-center">
                     <a class="text-xl sm:text-2xl font-extrabold text-sky-600 flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-8 sm:w-8" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 w-6 sm:h-8 sm:w-8"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"
+                            />
                         </svg>
                         Quiz Trip
                     </a>
                 </div>
 
                 <div class="hidden md:flex gap-4 items-center">
-                    <a href="#" class="text-sky-600 border-b-2 border-sky-600 px-3 py-2 font-semibold">Home</a>
+                    <a href="#"
+                        class="text-sky-600 border-b-2 border-sky-600 px-3 py-2 font-semibold">
+                        Home
+                    </a>
+
                     <a href="categories_logout.html"
-                        class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Categories</a>
+                        class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
+                        Categories
+                    </a>
+
                     <a href="leaderboard_logout.html"
-                        class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Leaderboard</a>
+                        class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
+                        Leaderboard
+                    </a>
+
                     <a href="rules2.html"
-                        class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Rules</a>
+                        class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
+                        Rules
+                    </a>
                 </div>
 
                 <div class="hidden md:flex items-center gap-4">
                     <a href="login_user.html"
-                        class="text-gray-900 hover:text-sky-600 font-medium transition-colors">Sign
-                        in</a>
+                        class="text-gray-900 hover:text-sky-600 font-medium transition-colors">
+                        Sign in
+                    </a>
+
                     <a href="signup_user.html"
-                        class="bg-blue-500 hover:opacity-90 text-white px-5 py-2 rounded-lg font-bold transition-all duration-300 shadow-md">Sign
-                        up</a>
+                        class="bg-blue-500 hover:opacity-90 text-white px-5 py-2 rounded-lg font-bold transition-all duration-300 shadow-md">
+                        Sign up
+                    </a>
                 </div>
 
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-sky-600 focus:outline-none p-2">
-                        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16" />
+                    <button id="mobile-menu-button"
+                        class="text-sky-600 focus:outline-none p-2">
+                        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24">
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"
+                            />
                         </svg>
                     </button>
                 </div>
-            </div>
-        </div>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-sky-300 shadow-lg absolute w-full">
-            <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#" class="block px-3 py-3 text-base font-medium text-sky-600 bg-sky-300/30 rounded-md">Home</a>
-                <a href="categories.html"
-                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Categories</a>
-                <a href="leaderboard_logout.html"
-                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Leaderboard</a>
-                <hr class="my-2 border-gray-200">
-                <a href="login_user.html"
-                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Sign
-                    in</a>
-                <a href="signup_user.html"
-                    class="block px-3 py-3 text-base font-medium text-white bg-sky-600 hover:opacity-90 rounded-md text-center mt-2">Sign
-                    up</a>
             </div>
         </div>
     </nav>
 
-    <main class="pt-20 sm:pt-10 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen">
+    <main class="pt-25 sm:pt-10 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen">
 
-        <div class="text-center py-8 sm:py-16">
+        <div class="text-center py-8 sm:py-28">
             <h1
-                class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 tracking-tight mb-4 sm:mb-6">
-                Test your knowledge on<br class="hidden sm:block"> <span class="text-sky-600">three different countries</span>
+                class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-gray-900 tracking-tight mb-4 sm:mb-6">
+                Test your knowledge with<br class="hidden sm:block"> <span class="text-sky-600">trivia quizzes</span>
             </h1>
             <p
-                class="mt-4 text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-8 sm:mb-10 px-2 sm:px-0 font-medium">
-                Take quizes, learn and earn points to compete with others
+                class="mt-4 text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-8 sm:mb-15 px-2 sm:px-0 font-medium">
+                Learn and earn points to compete with others
             </p>
             <button
                 onclick="startQuiz()"
-                class="mt-5 inline-block w-full sm:w-auto
+                class="inline-block w-full sm:w-auto
                     bg-blue-500 hover:opacity-90
                     text-white font-bold text-lg
                     py-5 sm:py-6 px-12 sm:px-14
@@ -109,47 +122,57 @@
                     transform transition-all duration-300
                     hover:scale-105 text-xl">
                 Start quiz</button>
+
         </div>
+        <div class="text-center mt-16 sm:mt-24">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
+                Answer questions for
+                <span class="text-sky-600">three different countries</span>
+            </h2>
 
-        <div class="mt-6 sm:mt-12">
-            <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-6 text-center">Popular Categories</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10 max-w-5xl mx-auto">
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-
-                <div
-                    class="bg-white p-5 sm:p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border-2 border-sky-300 cursor-pointer">
-                    <div
-                        class="w-10 h-10 sm:w-12 sm:h-12 bg-sky-300 text-sky-600 rounded-lg flex items-center justify-center mb-3 sm:mb-4 text-xl sm:text-2xl">
-                        🌍
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-1 sm:mb-2">Geography</h3>
-                    <p class="text-gray-600 text-sm font-medium">Capitals, mountains, rivers, and flags of the world.
-                    </p>
+                <!-- Croatia -->
+                <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition-all duration-300">
+                    <img
+                        src="/images/croatia.png"
+                        alt="Croatia flag"
+                        class="w-full h-32 object-cover rounded-xl"
+                    >
+                    <h3 class="text-xl font-bold text-gray-900 mt-4">
+                        Croatia
+                    </h3>
                 </div>
 
-                <div
-                    class="bg-white p-5 sm:p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border-2 border-amber-300 cursor-pointer">
-                    <div
-                        class="w-10 h-10 sm:w-12 sm:h-12 bg-yellow-100 text-amber-300 rounded-lg flex items-center justify-center mb-3 sm:mb-4 text-xl sm:text-2xl">
-                        💻
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-1 sm:mb-2">Technology</h3>
-                    <p class="text-gray-600 text-sm font-medium">Programming, hardware, internet, and modern
-                        innovations.</p>
+                <!-- Netherlands -->
+                <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition-all duration-300">
+                    <img
+                        src="/images/netherlands.png"
+                        alt="Netherlands flag"
+                        class="w-full h-32 object-cover rounded-xl"
+                    >
+                    <h3 class="text-xl font-bold text-gray-900 mt-4">
+                        Netherlands
+                    </h3>
                 </div>
 
-                <div
-                    class="bg-white p-5 sm:p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border-2 border-red-400 cursor-pointer">
-                    <div
-                        class="w-10 h-10 sm:w-12 sm:h-12 bg-red-400 text-white rounded-lg flex items-center justify-center mb-3 sm:mb-4 text-xl sm:text-2xl">
-                        🎬
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-1 sm:mb-2">Movies & TV Shows</h3>
-                    <p class="text-gray-600 text-sm font-medium">Cult movies, actors, directors, and famous quotes.</p>
+                <!-- Sweden -->
+                <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition-all duration-300">
+                    <img
+                        src="/images/sweden.png"
+                        alt="Sweden flag"
+                        class="w-full h-32 object-cover rounded-xl"
+                    >
+                    <h3 class="text-xl font-bold text-gray-900 mt-4">
+                        Sweden
+                    </h3>
                 </div>
 
             </div>
         </div>
+
+
+
 
     </main>
 
