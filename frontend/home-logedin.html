@@ -39,12 +39,14 @@
                     </a>
                 </div>
 
-                <div class="hidden md:flex space-x-8 items-center">
+                <div class="hidden md:flex gap-4 items-center">
                     <a href="#" class="text-sky-600 border-b-2 border-sky-600 px-3 py-2 font-semibold">Home</a>
                     <a href="leaderboard.html"
                         class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Leaderboard</a>
-                    <a href="#" class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">My
-                        Profile</a>
+                    <a href="categories.html"
+                        class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Categories</a>
+                    <a href="rules_logedin.html"
+                        class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Rules</a>
                 </div>
 
                 <div class="hidden md:flex items-center space-x-4">
@@ -84,15 +86,14 @@
                         class="w-6 h-6 bg-amber-300 text-white rounded-full flex items-center justify-center text-xs">U</span>
                     Logged in as User/Admin
                 </div>
-                <a href="index.html"
-                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Home</a>
-                <a href="#"
-                    class="block px-3 py-3 text-base font-medium text-sky-600 bg-sky-300/30 rounded-md">Dashboard</a>
-                <a href="#"
-                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">My
-                    Profile</a>
+                <a href="rules_logedin.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Rules</a>
+                <a href="categories.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Categories</a>
+                <a href="leaderboard.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Leaderboard</a>
                 <hr class="my-2 border-gray-200">
-                <a href="login.html"
+                <a href="login_user.html"
                     class="block px-3 py-3 text-base font-bold text-red-500 hover:bg-red-400 hover:text-white rounded-md flex items-center gap-2 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
@@ -209,6 +210,14 @@
             &copy; 2026 Quiz Trip. All rights reserved.
         </div>
     </footer>
+    <script>
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
 </body>
 
 </html>

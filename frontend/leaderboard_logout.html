@@ -39,13 +39,13 @@
                     </a>
                 </div>
 
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#" class="text-sky-600 border-b-2 border-sky-600 px-3 py-2 font-semibold">Home</a>
-                    <a href="#"
+                <div class="hidden md:flex gap-4 items-center">
+                    <a href="home.html" class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Home</a>
+                    <a href="categories_logout.html"
                         class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Categories</a>
-                    <a href="leaderboard.html"
-                        class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Leaderboard</a>
                     <a href="#"
+                        class="text-sky-600 border-b-2 border-sky-600 px-3 py-2 font-semibold">Leaderboard</a>
+                    <a href="rules2.html"
                         class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Rules</a>
                 </div>
 
@@ -71,11 +71,11 @@
 
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-sky-300 shadow-lg absolute w-full">
             <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#" class="block px-3 py-3 text-base font-medium text-sky-600 bg-sky-300/30 rounded-md">Home</a>
-                <a href="#"
+                <a href="home.html" class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Home</a>
+                <a href="categories_logout.html"
                     class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Categories</a>
-                <a href="#"
-                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Leaderboard</a>
+                <a href="rules2.html"
+                    class="block px-3 py-3 text-base font-medium text-sky-600 bg-sky-300/30 rounded-md">Rules</a>
                 <hr class="my-2 border-gray-200">
                 <a href="login.html"
                     class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Sign
@@ -205,6 +205,14 @@
             &copy; 2026 Quiz Trip. All rights reserved.
         </div>
     </footer>
+    <script>
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
 </body>
 
 </html>
