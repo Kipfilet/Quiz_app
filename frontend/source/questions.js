@@ -131,7 +131,7 @@ function removeHeart() {
         heartContainer.children[heartCount - 2].ariaCurrent = "true";
         heartCount--
     }
-    else{
+    else if(!isOver){
         heartContainer.children[heartCount - 1].ariaCurrent="false";
         heartCount--;
         gameOver()
