@@ -7,22 +7,31 @@ function handle_register(PDO $pdo): void
     $email = trim($body['email'] ?? '');
     $password = (string) ($body['password'] ?? '');
 
-    if ($username === '' || $email === '' || $password === '') {
-        json_error('username, email and password are required');
+    $missing = [];
+    if ($username === '') $missing[] = 'username';
+    if ($email === '') $missing[] = 'email';
+    if ($password === '') $missing[] = 'password';
+    if ($missing) {
+        $verb = count($missing) === 1 ? 'is' : 'are';
+        json_error(implode(', ', $missing) . " $verb required");
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        json_error('Invalid email address');
+        json_error('Invalid email address: ' . $email);
     }
 
     if (strlen($password) < 8) {
-        json_error('Password must be at least 8 characters');
+        json_error('Password must be at least 8 characters (got ' . strlen($password) . ')');
     }
 
-    $stmt = $pdo->prepare('SELECT id FROM users WHERE username = ? OR email = ?');
+    $stmt = $pdo->prepare('SELECT username, email FROM users WHERE username = ? OR email = ?');
     $stmt->execute([$username, $email]);
-    if ($stmt->fetch()) {
-        json_error('Username or email already in use', 409);
+    $existing = $stmt->fetch();
+    if ($existing) {
+        if ($existing['username'] === $username) {
+            json_error("Username '$username' is already taken", 409);
+        }
+        json_error("Email '$email' is already registered", 409);
     }
 
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);

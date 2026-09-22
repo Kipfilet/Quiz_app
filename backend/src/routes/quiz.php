@@ -3,7 +3,7 @@
 function get_current_question_row(PDO $pdo, int $attemptId): ?array
 {
     $stmt = $pdo->prepare(
-        'SELECT qaq.question_id, qaq.order_index, q.question_text, q.options, q.difficulty, q.category, q.country
+        'SELECT qaq.question_id, qaq.order_index, q.question_text, q.options, q.difficulty, q.quiz_set_id
          FROM quiz_attempt_questions qaq
          JOIN questions q ON q.id = qaq.question_id
          WHERE qaq.quiz_attempt_id = ? AND qaq.answered_at IS NULL
@@ -44,6 +44,7 @@ function format_attempt_state(array $attempt, ?array $question): array
         'status' => $attempt['status'],
         'lives' => (int) $attempt['lives'],
         'score' => (int) $attempt['score'],
+        'quiz_set_id' => isset($attempt['quiz_set_id']) ? (int) $attempt['quiz_set_id'] : null,
         'questions_answered' => (int) $attempt['answered_count'],
         'total_questions' => QUESTIONS_PER_QUIZ,
         'question' => $question ? [
@@ -52,8 +53,7 @@ function format_attempt_state(array $attempt, ?array $question): array
             'question_text' => $question['question_text'],
             'options' => $question['options'],
             'difficulty' => $question['difficulty'],
-            'category' => $question['category'],
-            'country' => $question['country'],
+            'quiz_set_id' => (int) $question['quiz_set_id'],
         ] : null,
     ];
 }
@@ -73,20 +73,14 @@ function handle_quiz_start(PDO $pdo): void
         json_response(format_attempt_state($attempt, $question));
     }
 
-    $category = trim($_GET['category'] ?? '');
-    $country = trim($_GET['country'] ?? '');
+    $quizSetId = !empty($_GET['quiz_set_id']) ? (int) $_GET['quiz_set_id'] : null;
 
     $where = [];
     $params = [];
 
-    if ($category !== '') {
-        $where[] = 'category = ?';
-        $params[] = $category;
-    }
-
-    if ($country !== '') {
-        $where[] = 'country = ?';
-        $params[] = $country;
+    if ($quizSetId) {
+        $where[] = 'quiz_set_id = ?';
+        $params[] = $quizSetId;
     }
 
     $whereSql = $where ? ('WHERE ' . implode(' AND ', $where)) : '';
@@ -103,13 +97,12 @@ function handle_quiz_start(PDO $pdo): void
 
     try {
         $stmt = $pdo->prepare(
-            'INSERT INTO quiz_attempts (user_id, status, lives, score, category, country) VALUES (?, "in_progress", ?, 0, ?, ?)'
+            'INSERT INTO quiz_attempts (user_id, status, lives, score, quiz_set_id) VALUES (?, "in_progress", ?, 0, ?)'
         );
         $stmt->execute([
             $user['id'],
             STARTING_LIVES,
-            $category !== '' ? $category : null,
-            $country !== '' ? $country : null,
+            $quizSetId,
         ]);
         $attemptId = (int) $pdo->lastInsertId();
 

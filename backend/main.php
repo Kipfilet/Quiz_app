@@ -9,7 +9,7 @@ require __DIR__ . '/src/scoring.php';
 require __DIR__ . '/src/routes/auth.php';
 require __DIR__ . '/src/routes/quiz.php';
 require __DIR__ . '/src/routes/leaderboard.php';
-require __DIR__ . '/src/routes/questions_meta.php';
+require __DIR__ . '/src/routes/quiz_sets.php';
 require __DIR__ . '/src/routes/admin_questions.php';
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? '/';
@@ -34,13 +34,16 @@ $routes = [
 
     ['GET', '#^/api/leaderboard$#', 'handle_leaderboard'],
 
-    ['GET', '#^/api/questions/categories$#', 'handle_categories'],
-    ['GET', '#^/api/questions/countries$#', 'handle_countries'],
+    ['GET', '#^/api/quiz-sets$#', 'handle_list_quiz_sets'],
 
     ['GET', '#^/api/admin/questions$#', 'handle_admin_list_questions'],
     ['POST', '#^/api/admin/questions$#', 'handle_admin_create_question'],
     ['PUT', '#^/api/admin/questions/(\d+)$#', 'handle_admin_update_question'],
     ['DELETE', '#^/api/admin/questions/(\d+)$#', 'handle_admin_delete_question'],
+
+    ['POST', '#^/api/admin/quiz-sets$#', 'handle_admin_create_quiz_set'],
+    ['PUT', '#^/api/admin/quiz-sets/(\d+)$#', 'handle_admin_update_quiz_set'],
+    ['DELETE', '#^/api/admin/quiz-sets/(\d+)$#', 'handle_admin_delete_quiz_set'],
 ];
 
 $method = $_SERVER['REQUEST_METHOD'];

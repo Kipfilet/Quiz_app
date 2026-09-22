@@ -26,7 +26,7 @@ Composer packages — everything is hand-rolled on purpose.
 - `backend/src/scoring.php` — `QUESTIONS_PER_QUIZ` (10), `STARTING_LIVES` (3),
   `DIFFICULTY_POINTS` (easy 10 / medium 15 / hard 20).
 - `backend/src/routes/*.php` — one file per resource (`auth`, `quiz`,
-  `leaderboard`, `questions_meta`, `admin_questions`), each just a set of
+  `leaderboard`, `quiz_sets`, `admin_questions`), each just a set of
   `handle_*` functions taking `PDO $pdo` (and any route params) and calling
   `json_response`/`json_error`.
 
@@ -51,9 +51,9 @@ php backend/tests/smoke_test.php
 ```
 
 A dependency-free smoke test (`backend/tests/smoke_test.php`): it starts its
-own dev server on port 8099, seeds throwaway questions/users prefixed
-`smoke-`/`SmokeCategory`, drives the real HTTP API (register, login, admin
-question CRUD, quiz start/answer/scoring/lives, leaderboard, admin auth
+own dev server on port 8099, seeds throwaway quiz sets/questions/users
+prefixed `smoke-`, drives the real HTTP API (register, login, admin question
+CRUD, quiz set CRUD, quiz start/answer/scoring/lives, leaderboard, admin auth
 gating) with curl, then deletes everything it created and shuts its server
 down — safe to run against your real dev database. Prints `[PASS]`/`[FAIL]`
 per check and a final `N passed, M failed`; exits non-zero if anything
@@ -84,14 +84,19 @@ php backend/database/migrate.php rollback   # roll back the most recent one
   `email`. `total_score` is the sum of `score` across all of a user's
   *completed* `quiz_attempts` — it's incremented once, when an attempt
   finishes, not tracked live during the quiz.
-- `questions` — `id`, `category`, `country` (nullable), `difficulty`
-  (`easy`/`medium`/`hard`), `question_text`, `options` (JSON array of
-  strings), `correct_index` (into `options`), `created_at`.
+- `quiz_sets` — a named, curated quiz (e.g. "Croatia Geography", "Dutch
+  Culture"): `id`, `name`, `slug` (unique, lowercase/hyphens), `description`
+  (nullable), `created_at`.
+- `questions` — `id`, `quiz_set_id` (which quiz it belongs to — every question
+  belongs to exactly one set; `ON DELETE RESTRICT`, so a quiz set that still
+  has questions can't be deleted, mirrored by the admin delete endpoint's 409),
+  `difficulty` (`easy`/`medium`/`hard`), `question_text`, `options` (JSON
+  array of strings), `correct_index` (into `options`), `created_at`.
 - `quiz_attempts` — one row per quiz a user plays: `id`, `user_id`, `status`
-  (`in_progress`/`completed`), `lives` (starts at 3), `score`, `category`/
-  `country` (the filters the attempt was started with, nullable), `started_at`,
-  `completed_at`. This table *is* the quiz-results table — there's no
-  separate results table.
+  (`in_progress`/`completed`), `lives` (starts at 3), `score`, `quiz_set_id`
+  (which quiz set the attempt was started from, nullable — null means it was
+  started unfiltered across all questions), `started_at`, `completed_at`.
+  This table *is* the quiz-results table — there's no separate results table.
 - `quiz_attempt_questions` — the 10 questions assigned to one attempt:
   `quiz_attempt_id`, `question_id`, `order_index` (0–9, answered in order),
   `selected_index`/`is_correct`/`points_awarded`/`answered_at` (all null until
@@ -111,12 +116,12 @@ All request/response bodies are JSON. Auth is PHP session cookies
 - `POST /api/auth/login` — `{email, password}` → 200 + user, or 401.
 - `POST /api/auth/logout` — destroys the session.
 - `GET /api/auth/me` — current user, or 401 if not logged in.
-- `GET /api/quiz/start?category=&country=` — requires auth. If the user
-  already has an `in_progress` attempt, **resumes** it (ignores the
-  category/country params in that case) instead of starting a second one.
-  Otherwise picks 10 random questions (filtered by category/country if
-  given — 422 if fewer than 10 match) and creates a new attempt. Returns
-  attempt state + the current question (without `correct_index`).
+- `GET /api/quiz/start?quiz_set_id=` — requires auth. If the user already has
+  an `in_progress` attempt, **resumes** it (ignores `quiz_set_id` in that
+  case) instead of starting a second one. Otherwise picks 10 random questions
+  (filtered by `quiz_set_id` if given — 422 if fewer than 10 match; omit it
+  to pick from all questions regardless of set) and creates a new attempt.
+  Returns attempt state + the current question (without `correct_index`).
 - `POST /api/quiz/{attemptId}/answer` — requires auth, must own the attempt.
   `{question_id, selected_index}`. `question_id` must be the *current*
   (first unanswered, in order) question for the attempt, or this 409s — the
@@ -126,16 +131,23 @@ All request/response bodies are JSON. Auth is PHP session cookies
   are answered. Returns whether the answer was correct, the correct index,
   points awarded, and the updated attempt state (incl. next question).
 - `GET /api/leaderboard?limit=10` — public. Top users by `total_score`.
-- `GET /api/questions/categories` — public. Distinct `category` values.
-- `GET /api/questions/countries` — public. Distinct non-null `country` values.
+- `GET /api/quiz-sets` — public. All quiz sets (`id`, `name`, `slug`,
+  `description`, `created_at`).
 - `GET /api/admin/questions` — admin only. Full question list incl.
-  `correct_index`.
+  `correct_index` and `quiz_set_id`.
 - `POST /api/admin/questions` — admin only. `{question_text, options[],
-  correct_index, difficulty, category, country?}`.
+  correct_index, difficulty, quiz_set_id}`. 422 if `quiz_set_id` doesn't
+  reference an existing quiz set.
 - `PUT /api/admin/questions/{id}` — admin only. Partial update, any subset of
   the same fields.
 - `DELETE /api/admin/questions/{id}` — admin only. 409 if the question is
   referenced by any past attempt.
+- `POST /api/admin/quiz-sets` — admin only. `{name, slug, description?}`.
+  `slug` must be lowercase letters/numbers/hyphens; 409 on duplicate slug.
+- `PUT /api/admin/quiz-sets/{id}` — admin only. Partial update, any subset of
+  the same fields.
+- `DELETE /api/admin/quiz-sets/{id}` — admin only. 409 if the quiz set still
+  has questions assigned to it.
 
 ## Not built yet
 

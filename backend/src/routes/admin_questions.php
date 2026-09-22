@@ -35,16 +35,11 @@ function validate_question_input(array $body, bool $partial = false): array
         }
     }
 
-    if (!$partial || array_key_exists('category', $body)) {
-        $data['category'] = trim($body['category'] ?? '');
-        if ($data['category'] === '') {
-            $errors[] = 'category is required';
+    if (!$partial || array_key_exists('quiz_set_id', $body)) {
+        $data['quiz_set_id'] = (int) ($body['quiz_set_id'] ?? 0);
+        if ($data['quiz_set_id'] <= 0) {
+            $errors[] = 'quiz_set_id is required';
         }
-    }
-
-    if (array_key_exists('country', $body)) {
-        $country = trim((string) $body['country']);
-        $data['country'] = $country !== '' ? $country : null;
     }
 
     if ($errors) {
@@ -59,11 +54,12 @@ function handle_admin_list_questions(PDO $pdo): void
     require_admin($pdo);
 
     $rows = $pdo->query(
-        'SELECT id, category, country, difficulty, question_text, options, correct_index, created_at FROM questions ORDER BY id DESC'
+        'SELECT id, quiz_set_id, difficulty, question_text, options, correct_index, created_at FROM questions ORDER BY id DESC'
     )->fetchAll();
 
     foreach ($rows as &$row) {
         $row['options'] = json_decode($row['options'], true);
+        $row['quiz_set_id'] = (int) $row['quiz_set_id'];
     }
 
     json_response($rows);
@@ -75,17 +71,23 @@ function handle_admin_create_question(PDO $pdo): void
 
     $data = validate_question_input(read_json_body());
 
-    $stmt = $pdo->prepare(
-        'INSERT INTO questions (category, country, difficulty, question_text, options, correct_index) VALUES (?, ?, ?, ?, ?, ?)'
-    );
-    $stmt->execute([
-        $data['category'],
-        $data['country'] ?? null,
-        $data['difficulty'],
-        $data['question_text'],
-        json_encode($data['options']),
-        $data['correct_index'],
-    ]);
+    try {
+        $stmt = $pdo->prepare(
+            'INSERT INTO questions (quiz_set_id, difficulty, question_text, options, correct_index) VALUES (?, ?, ?, ?, ?)'
+        );
+        $stmt->execute([
+            $data['quiz_set_id'],
+            $data['difficulty'],
+            $data['question_text'],
+            json_encode($data['options']),
+            $data['correct_index'],
+        ]);
+    } catch (PDOException $e) {
+        if ((int) $e->getCode() === 23000) {
+            json_error('quiz_set_id does not reference an existing quiz set', 422);
+        }
+        throw $e;
+    }
 
     $data['id'] = (int) $pdo->lastInsertId();
     json_response($data, 201);
@@ -115,7 +117,14 @@ function handle_admin_update_question(PDO $pdo, int $id): void
     }
     $params[] = $id;
 
-    $pdo->prepare('UPDATE questions SET ' . implode(', ', $fields) . ' WHERE id = ?')->execute($params);
+    try {
+        $pdo->prepare('UPDATE questions SET ' . implode(', ', $fields) . ' WHERE id = ?')->execute($params);
+    } catch (PDOException $e) {
+        if ((int) $e->getCode() === 23000) {
+            json_error('quiz_set_id does not reference an existing quiz set', 422);
+        }
+        throw $e;
+    }
 
     json_response(['success' => true]);
 }

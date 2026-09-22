@@ -81,7 +81,10 @@ function purge_smoke_data(PDO $pdo): void
         JOIN users u ON u.id = qa.user_id
         WHERE u.email LIKE 'smoke-%@smoketest.local'");
     $pdo->exec("DELETE FROM users WHERE email LIKE 'smoke-%@smoketest.local'");
-    $pdo->exec("DELETE FROM questions WHERE category = 'SmokeCategory'");
+    $pdo->exec("DELETE q FROM questions q
+        JOIN quiz_sets qs ON qs.id = q.quiz_set_id
+        WHERE qs.slug LIKE 'smoke-%'");
+    $pdo->exec("DELETE FROM quiz_sets WHERE slug LIKE 'smoke-%'");
 }
 
 // --- Setup ---------------------------------------------------------------
@@ -89,12 +92,19 @@ function purge_smoke_data(PDO $pdo): void
 $pdo = get_pdo_connection();
 purge_smoke_data($pdo);
 
+$stmt = $pdo->prepare('INSERT INTO quiz_sets (name, slug, description) VALUES (?, ?, ?)');
+$stmt->execute(['Smoke Quiz Set', 'smoke-quiz-set', 'Seeded for smoke tests']);
+$smokeQuizSetId = (int) $pdo->lastInsertId();
+
+$stmt->execute(['Smoke Admin Quiz Set', 'smoke-admin-quiz-set', 'Seeded for smoke tests']);
+$smokeAdminQuizSetId = (int) $pdo->lastInsertId();
+
 $stmt = $pdo->prepare(
-    'INSERT INTO questions (category, country, difficulty, question_text, options, correct_index) VALUES (?, ?, ?, ?, ?, 0)'
+    'INSERT INTO questions (quiz_set_id, difficulty, question_text, options, correct_index) VALUES (?, ?, ?, ?, 0)'
 );
 $difficulties = ['easy', 'medium', 'hard'];
 for ($i = 1; $i <= 12; $i++) {
-    $stmt->execute(['SmokeCategory', 'Smokeland', $difficulties[$i % 3], "Smoke question {$i}", json_encode(['A', 'B', 'C', 'D'])]);
+    $stmt->execute([$smokeQuizSetId, $difficulties[$i % 3], "Smoke question {$i}", json_encode(['A', 'B', 'C', 'D'])]);
 }
 
 // Redirect the dev server's own stdio to the null device so its pipes never
@@ -176,14 +186,13 @@ try {
     // There's no signup flow for admins by design - promote directly in the DB.
     $pdo->prepare("UPDATE users SET role = 'admin' WHERE email = ?")->execute([$adminEmail]);
 
-    run_test('admin can create/update/delete a question', function () use ($baseUrl, $adminCookies) {
+    run_test('admin can create/update/delete a question', function () use ($baseUrl, $adminCookies, $smokeAdminQuizSetId) {
         $create = http_request($adminCookies, 'POST', "{$baseUrl}/api/admin/questions", [
             'question_text' => 'Smoke admin question',
             'options' => ['X', 'Y'],
             'correct_index' => 1,
             'difficulty' => 'medium',
-            'category' => 'SmokeCategoryAdmin',
-            'country' => 'Smokeland',
+            'quiz_set_id' => $smokeAdminQuizSetId,
         ]);
         assert_status($create, 201, 'admin create question');
         $id = $create['body']['id'];
@@ -193,6 +202,22 @@ try {
         ]), 200, 'admin update question');
 
         assert_status(http_request($adminCookies, 'DELETE', "{$baseUrl}/api/admin/questions/{$id}"), 200, 'admin delete question');
+    });
+
+    run_test('quiz sets: public list, admin create, duplicate slug rejected, delete blocked while in use', function () use ($baseUrl, $adminCookies, $anonCookies, $smokeQuizSetId) {
+        $list = http_request($anonCookies, 'GET', "{$baseUrl}/api/quiz-sets");
+        assert_status($list, 200, 'public quiz-sets list');
+        $slugs = array_column($list['body'], 'slug');
+        assert_true(in_array('smoke-quiz-set', $slugs, true), 'seeded quiz set should appear in the public list');
+
+        $dup = http_request($adminCookies, 'POST', "{$baseUrl}/api/admin/quiz-sets", [
+            'name' => 'Smoke Quiz Set',
+            'slug' => 'smoke-quiz-set',
+        ]);
+        assert_status($dup, 409, 'duplicate quiz-set slug');
+
+        $blocked = http_request($adminCookies, 'DELETE', "{$baseUrl}/api/admin/quiz-sets/{$smokeQuizSetId}");
+        assert_status($blocked, 409, 'deleting a quiz set with questions should be blocked');
     });
 
     http_request($userCookies, 'POST', "{$baseUrl}/api/auth/register", [
@@ -208,8 +233,8 @@ try {
     $attemptId = null;
     $firstQuestionPoints = null;
 
-    run_test('quiz/start returns a 10-question attempt', function () use ($baseUrl, $userCookies, &$attemptId) {
-        $start = http_request($userCookies, 'GET', "{$baseUrl}/api/quiz/start?category=SmokeCategory");
+    run_test('quiz/start returns a 10-question attempt', function () use ($baseUrl, $userCookies, &$attemptId, $smokeQuizSetId) {
+        $start = http_request($userCookies, 'GET', "{$baseUrl}/api/quiz/start?quiz_set_id={$smokeQuizSetId}");
         assert_status($start, 201, 'quiz start');
         assert_true($start['body']['total_questions'] === 10, 'attempt should track 10 questions');
         assert_true($start['body']['lives'] === 3, 'attempt should start with 3 lives');
