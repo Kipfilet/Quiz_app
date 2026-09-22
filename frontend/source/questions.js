@@ -55,7 +55,7 @@ async function checkAnswer(selectedOption, questionId) {
         correctAnswers++;
         disableButtons();
         showCorrectAnswer();
-        await countdownNextQuestion(5, 'Next question in: ',"cooldown");
+        await countdownNextQuestion(3, 'Next question in: ',"cooldown");
     } else {
         questionId.classList.remove('bg-blue-500', 'hover:bg-blue-600', 'active:bg-blue-700');
         questionId.classList.add('bg-red-500');
@@ -63,7 +63,7 @@ async function checkAnswer(selectedOption, questionId) {
         showCorrectAnswer();
         removeHeart();
         if(!isOver){
-            await countdownNextQuestion(5, 'Next question in: ',"cooldown");
+            await countdownNextQuestion(3, 'Next question in: ',"cooldown");
         }
     }
 }

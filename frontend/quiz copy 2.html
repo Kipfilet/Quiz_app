@@ -77,21 +77,22 @@
                     <button onclick="checkAnswer('D', this )" id="option4" class="btn text-white  bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-md w-2/3 shrink-0 h-16 rounded-xl"></button>
                 </div>
             </div>
-            <div id="endScreen" class="invisible card bg-neutral-100 mx-auto w-100 my-5 shadow-xl z-1 rounded-2xl pb-10 absolute mx-auto left-0 right-0 bottom-0 top-0 h-100">
+            <div id="endScreen" class="invisible card bg-neutral-100 m-auto w-100 my-5 shadow-xl z-1 rounded-2xl  absolute mx-auto left-0 right-0 bottom-0 top-0 h-100">
                 <div class="card-body flex justify-center">
-                    <h1 class="text-center text-2xl my-5"><b>Game over</b></h1>
-                    <div class="mt-5  font-bold justify-between flex w-full">
+                    <h1 class="text-center text-4xl my-5"><b>Game over</b></h1>
+                    <div class="mt-5  font-bold justify-around flex w-full">
                         <p class="text-xl"><b>Total score: </b></p>
-                        <p id="totalScore" class="text-xl">0</p>
+                        <p id="totalScore" class="text-xl text-right">0</p>
                     </div>
-                    <div class="mt-5  font-bold justify-between flex w-full">
+                    <div class="mt-5  font-bold justify-around flex w-full">
                         <p class="text-xl"><b>Hearts used: </b></p>
-                        <p id="totalHearts" class="text-xl">0</p>
+                        <p id="totalHearts" class="text-xl text-right">0</p>
                     </div>
-                    <div class="mt-5 font-bold justify-between flex w-full">
+                    <div class="mt-5 font-bold justify-around flex w-full">
                         <p class="text-xl"><b>Correct Answers: </b></p>
-                        <p id="totalQuestions" class="text-xl">0</p>
+                        <p id="totalQuestions" class="text-xl text-right">0</p>
                     </div>
+                    <button onclick="window.location='/frontend/home.html'" class="btn mt-auto w-full h-13  bg-red-600 hover:bg-red-700 active:bg-red-800 rounded-2xl text-2xl text-white">Return to home</button>
                 </div>
             </div>
 
