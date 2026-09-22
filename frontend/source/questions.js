@@ -35,7 +35,7 @@ function loadQuestions() {
             option2.textContent = randomQuestion.options.B;
             option3.textContent = randomQuestion.options.C;
             option4.textContent = randomQuestion.options.D;
-            countdownNextQuestion(10, 'Time left: ');
+            countdownNextQuestion(10, 'Time left: ',"timer");
     }
 
 async function checkAnswer(selectedOption, questionId) {
@@ -55,7 +55,7 @@ async function checkAnswer(selectedOption, questionId) {
         correctAnswers++;
         disableButtons();
         showCorrectAnswer();
-        await countdownNextQuestion(5, 'Next question in: ',"timer");
+        await countdownNextQuestion(5, 'Next question in: ',"cooldown");
     } else {
         questionId.classList.remove('bg-blue-500', 'hover:bg-blue-600', 'active:bg-blue-700');
         questionId.classList.add('bg-red-500');
@@ -63,7 +63,7 @@ async function checkAnswer(selectedOption, questionId) {
         showCorrectAnswer();
         removeHeart();
         if(!isOver){
-            await countdownNextQuestion(5, 'Next question in: ',"timer");
+            await countdownNextQuestion(5, 'Next question in: ',"cooldown");
         }
     }
 }
@@ -116,8 +116,10 @@ function countdownNextQuestion(countdownDuration, countdownExtraText, countdownT
             countdownUse = false;
             clearInterval(countdownInterval);
             resetButtonColors();
-            loadQuestions();
-            enableButtons();
+            if(!isOver){
+                loadQuestions();
+                enableButtons();
+            }
         }
     }, 1000);
     }
@@ -136,6 +138,8 @@ function removeHeart() {
     }
 }
 function gameOver() {
+    isOver = true
+    disableButtons()
     document.getElementById("endScreen").classList.remove("invisible");
     let totalScore = score;
     let totalScoreContainer = document.getElementById("totalScore");
