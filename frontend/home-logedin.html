@@ -45,7 +45,7 @@
                         class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Leaderboard</a>
                     <a href="categories.html"
                         class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Categories</a>
-                    <a href="rules2.html"
+                    <a href="rules_logedin.html"
                         class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Rules</a>
                 </div>
 
@@ -211,6 +211,14 @@
             &copy; 2026 Quiz Trip. All rights reserved.
         </div>
     </footer>
+    <script>
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
 </body>
 
 </html>
