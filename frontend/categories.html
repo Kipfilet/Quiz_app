@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="hr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Trip - Kategorije Pitanja</title>
+    <title>Quiz Trip - Question Categories</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -38,23 +38,28 @@
                         Quiz Trip
                     </a>
                 </div>
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="index.html"
-                        class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Početna</a>
-                    <a href="dashboard.html"
-                        class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Nadzorna
-                        ploča</a>
-                    <a href="#" class="text-sky-600 border-b-2 border-sky-600 px-3 py-2 font-semibold">Kategorije</a>
+                <div class="hidden md:flex gap-4 items-center">
+                    <a href="home-logedin.html"
+                        class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Home</a>
+                    <a href="leaderboard.html"
+                        class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Leaderboard</a>
+                    <a href="#" class="text-sky-600 border-b-2 border-sky-600 px-3 py-2 font-semibold">Categories</a>
                 </div>
                 <div class="hidden md:flex items-center space-x-4">
-                    <a href="login.html"
+                    <div
+                        class="flex items-center gap-2 text-sm font-bold text-sky-600 bg-sky-300/30 py-1.5 px-3 rounded-full">
+                        <span
+                            class="w-6 h-6 bg-amber-300 text-white rounded-full flex items-center justify-center text-xs">U</span>
+                        User / Admin
+                    </div>
+                    <a href="login_user.html"
                         class="text-red-500 hover:text-red-400 font-bold transition-colors flex items-center gap-1">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                         </svg>
-                        Odjava
+                        Logout
                     </a>
                 </div>
                 <div class="md:hidden flex items-center">
@@ -71,16 +76,15 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-sky-300 shadow-lg absolute w-full z-40">
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="index.html"
-                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Početna</a>
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Home</a>
                 <a href="dashboard.html"
-                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Nadzorna
-                    ploča</a>
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Dashboard</a>
                 <a href="#"
-                    class="block px-3 py-3 text-base font-medium text-sky-600 bg-sky-300/30 rounded-md">Kategorije</a>
+                    class="block px-3 py-3 text-base font-medium text-sky-600 bg-sky-300/30 rounded-md">Categories</a>
                 <hr class="my-2 border-gray-200">
                 <a href="login.html"
                     class="block px-3 py-3 text-base font-bold text-red-500 hover:bg-red-400 hover:text-white rounded-md flex items-center gap-2 transition-colors">
-                    Odjava
+                    Logout
                 </a>
             </div>
         </div>
@@ -90,10 +94,10 @@
 
         <div class="mb-10 text-center">
             <h1 class="text-3xl sm:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
-                Baza Pitanja
+                Question Database
             </h1>
             <p class="text-gray-600 text-sm sm:text-lg font-medium max-w-2xl mx-auto">
-                Pregledajte sva dostupna pitanja podijeljena po kategorijama. Točan odgovor je označen kvačicom (✓).
+                Browse all available questions divided by categories. The correct answer is marked with a checkmark (✓).
             </p>
         </div>
 
@@ -102,7 +106,7 @@
             <div class="bg-white rounded-xl shadow-sm border-2 border-sky-300 overflow-hidden">
                 <button
                     class="w-full text-left px-6 py-4 font-bold text-xl text-sky-700 bg-sky-50 hover:bg-sky-100 transition-colors flex justify-between items-center focus:outline-none accordion-btn">
-                    <span>🌍 Geography & Nature (30 Pitanja)</span>
+                    <span>🌍 Geography & Nature (30 Questions)</span>
                     <svg class="h-6 w-6 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -412,7 +416,7 @@
             <div class="bg-white rounded-xl shadow-sm border-2 border-red-400 overflow-hidden">
                 <button
                     class="w-full text-left px-6 py-4 font-bold text-xl text-red-500 bg-red-50 hover:bg-red-100 transition-colors flex justify-between items-center focus:outline-none accordion-btn">
-                    <span>🛡️ National Symbols (4 Pitanja)</span>
+                    <span>🛡️ National Symbols (4 Questions)</span>
                     <svg class="h-6 w-6 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -465,7 +469,7 @@
             <div class="bg-white rounded-xl shadow-sm border-2 border-amber-300 overflow-hidden">
                 <button
                     class="w-full text-left px-6 py-4 font-bold text-xl text-amber-600 bg-yellow-100 hover:bg-yellow-200 transition-colors flex justify-between items-center focus:outline-none accordion-btn">
-                    <span>🎭 Culture & Traditions (8 Pitanja)</span>
+                    <span>🎭 Culture & Traditions (8 Questions)</span>
                     <svg class="h-6 w-6 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -556,7 +560,7 @@
             <div class="bg-white rounded-xl shadow-sm border-2 border-sky-300 overflow-hidden">
                 <button
                     class="w-full text-left px-6 py-4 font-bold text-xl text-sky-700 bg-sky-50 hover:bg-sky-100 transition-colors flex justify-between items-center focus:outline-none accordion-btn">
-                    <span>🎨 Art & Literature (5 Pitanja)</span>
+                    <span>🎨 Art & Literature (5 Questions)</span>
                     <svg class="h-6 w-6 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -617,7 +621,7 @@
             <div class="bg-white rounded-xl shadow-sm border-2 border-red-400 overflow-hidden">
                 <button
                     class="w-full text-left px-6 py-4 font-bold text-xl text-red-500 bg-red-50 hover:bg-red-100 transition-colors flex justify-between items-center focus:outline-none accordion-btn">
-                    <span>🔬 Science & Inventors (6 Pitanja)</span>
+                    <span>🔬 Science & Inventors (6 Questions)</span>
                     <svg class="h-6 w-6 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -690,7 +694,7 @@
             <div class="bg-white rounded-xl shadow-sm border-2 border-amber-300 overflow-hidden">
                 <button
                     class="w-full text-left px-6 py-4 font-bold text-xl text-amber-600 bg-yellow-100 hover:bg-yellow-200 transition-colors flex justify-between items-center focus:outline-none accordion-btn">
-                    <span>💼 Business & Economy (7 Pitanja)</span>
+                    <span>💼 Business & Economy (7 Questions)</span>
                     <svg class="h-6 w-6 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -771,7 +775,7 @@
             <div class="bg-white rounded-xl shadow-sm border-2 border-sky-300 overflow-hidden">
                 <button
                     class="w-full text-left px-6 py-4 font-bold text-xl text-sky-700 bg-sky-50 hover:bg-sky-100 transition-colors flex justify-between items-center focus:outline-none accordion-btn">
-                    <span>🏛️ History & Politics (14 Pitanja)</span>
+                    <span>🏛️ History & Politics (14 Questions)</span>
                     <svg class="h-6 w-6 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -923,7 +927,7 @@
             <div class="bg-white rounded-xl shadow-sm border-2 border-red-400 overflow-hidden">
                 <button
                     class="w-full text-left px-6 py-4 font-bold text-xl text-red-500 bg-red-50 hover:bg-red-100 transition-colors flex justify-between items-center focus:outline-none accordion-btn">
-                    <span>🏆 Sports & Celebrities (1 Pitanje)</span>
+                    <span>🏆 Sports & Celebrities (1 Question)</span>
                     <svg class="h-6 w-6 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -949,7 +953,7 @@
 
     <footer class="bg-white border-t border-sky-300 mt-12 py-8">
         <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm font-medium">
-            &copy; 2026 Quiz Trip. Sva prava pridržana.
+            &copy; 2026 Quiz Trip. All rights reserved.
         </div>
     </footer>
 
