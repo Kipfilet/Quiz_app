@@ -1,11 +1,15 @@
 let questionText = document.getElementById('questionText');
 let isOver = false;
+let difficulty;
 let questionOptions = [
     document.getElementById('option1'),
     document.getElementById('option2'),
     document.getElementById('option3'),
     document.getElementById('option4')
 ];
+function setDifficulty(difficultyOption){
+    difficulty = difficultyOption;
+}
 let score = 0;
 let questionArray = [];
 let questionMaxIndex = 0;
