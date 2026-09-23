@@ -1,194 +1,343 @@
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Trip - Home</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quiz Trip - Home</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        inter: ['Inter', 'sans-serif'],
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            inter: ['Inter', 'sans-serif'],
+                        }
                     }
                 }
             }
-        }
-    </script>
-</head>
+        </script>
+    </head>
 
-<body class="font-inter bg-[#f7f7f8]">
-    <nav class="fixed top-0 w-full bg-white shadow-md z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
+    <body class="font-inter bg-[#f7f7f8]">
+        <nav class="fixed top-0 w-full bg-white shadow-md z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16 items-center">
 
-                <div class="flex-shrink-0 flex items-center">
-                    <a class="text-xl sm:text-2xl font-extrabold text-sky-600 flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-8 sm:w-8" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                        Quiz Trip
-                    </a>
+                    <div class="flex-shrink-0 flex items-center">
+                        <a class="text-xl sm:text-2xl font-extrabold text-sky-600 flex items-center gap-2">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-6 w-6 sm:h-8 sm:w-8"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                                />
+                            </svg>
+                            Quiz Trip
+                        </a>
+                    </div>
+
+                    <div class="hidden md:flex gap-4 items-center">
+                        <a href="#"
+                            class="text-sky-600 border-b-2 border-sky-600 px-3 py-2 font-semibold">
+                            Home
+                        </a>
+
+                        <a href="categories_logout.html"
+                            class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
+                            Categories
+                        </a>
+
+                        <a href="leaderboard_logout.html"
+                            class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
+                            Leaderboard
+                        </a>
+
+                        <a href="rules2.html"
+                            class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
+                            Rules
+                        </a>
+                    </div>
+
+                    <div class="hidden md:flex items-center gap-4">
+                        <a href="singin_user.html"
+                            class="text-gray-900 hover:text-sky-600 font-medium transition-colors">
+                            Sign in
+                        </a>
+
+                        <a href="signup_user.html"
+                            class="bg-sky-600 hover:bg-sky-700 text-white px-5 py-2 rounded-lg font-bold transition-all duration-300 shadow-md">
+                            Sign up
+                        </a>
+                    </div>
+
+                    <div class="md:hidden flex items-center">
+                        <button id="mobile-menu-button" class="text-sky-600 focus:outline-none p-2">
+                            <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
+            </div>
 
-                <div class="hidden md:flex gap-4 items-center">
-                    <a href="#" class="text-sky-600 border-b-2 border-sky-600 px-3 py-2 font-semibold">
-                        Home
-                    </a>
-
+            <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-sky-600 shadow-lg absolute w-full">
+                <div class="px-4 pt-2 pb-6 space-y-2">
+                    <a href="home.html" class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-sky-50 rounded-md">Home</a>
                     <a href="categories_logout.html"
-                        class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
-                        Categories
-                    </a>
-
+                        class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-sky-50 rounded-md">Categories</a>
                     <a href="leaderboard_logout.html"
-                        class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
-                        Leaderboard
-                    </a>
-
-                    <a href="signin_user.html"
-                        class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
-                        Rules
-                    </a>
-                </div>
-
-                <div class="hidden md:flex items-center gap-4">
-                    <a href="singin_user.html" class="text-gray-900 hover:text-sky-600 font-medium transition-colors">
-                        Sign in
-                    </a>
-
+                        class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-sky-50 rounded-md">Leaderboard</a>
+                    <a href="rules2.html"
+                        class="block px-3 py-3 text-base font-medium text-sky-600 bg-sky-300/30 rounded-md">Rules</a>
+                    <hr class="my-2 border-gray-200">
+                    <a href="singin_user.html"
+                        class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-sky-50 rounded-md">Sign
+                        in</a>
                     <a href="signup_user.html"
-                        class="bg-sky-600 hover:bg-sky-700 text-white px-5 py-2 rounded-lg font-bold transition-all duration-300 shadow-md">
-                        Sign up
-                    </a>
-                </div>
-
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-sky-600 focus:outline-none p-2">
-                        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
+                        class="block px-3 py-3 text-base font-medium text-white bg-sky-600 hover:opacity-90 rounded-md mt-2">Sign
+                        up</a>
                 </div>
             </div>
-        </div>
+        </nav>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-sky-600 shadow-lg absolute w-full">
-            <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="home.html"
-                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-sky-50 rounded-md">Home</a>
-                <a href="categories_logout.html"
-                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-sky-50 rounded-md">Categories</a>
-                <a href="leaderboard_logout.html"
-                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-sky-50 rounded-md">Leaderboard</a>
-                <a href="rules2.html"
-                    class="block px-3 py-3 text-base font-medium text-sky-600 bg-sky-300/30 rounded-md">Rules</a>
-                <hr class="my-2 border-gray-200">
-                <a href="singin_user.html"
-                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-sky-50 rounded-md">Sign
-                    in</a>
-                <a href="signup_user.html"
-                    class="block px-3 py-3 text-base font-medium text-white bg-sky-600 hover:opacity-90 rounded-md mt-2">Sign
-                    up</a>
+
+        <main class="pt-20 sm:pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen">
+
+            <!-- Hero Section -->
+            <div class="text-center pt-8 sm:pt-16 pb-4">
+
+                <h1
+                    class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-gray-900 tracking-tight mb-4 sm:mb-5">
+                    Test your knowledge with
+                    <br class="hidden sm:block">
+                    <span class="text-sky-600">trivia quizzes</span>
+                </h1>
+
+                <p
+                    class="mt-2 text-base sm:text-lg md:text-xl text-gray-900 max-w-2xl mx-auto mb-6 sm:mb-8 px-2 sm:px-0 font-medium">
+                    How much do you really know?
+                </p>
+
+                <button
+                    onclick="startQuiz()"
+                    class="inline-block w-full sm:w-auto
+                        bg-blue-500 hover:opacity-90
+                        text-white font-bold text-lg
+                        py-5 sm:py-6 px-12 sm:px-14
+                        rounded-xl
+                        shadow-lg
+                        transform transition-all duration-300
+                        hover:scale-105 text-xl">
+                    Start quiz
+                </button>
+
             </div>
-        </div>
-    </nav>
 
-    <main class="pt-25 sm:pt-10 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen">
 
-        <div class="text-center py-8 sm:py-28">
-            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-gray-900 tracking-tight mb-4 sm:mb-6">
-                Test your knowledge with<br class="hidden sm:block"> <span class="text-sky-600">trivia quizzes</span>
-            </h1>
-            <p
-                class="mt-4 text-base sm:text-lg md:text-xl text-gray-900 max-w-2xl mx-auto mb-8 sm:mb-15 px-2 sm:px-0 font-medium">
-                How much do you realy know?
-            </p>
-            <button onclick="startQuiz()" class="inline-block w-full sm:w-auto
-                    bg-blue-500 hover:opacity-90
-                    text-white font-bold text-lg
-                    py-5 sm:py-6 px-12 sm:px-14
-                    rounded-xl
-                    shadow-lg
-                    transform transition-all duration-300
-                    hover:scale-105 text-xl">
-                Start quiz</button>
+            <!-- Countries Section -->
+            <div class="text-center mt-16 sm:mt-20">
 
-        </div>
-        <div class="text-center mt-16 sm:mt-24">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
-                Answer questions about
-                <span class="text-sky-600">three different countries</span>
-            </h2>
+                <h2
+                    class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
+                    Answer questions about
+                    <span class="text-sky-600">three different countries</span>
+                </h2>
 
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10 max-w-5xl mx-auto">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6  max-w-5xl mx-auto mt-10 sm:mt-14">
 
-                <!-- Croatia -->
-                <div
-                    class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition-all duration-300 border border-[#e7e7e7]">
-                    <img src="images/croatia.png" alt="Croatia flag" class="w-full h-32 object-cover rounded-xl">
-                    <h3 class="text-xl font-bold mt-4">
-                        Croatia
-                    </h3>
+                    <!-- Croatia -->
+                    <div
+                        class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition-all duration-300 border border-[#e7e7e7]">
+
+                        <img
+                            src="images/croatia.png"
+                            alt="Croatia flag"
+                            class="w-full h-32 object-cover rounded-xl"
+                        >
+
+                        <h3 class="text-xl font-bold mt-4">
+                            Croatia
+                        </h3>
+
+                    </div>
+
+
+                    <!-- Netherlands -->
+                    <div
+                        class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition-all duration-300 border border-[#e7e7e7]">
+
+                        <img
+                            src="images/netherlands.png"
+                            alt="Netherlands flag"
+                            class="w-full h-32 object-cover rounded-xl"
+                        >
+
+                        <h3 class="text-xl font-bold text-gray-900 mt-4">
+                            Netherlands
+                        </h3>
+
+                    </div>
+
+
+                    <!-- Sweden -->
+                    <div
+                        class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition-all duration-300 border border-[#e7e7e7]">
+
+                        <img
+                            src="images/sweden.png"
+                            alt="Sweden flag"
+                            class="w-full h-32 object-cover rounded-xl"
+                        >
+
+                        <h3 class="text-xl font-bold text-gray-900 mt-4">
+                            Sweden
+                        </h3>
+
+                    </div>
+
                 </div>
 
-                <!-- Netherlands -->
-                <div
-                    class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition-all duration-300 border border-[#e7e7e7]">
-                    <img src="images/netherlands.png" alt="Netherlands flag"
-                        class="w-full h-32 object-cover rounded-xl">
-                    <h3 class="text-xl font-bold text-gray-900 mt-4">
-                        Netherlands
-                    </h3>
-                </div>
-
-                <!-- Sweden -->
-                <div
-                    class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition-all duration-300 border border-[#e7e7e7]">
-                    <img src="images/sweden.png" alt="Sweden flag" class="w-full h-32 object-cover rounded-xl">
-                    <h3 class="text-xl font-bold text-gray-900 mt-4">
-                        Sweden
-                    </h3>
-                </div>
             </div>
-        </div>
-        <div class="text-center pt-10">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900">
-                <span class="text-sky-600">Learn</span> and <span class="text-sky-600">earn points</span> to compete
-                with others
-            </h2>
-        </div>
-    </main>
 
-    <footer class="bg-white border-t border-sky-300 mt-8 sm:mt-12 py-6 sm:py-8">
-        <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-xs sm:text-sm font-medium">
-            &copy; 2026 Quiz Trip. All rights reserved.
-        </div>
-    </footer>
-    <script src="source/api.js"></script>
-    <script>
-        guardLoggedOut('home-logedin.html');
 
-        const btn = document.getElementById('mobile-menu-button');
-        const menu = document.getElementById('mobile-menu');
+            <!-- Leaderboard Preview -->
+            <div class="text-center mt-16 sm:mt-20">
 
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900">
+                    <span class="text-sky-600">Learn</span> and
+                    <span class="text-sky-600">earn points</span>
+                    to compete with others
+                </h2>
 
-        function startQuiz() {
-            window.location.href = 'signin_user.html';
-        }
-    </script>
-</body>
 
-</html>
+
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto mt-10 sm:mt-14">
+
+                    <!-- 1st Place -->
+                    <div
+                        class="bg-white rounded-2xl shadow-md p-7 border border-[#e7e7e7]
+                            hover:shadow-xl transition-all duration-300">
+
+                        <div class="text-4xl font-extrabold text-yellow-500">
+                            1st
+                        </div>
+
+                        <div class="text-2xl mt-3">
+                            🥇
+                        </div>
+
+                        <h3 class="text-xl font-bold text-gray-900 mt-3">
+                            Player One
+                        </h3>
+
+                        <p class="text-sky-600 font-bold mt-2">
+                            0 points
+                        </p>
+
+                    </div>
+
+
+                    <!-- 2nd Place -->
+                    <div
+                        class="bg-white rounded-2xl shadow-md p-7 border border-[#e7e7e7]
+                            hover:shadow-xl transition-all duration-300">
+
+                        <div class="text-4xl font-extrabold text-gray-500">
+                            2nd
+                        </div>
+
+                        <div class="text-2xl mt-3">
+                            🥈
+                        </div>
+
+                        <h3 class="text-xl font-bold text-gray-900 mt-3">
+                            Player Two
+                        </h3>
+
+                        <p class="text-sky-600 font-bold mt-2">
+                            0 points
+                        </p>
+
+                    </div>
+
+
+                    <!-- 3rd Place -->
+                    <div
+                        class="bg-white rounded-2xl shadow-md p-7 border border-[#e7e7e7]
+                            hover:shadow-xl transition-all duration-300">
+
+                        <div class="text-4xl font-extrabold text-orange-500">
+                            3rd
+                        </div>
+
+                        <div class="text-2xl mt-3">
+                            🥉
+                        </div>
+
+                        <h3 class="text-xl font-bold text-gray-900 mt-3">
+                            Player Three
+                        </h3>
+
+                        <p class="text-sky-600 font-bold mt-2">
+                            0 points
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Points Section -->
+            <div class="text-center pt-16 sm:pt-20">
+
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900">
+                    <span class="text-sky-600">Learn</span> and
+                    <span class="text-sky-600">earn points</span>
+                    to compete with others
+                </h2>
+
+            </div>
+
+        </main>
+
+
+
+        <footer class="bg-white border-t border-sky-300 mt-8 sm:mt-12 py-6 sm:py-8">
+            <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-xs sm:text-sm font-medium">
+                &copy; 2026 Quiz Trip. All rights reserved.
+            </div>
+        </footer>
+        <script src="source/api.js"></script>
+        <script>
+            guardLoggedOut('home-logedin.html');
+
+            const btn = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+
+            function startQuiz() {
+                window.location.href = 'rules2.html';
+            }
+        </script>
+    </body>
+
+    </html>
