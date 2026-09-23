@@ -98,15 +98,15 @@
 
         <div class="mb-10 text-center">
             <h1 class="text-3xl sm:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
-                Question Database
+                Choose a Category
             </h1>
             <p class="text-gray-600 text-sm sm:text-lg font-medium max-w-2xl mx-auto">
-                Browse all available questions divided by categories. The correct answer is marked with a checkmark (✓).
+                Pick a category and play a quiz made just from its questions.
             </p>
         </div>
 
-        <div id="accordion-container" class="space-y-4">
-            <p class="text-gray-500 text-sm font-medium text-center">Loading categories…</p>
+        <div id="category-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <p class="text-gray-500 text-sm font-medium text-center col-span-full">Loading categories…</p>
         </div>
 
     </main>
@@ -130,7 +130,7 @@
         (async () => {
             const user = await guardLoggedIn('categories_logout.html');
             if (user) {
-                loadCategoryAccordion();
+                loadCategoryPicker();
             }
         })();
     </script>
