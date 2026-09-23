@@ -22,7 +22,7 @@
     </script>
 </head>
 
-<body class="bg-[#f7f7f8] flex flex-col items-center min-h-screen px-4 sm:px-0 font-sans text-gray-800">
+<body class="bg-[#f7f7f8] font-sans text-gray-800">
 
     <nav class="fixed top-0 w-full bg-white shadow-md z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -113,66 +113,77 @@
         </div>
     </nav>
 
-    <div
-        class="mt-24 mb-10 bg-white p-6 sm:p-8 rounded-xl shadow-lg w-full max-w-sm sm:max-w-md transition-all duration-300 border-2 border-[#ededed]">
-        <div class="flex justify-center mb-6">
-            <a href="home.html" class="text-2xl font-extrabold text-sky-600 flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-                Quiz Trip
-            </a>
+    <main class="min-h-screen flex items-center justify-center px-4 pt-14 pb-2">
+        <div class="mt-24 mb-10 bg-white px-6 py-6 sm:px-8 sm:py-8 rounded-xl shadow-lg w-full max-w-sm sm:max-w-md transition-all duration-300 border-2 border-[#ededed]">
+            <div class="flex justify-center mb-6">
+                <a href="home.html" class="text-2xl font-extrabold text-sky-600 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    Quiz Trip
+                </a>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-center text-gray-900 mb-6">Create an account</h2>
+            <form id="signup-form">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                        Username:
+                    </label>
+                    <input
+                        class="shadow-sm appearance-none outline-none focus:outline-none focus:border-sky-600 border-2 text-blue-400 rounded-lg w-full py-2 sm:py-3 px-4 text-gray-700 leading-tight 0 transition-all duration-200"
+                        id="username" type="text" placeholder="e.g. johndoe">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                        Email address:
+                    </label>
+                    <input
+                        class="shadow-sm appearance-none outline-none focus:outline-none focus:border-sky-600 border-2 text-blue-400 rounded-lg w-full py-2 sm:py-3 px-4 text-gray-700 leading-tight 0 transition-all duration-200"
+                        id="email" type="email" placeholder="name@example.com">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                        Password:
+                    </label>
+                    <input
+                        class="shadow-sm appearance-none outline-none focus:outline-none focus:border-sky-600 border-2 text-blue-400 rounded-lg w-full py-2 sm:py-3 px-4 text-gray-700 leading-tight 0 transition-all duration-200"
+                        id="password" type="password" placeholder="********">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="confirm-password">
+                        Confirm Password:
+                    </label>
+                    <input
+                        class="shadow-sm appearance-none outline-none focus:outline-none focus:border-sky-600 border-2 text-blue-400 rounded-lg w-full py-2 sm:py-3 px-4 text-gray-700 leading-tight 0 transition-all duration-200"
+                        id="confirm-password" type="password" placeholder="********">
+                </div>
+                <p id="form-error" class="text-red-500 text-sm font-bold mb-4 hidden"></p>
+                <div class="flex items-center justify-between">
+                    <button
+                        class="bg-sky-600 hover:bg-sky-700 text-white font-extrabold py-2 sm:py-3 px-4 rounded-lg focus:outline-none w-full transition-all duration-300 shadow-md"
+                        type="submit">
+                        Sign up
+                    </button>
+                </div>
+            </form>
+            <p class="mt-6 text-center text-sm font-medium text-gray-600">
+                Already have an account?
+                <a href="signin_user.html" class="text-sky-600 hover:text-sky-700 font-bold transition-colors">Sign in</a>
+            </p>
         </div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-center text-gray-900 mb-6">Create an account</h2>
-        <form id="signup-form">
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-                    Username:
-                </label>
-                <input
-                    class="shadow-sm appearance-none outline-none focus:outline-none focus:border-sky-600 border-2 text-blue-400 rounded-lg w-full py-2 sm:py-3 px-4 text-gray-700 leading-tight 0 transition-all duration-200"
-                    id="username" type="text" placeholder="e.g. johndoe">
-            </div>
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
-                    Email address:
-                </label>
-                <input
-                    class="shadow-sm appearance-none outline-none focus:outline-none focus:border-sky-600 border-2 text-blue-400 rounded-lg w-full py-2 sm:py-3 px-4 text-gray-700 leading-tight 0 transition-all duration-200"
-                    id="email" type="email" placeholder="name@example.com">
-            </div>
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
-                    Password:
-                </label>
-                <input
-                    class="shadow-sm appearance-none outline-none focus:outline-none focus:border-sky-600 border-2 text-blue-400 rounded-lg w-full py-2 sm:py-3 px-4 text-gray-700 leading-tight 0 transition-all duration-200"
-                    id="password" type="password" placeholder="********">
-            </div>
-            <div class="mb-6">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="confirm-password">
-                    Confirm Password:
-                </label>
-                <input
-                    class="shadow-sm appearance-none outline-none focus:outline-none focus:border-sky-600 border-2 text-blue-400 rounded-lg w-full py-2 sm:py-3 px-4 text-gray-700 leading-tight 0 transition-all duration-200"
-                    id="confirm-password" type="password" placeholder="********">
-            </div>
-            <p id="form-error" class="text-red-500 text-sm font-bold mb-4 hidden"></p>
-            <div class="flex items-center justify-between">
-                <button
-                    class="bg-sky-600 hover:bg-sky-700 text-white font-extrabold py-2 sm:py-3 px-4 rounded-lg focus:outline-none w-full transition-all duration-300 shadow-md"
-                    type="submit">
-                    Sign up
-                </button>
-            </div>
-        </form>
-        <p class="mt-6 text-center text-sm font-medium text-gray-600">
-            Already have an account?
-            <a href="signin_user.html" class="text-sky-600 hover:text-sky-700 font-bold transition-colors">Sign in</a>
-        </p>
-    </div>
+    </main>
+    <footer class="bg-white border-t border-sky-300 mt-8 sm:mt-12 py-6 sm:py-8">
+
+      <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-xs sm:text-sm font-medium">
+
+          &copy; 2026 Quiz Trip. All rights reserved.
+
+      </div>
+
+    </footer>
+
     <script src="source/api.js"></script>
     <script>
         const btn = document.getElementById('mobile-menu-button');
