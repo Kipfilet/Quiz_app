@@ -36,6 +36,45 @@
                         Quiz Trip
                     </a>
                 </div>
+
+                <div class="hidden md:flex gap-4 items-center">
+                    <a href="home.html"
+                        class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Home</a>
+                    <a href="categories_logout.html"
+                        class="text-sky-600 border-b-2 border-sky-600 px-3 py-2 font-semibold">Categories</a>
+                    <a href="leaderboard_logout.html"
+                        class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Leaderboard</a>
+                    <a href="signin_user.html"
+                        class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Rules</a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-sky-600 focus:outline-none p-2">
+                        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-sky-300 shadow-lg absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="home.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Home</a>
+                <a href="rules2.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Rules</a>
+                <a href="categories_logout.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Categories</a>
+                <a href="leaderboard_logout.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Leaderboard</a>
+                <hr class="my-2 border-gray-200">
+                <a href="singin_user.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Sign
+                    in</a>
+                <a href="signup_user.html"
+                    class="block px-3 py-3 text-base font-medium text-white bg-sky-600 hover:opacity-90 rounded-md text-center mt-2">Sign
+                    up</a>
             </div>
         </div>
     </nav>
