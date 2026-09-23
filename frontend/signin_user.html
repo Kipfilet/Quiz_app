@@ -123,6 +123,13 @@
     </div>
     <script src="source/api.js"></script>
     <script>
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+        
         guardLoggedOut('home-logedin.html');
 
         const form = document.getElementById('login-form');
