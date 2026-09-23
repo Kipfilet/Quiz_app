@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-[#f7f7f8] flex items-center justify-center min-h-screen px-4 sm:px-0 font-sans text-gray-800">
+    <div
+        class="bg-white p-6 sm:p-8 rounded-xl shadow-lg w-full max-w-sm sm:max-w-md transition-all duration-300 border border-[#e7e7e7]">
+        <div class="flex justify-center mb-6">
+            <a href="index.html" class="text-2xl font-extrabold text-sky-600 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                Quiz Trip
+            </a>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-center text-gray-900 mb-6">User Login</h2>
+        <form id="login-form">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                    Email address:
+                </label>
+                <input
+                    class="shadow-sm appearance-none outline-none focus:outline-none focus:border-sky-600 border-2 text-blue-400 rounded-lg w-full py-2 sm:py-3 px-4 text-gray-700 leading-tight 0 transition-all duration-200"
+                    id="email" type="text" placeholder="name@example.com">
+                <p id="email-error" class="text-red-500 text-xs font-bold mt-1 hidden">Invalid email address.</p>
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                    Password:
+                </label>
+                <input
+                    class="shadow-sm appearance-none outline-none focus:outline-none focus:border-sky-600 border-2 text-blue-400 rounded-lg w-full py-2 sm:py-3 px-4 text-gray-700 leading-tight 0 transition-all duration-200"
+                    id="password" type="password" placeholder="********">
+                <p id="password-error" class="text-red-500 text-xs font-bold mt-1 hidden">Incorrect password.</p>
+                <div class="text-right mt-2">
+                    <a href="forgot-password.html"
+                        class="text-sm font-bold text-sky-600 hover:text-sky-700 transition-colors">Forgot password?</a>
+                </div>
+            </div>
+            <div class="flex items-center justify-between">
+                <button
+                    class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-2 sm:py-3 px-4 rounded-lg focus:outline-none w-full transition-all duration-300 shadow-md"
+                    type="submit">
+                    Sign in
+                </button>
+            </div>
+        </form>
+        <p class="mt-6 text-center text-sm font-medium text-gray-600">
+            Don't have an account? <a href="signup_user.html"
+                class="text-sky-600 hover:text-sky-700 font-bold transition-colors">Sign up</a>
+        </p>
+    </div>
+    <script>
+        const form = document.getElementById('login-form');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const emailError = document.getElementById('email-error');
+        const passwordError = document.getElementById('password-error');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            emailInput.classList.remove('border-red-500', 'bg-red-50');
+            emailInput.classList.add('border-sky-300');
+            emailError.classList.add('hidden');
+
+            passwordInput.classList.remove('border-red-500', 'bg-red-50');
+            passwordInput.classList.add('border-sky-300');
+            passwordError.classList.add('hidden');
+
+            let isValid = true;
+
+            if (!emailInput.value.includes('@') || !emailInput.value.includes('.')) {
+                emailInput.classList.remove('border-sky-300');
+                emailInput.classList.add('border-red-500', 'bg-red-50');
+                emailError.classList.remove('hidden');
+                isValid = false;
+            }
+
+            if (passwordInput.value.length < 6) {
+                passwordInput.classList.remove('border-sky-300');
+                passwordInput.classList.add('border-red-500', 'bg-red-50');
+                passwordError.classList.remove('hidden');
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert('Sign in successful!');
+            }
+        });
+    </script>
+</body>
+
+</html>
