@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Profile | Quiz Trip</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-inter bg-[#f7f7f8] text-gray-900">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full bg-white shadow-md z-50">
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="flex justify-between h-16 items-center">
+
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+
+                    <a href="home.html"
+                        class="text-xl sm:text-2xl font-extrabold text-sky-600 flex items-center gap-2">
+
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 w-6 sm:h-8 sm:w-8"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"
+                            />
+                        </svg>
+
+                        Quiz Trip
+                    </a>
+
+                </div>
+
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex gap-4 items-center">
+
+                    <a href="home.html"
+                        class="text-sky-600 border-b-2 border-sky-600 px-3 py-2 font-semibold">
+                        Home
+                    </a>
+
+                    <a href="categories_logout.html"
+                        class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
+                        Categories
+                    </a>
+
+                    <a href="leaderboard_logout.html"
+                        class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
+                        Leaderboard
+                    </a>
+
+                    <a href="rules2.html"
+                        class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
+                        Rules
+                    </a>
+
+                </div>
+
+
+                <!-- Desktop Authentication -->
+                <div class="hidden md:flex items-center gap-4">
+
+                    <a href="signin_user.html"
+                        class="text-gray-900 hover:text-sky-600 font-medium transition-colors">
+                        Sign in
+                    </a>
+
+                    <a href="signup_user.html"
+                        class="bg-sky-600 hover:bg-sky-700 text-white px-5 py-2 rounded-lg font-bold transition-all duration-300 shadow-md">
+                        Sign up
+                    </a>
+
+                </div>
+
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+
+                    <button
+                        id="mobile-menu-button"
+                        class="text-sky-600 focus:outline-none p-2"
+                    >
+
+                        <svg
+                            class="h-7 w-7"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"
+                            />
+                        </svg>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Mobile Menu -->
+        <div
+            id="mobile-menu"
+            class="hidden md:hidden bg-white border-t border-sky-600 shadow-lg absolute w-full"
+        >
+
+            <div class="px-4 pt-2 pb-6 space-y-2">
+
+                <a
+                    href="home.html"
+                    class="block px-3 py-3 text-base font-medium text-sky-600 bg-sky-300/30 rounded-md"
+                >
+                    Home
+                </a>
+
+                <a
+                    href="categories_logout.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-sky-50 rounded-md"
+                >
+                    Categories
+                </a>
+
+                <a
+                    href="leaderboard_logout.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-sky-50 rounded-md"
+                >
+                    Leaderboard
+                </a>
+
+                <a
+                    href="rules2.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-sky-50 rounded-md"
+                >
+                    Rules
+                </a>
+
+                <hr class="my-2 border-gray-200">
+
+                <a
+                    href="signin_user.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-sky-50 rounded-md"
+                >
+                    Sign in
+                </a>
+
+                <a
+                    href="signup_user.html"
+                    class="block px-3 py-3 text-base font-medium text-white bg-sky-600 hover:bg-sky-700 rounded-md mt-2"
+                >
+                    Sign up
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Main Content -->
+    <main class="pt-20 sm:pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen">
+
+
+        <!-- Profile Header -->
+        <section class="pt-8 sm:pt-12">
+
+            <div class="bg-white rounded-2xl shadow-md border border-gray-200 overflow-hidden">
+
+                <!-- Blue Banner -->
+                <div class="h-32 sm:h-40 bg-sky-600"></div>
+
+
+                <!-- Profile Information -->
+                <div class="px-5 sm:px-8 pb-8">
+
+                    <div class="flex flex-col sm:flex-row sm:items-end gap-5 -mt-16">
+
+                        <!-- Profile Picture -->
+                        <div class="flex-shrink-0">
+
+                            <div class="h-32 w-32 rounded-full bg-white p-2 shadow-lg">
+
+                                <img
+                                    src="images/default-profile.png"
+                                    alt="Profile picture"
+                                    class="w-full h-full rounded-full object-cover bg-gray-200"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Username -->
+                        <div class="flex-1 pb-1">
+
+                            <h1
+                                id="username"
+                                class="text-2xl sm:text-3xl font-extrabold text-gray-900"
+                            >
+                                Username
+                            </h1>
+
+                            <p class="text-gray-500 mt-1">
+                                Quiz Trip player
+                            </p>
+
+                        </div>
+
+
+                        <!-- Edit Profile -->
+                        <div class="pb-1">
+
+                            <a
+                                href="edit_profile.html"
+                                class="inline-flex items-center justify-center gap-2 bg-sky-600 hover:bg-sky-700 text-white px-5 py-2.5 rounded-lg font-semibold shadow-sm transition-colors"
+                            >
+
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-7-8l8-8m0 0v5m0-5h-5"
+                                    />
+                                </svg>
+
+                                Edit Profile
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- Statistics -->
+        <section class="mt-6">
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+
+
+                <!-- Quizzes Completed -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+
+                    <div class="flex items-center justify-between">
+
+                        <div>
+
+                            <p class="text-sm font-medium text-gray-500">
+                                Quizzes Completed
+                            </p>
+
+                            <p
+                                id="quiz-count"
+                                class="text-2xl font-extrabold text-gray-900 mt-1"
+                            >
+                                24
+                            </p>
+
+                        </div>
+
+                        <div class="h-11 w-11 rounded-lg bg-sky-100 flex items-center justify-center">
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-6 w-6 text-sky-600"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                            </svg>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Average Score -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+
+                    <div class="flex items-center justify-between">
+
+                        <div>
+
+                            <p class="text-sm font-medium text-gray-500">
+                                Average Score
+                            </p>
+
+                            <p
+                                id="average-score"
+                                class="text-2xl font-extrabold text-gray-900 mt-1"
+                            >
+                                82%
+                            </p>
+
+                        </div>
+
+                        <div class="h-11 w-11 rounded-lg bg-sky-100 flex items-center justify-center">
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-6 w-6 text-sky-600"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                                />
+                            </svg>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Best Score -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+
+                    <div class="flex items-center justify-between">
+
+                        <div>
+
+                            <p class="text-sm font-medium text-gray-500">
+                                Best Score
+                            </p>
+
+                            <p
+                                id="best-score"
+                                class="text-2xl font-extrabold text-gray-900 mt-1"
+                            >
+                                100%
+                            </p>
+
+                        </div>
+
+                        <div class="h-11 w-11 rounded-lg bg-sky-100 flex items-center justify-center">
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-6 w-6 text-sky-600"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M5 3v18m0 0h14l-3-5 3-5H5"
+                                />
+                            </svg>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Points -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+
+                    <div class="flex items-center justify-between">
+
+                        <div>
+
+                            <p class="text-sm font-medium text-gray-500">
+                                Total Points
+                            </p>
+
+                            <p
+                                id="total-points"
+                                class="text-2xl font-extrabold text-gray-900 mt-1"
+                            >
+                                4,820
+                            </p>
+
+                        </div>
+
+                        <div class="h-11 w-11 rounded-lg bg-sky-100 flex items-center justify-center">
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-6 w-6 text-sky-600"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                            </svg>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- Quiz History -->
+        <section class="mt-8">
+
+            <div class="bg-white rounded-2xl shadow-md border border-gray-200 overflow-hidden">
+
+                <!-- Section Header -->
+                <div class="px-5 sm:px-7 py-5 border-b border-gray-200">
+
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+
+                        <div>
+
+                            <h2 class="text-xl sm:text-2xl font-extrabold text-gray-900">
+                                Quiz History
+                            </h2>
+
+                            <p class="text-sm text-gray-500 mt-1">
+                                View your previous quiz attempts and scores.
+                            </p>
+
+                        </div>
+
+                        <a
+                            href="categories_logout.html"
+                            class="inline-flex items-center justify-center bg-sky-600 hover:bg-sky-700 text-white px-4 py-2 rounded-lg font-semibold text-sm transition-colors"
+                        >
+                            Take a Quiz
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Desktop Table -->
+                <div class="hidden md:block overflow-x-auto">
+
+                    <table class="w-full">
+
+                        <thead class="bg-gray-50 border-b border-gray-200">
+
+                            <tr>
+
+                                <th class="text-left px-7 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">
+                                    Quiz
+                                </th>
+
+                                <th class="text-left px-7 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">
+                                    Category
+                                </th>
+
+                                <th class="text-left px-7 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">
+                                    Score
+                                </th>
+
+                                <th class="text-left px-7 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">
+                                    Date
+                                </th>
+
+                                <th class="text-right px-7 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">
+                                    Result
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="quiz-history" class="divide-y divide-gray-100">
+
+                            <!-- Quiz 1 -->
+                            <tr class="hover:bg-gray-50 transition-colors">
+
+                                <td class="px-7 py-5">
+
+                                    <p class="font-semibold text-gray-900">
+                                        General Knowledge
+                                    </p>
+
+                                    <p class="text-xs text-gray-500 mt-1">
+                                        20 questions
+                                    </p>
+
+                                </td>
+
+                                <td class="px-7 py-5 text-gray-600">
+                                    General
+                                </td>
+
+                                <td class="px-7 py-5">
+
+                                    <span class="font-bold text-sky-600">
+                                        18 / 20
+                                    </span>
+
+                                    <span class="text-sm text-gray-500 ml-1">
+                                        (90%)
+                                    </span>
+
+                                </td>
+
+                                <td class="px-7 py-5 text-gray-600">
+                                    Sep 21, 2026
+                                </td>
+
+                                <td class="px-7 py-5 text-right">
+
+                                    <span class="inline-flex px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700">
+                                        Passed
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Quiz 2 -->
+                            <tr class="hover:bg-gray-50 transition-colors">
+
+                                <td class="px-7 py-5">
+
+                                    <p class="font-semibold text-gray-900">
+                                        World History
+                                    </p>
+
+                                    <p class="text-xs text-gray-500 mt-1">
+                                        15 questions
+                                    </p>
+
+                                </td>
+
+                                <td class="px-7 py-5 text-gray-600">
+                                    History
+                                </td>
+
+                                <td class="px-7 py-5">
+
+                                    <span class="font-bold text-sky-600">
+                                        12 / 15
+                                    </span>
+
+                                    <span class="text-sm text-gray-500 ml-1">
+                                        (80%)
+                                    </span>
+
+                                </td>
+
+                                <td class="px-7 py-5 text-gray-600">
+                                    Sep 19, 2026
+                                </td>
+
+                                <td class="px-7 py-5 text-right">
+
+                                    <span class="inline-flex px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700">
+                                        Passed
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Quiz 3 -->
+                            <tr class="hover:bg-gray-50 transition-colors">
+
+                                <td class="px-7 py-5">
+
+                                    <p class="font-semibold text-gray-900">
+                                        Science Challenge
+                                    </p>
+
+                                    <p class="text-xs text-gray-500 mt-1">
+                                        20 questions
+                                    </p>
+
+                                </td>
+
+                                <td class="px-7 py-5 text-gray-600">
+                                    Science
+                                </td>
+
+                                <td class="px-7 py-5">
+
+                                    <span class="font-bold text-sky-600">
+                                        14 / 20
+                                    </span>
+
+                                    <span class="text-sm text-gray-500 ml-1">
+                                        (70%)
+                                    </span>
+
+                                </td>
+
+                                <td class="px-7 py-5 text-gray-600">
+                                    Sep 16, 2026
+                                </td>
+
+                                <td class="px-7 py-5 text-right">
+
+                                    <span class="inline-flex px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700">
+                                        Passed
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Quiz 4 -->
+                            <tr class="hover:bg-gray-50 transition-colors">
+
+                                <td class="px-7 py-5">
+
+                                    <p class="font-semibold text-gray-900">
+                                        Geography
+                                    </p>
+
+                                    <p class="text-xs text-gray-500 mt-1">
+                                        10 questions
+                                    </p>
+
+                                </td>
+
+                                <td class="px-7 py-5 text-gray-600">
+                                    Geography
+                                </td>
+
+                                <td class="px-7 py-5">
+
+                                    <span class="font-bold text-sky-600">
+                                        6 / 10
+                                    </span>
+
+                                    <span class="text-sm text-gray-500 ml-1">
+                                        (60%)
+                                    </span>
+
+                                </td>
+
+                                <td class="px-7 py-5 text-gray-600">
+                                    Sep 12, 2026
+                                </td>
+
+                                <td class="px-7 py-5 text-right">
+
+                                    <span class="inline-flex px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-700">
+                                        Failed
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+
+                <!-- Mobile Quiz History -->
+                <div
+                    id="mobile-quiz-history"
+                    class="md:hidden divide-y divide-gray-200"
+                >
+
+                    <!-- Quiz 1 -->
+                    <div class="p-5">
+
+                        <div class="flex justify-between items-start gap-4">
+
+                            <div>
+
+                                <h3 class="font-bold text-gray-900">
+                                    General Knowledge
+                                </h3>
+
+                                <p class="text-sm text-gray-500 mt-1">
+                                    General · 20 questions
+                                </p>
+
+                            </div>
+
+                            <span class="inline-flex px-2.5 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700">
+                                Passed
+                            </span>
+
+                        </div>
+
+                        <div class="flex justify-between mt-4 text-sm">
+
+                            <span class="text-gray-500">
+                                Score
+                            </span>
+
+                            <span class="font-bold text-sky-600">
+                                18 / 20 (90%)
+                            </span>
+
+                        </div>
+
+                        <div class="flex justify-between mt-2 text-sm">
+
+                            <span class="text-gray-500">
+                                Date
+                            </span>
+
+                            <span class="text-gray-700">
+                                Sep 21, 2026
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Quiz 2 -->
+                    <div class="p-5">
+
+                        <div class="flex justify-between items-start gap-4">
+
+                            <div>
+
+                                <h3 class="font-bold text-gray-900">
+                                    World History
+                                </h3>
+
+                                <p class="text-sm text-gray-500 mt-1">
+                                    History · 15 questions
+                                </p>
+
+                            </div>
+
+                            <span class="inline-flex px-2.5 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700">
+                                Passed
+                            </span>
+
+                        </div>
+
+                        <div class="flex justify-between mt-4 text-sm">
+
+                            <span class="text-gray-500">
+                                Score
+                            </span>
+
+                            <span class="font-bold text-sky-600">
+                                12 / 15 (80%)
+                            </span>
+
+                        </div>
+
+                        <div class="flex justify-between mt-2 text-sm">
+
+                            <span class="text-gray-500">
+                                Date
+                            </span>
+
+                            <span class="text-gray-700">
+                                Sep 19, 2026
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Quiz 3 -->
+                    <div class="p-5">
+
+                        <div class="flex justify-between items-start gap-4">
+
+                            <div>
+
+                                <h3 class="font-bold text-gray-900">
+                                    Science Challenge
+                                </h3>
+
+                                <p class="text-sm text-gray-500 mt-1">
+                                    Science · 20 questions
+                                </p>
+
+                            </div>
+
+                            <span class="inline-flex px-2.5 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700">
+                                Passed
+                            </span>
+
+                        </div>
+
+                        <div class="flex justify-between mt-4 text-sm">
+
+                            <span class="text-gray-500">
+                                Score
+                            </span>
+
+                            <span class="font-bold text-sky-600">
+                                14 / 20 (70%)
+                            </span>
+
+                        </div>
+
+                        <div class="flex justify-between mt-2 text-sm">
+
+                            <span class="text-gray-500">
+                                Date
+                            </span>
+
+                            <span class="text-gray-700">
+                                Sep 16, 2026
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Quiz 4 -->
+                    <div class="p-5">
+
+                        <div class="flex justify-between items-start gap-4">
+
+                            <div>
+
+                                <h3 class="font-bold text-gray-900">
+                                    Geography
+                                </h3>
+
+                                <p class="text-sm text-gray-500 mt-1">
+                                    Geography · 10 questions
+                                </p>
+
+                            </div>
+
+                            <span class="inline-flex px-2.5 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-700">
+                                Failed
+                            </span>
+
+                        </div>
+
+                        <div class="flex justify-between mt-4 text-sm">
+
+                            <span class="text-gray-500">
+                                Score
+                            </span>
+
+                            <span class="font-bold text-sky-600">
+                                6 / 10 (60%)
+                            </span>
+
+                        </div>
+
+                        <div class="flex justify-between mt-2 text-sm">
+
+                            <span class="text-gray-500">
+                                Date
+                            </span>
+
+                            <span class="text-gray-700">
+                                Sep 12, 2026
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-sky-300 mt-8 sm:mt-12 py-6 sm:py-8">
+
+        <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-xs sm:text-sm font-medium">
+
+            &copy; 2026 Quiz Trip. All rights reserved.
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- API -->
+    <script src="source/api.js"></script>
+
+
+    <!-- Page JavaScript -->
+    <script>
+
+        guardLoggedOut('home-logedin.html');
+
+
+        // Mobile menu
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+
+        /*
+         * Example:
+         *
+         * When you connect your API, you can replace the
+         * example profile data with something like:
+         *
+         * const user = await getCurrentUser();
+         *
+         * document.getElementById('username').textContent = user.username;
+         *
+         * document.querySelector('#profile-picture').src = user.pfp;
+         */
+
+
+    </script>
+
+</body>
+
+</html>
+
