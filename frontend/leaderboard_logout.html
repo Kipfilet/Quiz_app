@@ -45,12 +45,12 @@
                         class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Categories</a>
                     <a href="#"
                         class="text-sky-600 border-b-2 border-sky-600 px-3 py-2 font-semibold">Leaderboard</a>
-                    <a href="#"
+                    <a href="rules2.html"
                         class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Rules</a>
                 </div>
 
                 <div class="hidden md:flex items-center space-x-4">
-                    <a href="login_user.html"
+                    <a href="singin_user.html"
                         class="text-gray-600 hover:text-sky-600 font-medium transition-colors">Sign
                         in</a>
                     <a href="signup_user.html"
@@ -77,10 +77,10 @@
                 <a href="rules2.html"
                     class="block px-3 py-3 text-base font-medium text-sky-600 bg-sky-300/30 rounded-md">Rules</a>
                 <hr class="my-2 border-gray-200">
-                <a href="login.html"
+                <a href="singin_user.html"
                     class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Sign
                     in</a>
-                <a href="signup.html"
+                <a href="signup_user.html"
                     class="block px-3 py-3 text-base font-medium text-white bg-sky-600 hover:opacity-90 rounded-md text-center mt-2">Sign
                     up</a>
             </div>
@@ -98,104 +98,16 @@
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 items-end">
-
-            <div
-                class="order-2 md:order-1 bg-white p-6 rounded-t-2xl rounded-b-xl shadow-md border-t-8 border-2 border-sky-300 text-center transform md:translate-y-4">
-                <div
-                    class="w-16 h-16 mx-auto bg-sky-100 text-sky-600 rounded-full flex items-center justify-center text-2xl font-bold mb-4">
-                    2
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-1">TriviaKing</h3>
-                <p class="text-sky-600 font-extrabold text-lg">14,200 pts</p>
-                <p class="text-gray-500 text-sm font-medium mt-2">120 Quizzes Played</p>
-            </div>
-
-            <div
-                class="order-1 md:order-2 bg-white p-8 rounded-t-2xl rounded-b-xl shadow-lg border-t-8 border-2 border-amber-300 text-center relative">
-                <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 text-4xl">👑</div>
-                <div
-                    class="w-20 h-20 mx-auto bg-yellow-100 text-amber-500 rounded-full flex items-center justify-center text-3xl font-extrabold mb-4 mt-2">
-                    1
-                </div>
-                <h3 class="text-2xl font-extrabold text-gray-900 mb-1">QuizMaster99</h3>
-                <p class="text-amber-500 font-extrabold text-xl">18,500 pts</p>
-                <p class="text-gray-500 text-sm font-medium mt-2">150 Quizzes Played</p>
-            </div>
-
-            <div
-                class="order-3 md:order-3 bg-white p-6 rounded-t-2xl rounded-b-xl shadow-md border-t-8 border-2 border-red-400 text-center transform md:translate-y-8">
-                <div
-                    class="w-16 h-16 mx-auto bg-red-50 text-red-400 rounded-full flex items-center justify-center text-2xl font-bold mb-4">
-                    3
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-1">Brainiac</h3>
-                <p class="text-red-500 font-extrabold text-lg">12,850 pts</p>
-                <p class="text-gray-500 text-sm font-medium mt-2">95 Quizzes Played</p>
-            </div>
+        <div id="podium" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 items-end">
+            <p class="text-gray-500 text-sm font-medium md:col-span-3 text-center">Loading leaderboard…</p>
         </div>
 
         <div class="bg-white rounded-xl shadow-sm border-2 border-sky-300 overflow-hidden">
             <div class="bg-sky-50 px-6 py-4 border-b-2 border-sky-300 flex justify-between items-center">
-                <h2 class="text-lg font-bold text-sky-700">Top 10 Players</h2>
+                <h2 class="text-lg font-bold text-sky-700">Top Players</h2>
             </div>
 
-            <div class="divide-y-2 divide-yellow-100">
-                <div class="flex items-center justify-between px-6 py-4 hover:bg-yellow-50 transition-colors">
-                    <div class="flex items-center gap-4">
-                        <span class="text-lg font-bold text-gray-500 w-6 text-center">4</span>
-                        <div
-                            class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-gray-600">
-                            S</div>
-                        <span class="font-bold text-gray-800 text-base sm:text-lg">SmartyPants</span>
-                    </div>
-                    <span class="font-extrabold text-sky-600">11,400 pts</span>
-                </div>
-
-                <div class="flex items-center justify-between px-6 py-4 hover:bg-yellow-50 transition-colors">
-                    <div class="flex items-center gap-4">
-                        <span class="text-lg font-bold text-gray-500 w-6 text-center">5</span>
-                        <div
-                            class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-gray-600">
-                            E</div>
-                        <span class="font-bold text-gray-800 text-base sm:text-lg">Einstein2</span>
-                    </div>
-                    <span class="font-extrabold text-sky-600">10,950 pts</span>
-                </div>
-
-                <div class="flex items-center justify-between px-6 py-4 hover:bg-yellow-50 transition-colors">
-                    <div class="flex items-center gap-4">
-                        <span class="text-lg font-bold text-gray-500 w-6 text-center">6</span>
-                        <div
-                            class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-gray-600">
-                            N</div>
-                        <span class="font-bold text-gray-800 text-base sm:text-lg">NerdAlert</span>
-                    </div>
-                    <span class="font-extrabold text-sky-600">9,800 pts</span>
-                </div>
-
-                <div class="flex items-center justify-between px-6 py-4 hover:bg-yellow-50 transition-colors">
-                    <div class="flex items-center gap-4">
-                        <span class="text-lg font-bold text-gray-500 w-6 text-center">7</span>
-                        <div
-                            class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-gray-600">
-                            Q</div>
-                        <span class="font-bold text-gray-800 text-base sm:text-lg">QuizzyIzzy</span>
-                    </div>
-                    <span class="font-extrabold text-sky-600">9,200 pts</span>
-                </div>
-
-                <div class="flex items-center justify-between px-6 py-4 hover:bg-yellow-50 transition-colors">
-                    <div class="flex items-center gap-4">
-                        <span class="text-lg font-bold text-gray-500 w-6 text-center">8</span>
-                        <div
-                            class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-gray-600">
-                            F</div>
-                        <span class="font-bold text-gray-800 text-base sm:text-lg">FactFinder</span>
-                    </div>
-                    <span class="font-extrabold text-sky-600">8,500 pts</span>
-                </div>
-            </div>
+            <div id="leaderboard-list" class="divide-y-2 divide-yellow-100"></div>
         </div>
 
     </main>
@@ -205,6 +117,8 @@
             &copy; 2026 Quiz Trip. All rights reserved.
         </div>
     </footer>
+    <script src="source/api.js"></script>
+    <script src="source/leaderboard.js"></script>
     <script>
         const btn = document.getElementById('mobile-menu-button');
         const menu = document.getElementById('mobile-menu');
@@ -212,6 +126,11 @@
         btn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
         });
+
+        (async () => {
+            const user = await guardLoggedOut('leaderboard.html');
+            loadLeaderboard();
+        })();
     </script>
 </body>
 

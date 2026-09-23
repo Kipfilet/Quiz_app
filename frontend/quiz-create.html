@@ -28,7 +28,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="index.html"
+                    <a href="home-logedin.html"
                         class="text-xl sm:text-2xl font-extrabold text-sky-600 flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-8 sm:w-8" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
@@ -39,20 +39,18 @@
                     </a>
                 </div>
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="index.html"
+                    <a href="home-logedin.html"
                         class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Home</a>
-                    <a href="dashboard.html"
-                        class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Dashboard</a>
                     <a href="#" class="text-sky-600 border-b-2 border-sky-600 px-3 py-2 font-semibold">Create Quiz</a>
                 </div>
                 <div class="hidden md:flex items-center space-x-4">
                     <div
                         class="flex items-center gap-2 text-sm font-bold text-sky-600 bg-sky-300/30 py-1.5 px-3 rounded-full">
                         <span
-                            class="w-6 h-6 bg-amber-300 text-white rounded-full flex items-center justify-center text-xs">U</span>
-                        User / Admin
+                            class="w-6 h-6 bg-amber-300 text-white rounded-full flex items-center justify-center text-xs" data-user-initial>U</span>
+                        <span data-user-name>User</span>
                     </div>
-                    <a href="login.html"
+                    <a href="#" data-logout
                         class="text-red-500 hover:text-red-400 font-bold transition-colors flex items-center gap-1">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
@@ -74,14 +72,12 @@
         </div>
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-sky-300 shadow-lg absolute w-full">
             <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="index.html"
+                <a href="home-logedin.html"
                     class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Home</a>
-                <a href="dashboard.html"
-                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Dashboard</a>
                 <a href="#" class="block px-3 py-3 text-base font-medium text-sky-600 bg-sky-300/30 rounded-md">Create
                     Quiz</a>
                 <hr class="my-2 border-gray-200">
-                <a href="login.html"
+                <a href="#" data-logout
                     class="block px-3 py-3 text-base font-bold text-red-500 hover:bg-red-400 hover:text-white rounded-md flex items-center gap-2 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
@@ -127,11 +123,7 @@
                             <select
                                 class="shadow-sm appearance-none border-2 border-sky-300 rounded-lg w-full py-2 sm:py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-amber-300 transition-all duration-200 bg-white"
                                 id="quiz-category">
-                                <option>Science</option>
-                                <option>History</option>
-                                <option>Pop Culture</option>
-                                <option>Geography</option>
-                                <option>Technology</option>
+                                <option value="">Loading categories…</option>
                             </select>
                         </div>
                         <div>
@@ -141,9 +133,9 @@
                             <select
                                 class="shadow-sm appearance-none border-2 border-sky-300 rounded-lg w-full py-2 sm:py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-amber-300 transition-all duration-200 bg-white"
                                 id="quiz-difficulty">
-                                <option>Easy</option>
-                                <option>Medium</option>
-                                <option>Hard</option>
+                                <option value="easy">Easy</option>
+                                <option value="normal" selected>Normal</option>
+                                <option value="hard">Hard</option>
                             </select>
                         </div>
                     </div>
@@ -162,62 +154,12 @@
             <div class="bg-white p-6 sm:p-8 rounded-xl shadow-sm border-2 border-amber-300">
                 <div class="flex justify-between items-center mb-6 border-b-2 border-yellow-100 pb-2">
                     <h2 class="text-xl font-bold text-amber-500">2. Questions</h2>
-                    <span class="text-sm font-bold text-gray-500 bg-yellow-100 px-3 py-1 rounded-full">Question 1</span>
                 </div>
 
-                <div class="space-y-6">
-                    <div>
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="q1-text">
-                            Question Text
-                        </label>
-                        <input
-                            class="shadow-sm appearance-none border-2 border-sky-300 rounded-lg w-full py-2 sm:py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-amber-300 transition-all duration-200"
-                            id="q1-text" type="text" placeholder="Type your question here...">
-                    </div>
-
-                    <div>
-                        <label class="block text-gray-700 text-sm font-bold mb-3">
-                            Answers (Select the correct one)
-                        </label>
-                        <div class="space-y-3">
-                            <div
-                                class="flex items-center gap-3 bg-yellow-100/30 p-2 sm:p-3 rounded-lg border-2 border-transparent focus-within:border-amber-300 transition-colors">
-                                <input type="radio" name="q1-correct"
-                                    class="w-5 h-5 text-sky-600 focus:ring-sky-600 cursor-pointer" checked>
-                                <input
-                                    class="appearance-none bg-transparent border-b-2 border-gray-300 w-full py-1 px-2 text-gray-700 focus:outline-none focus:border-sky-600 transition-all"
-                                    type="text" placeholder="Option A (Correct Answer)">
-                            </div>
-                            <div
-                                class="flex items-center gap-3 bg-yellow-100/30 p-2 sm:p-3 rounded-lg border-2 border-transparent focus-within:border-amber-300 transition-colors">
-                                <input type="radio" name="q1-correct"
-                                    class="w-5 h-5 text-sky-600 focus:ring-sky-600 cursor-pointer">
-                                <input
-                                    class="appearance-none bg-transparent border-b-2 border-gray-300 w-full py-1 px-2 text-gray-700 focus:outline-none focus:border-sky-600 transition-all"
-                                    type="text" placeholder="Option B">
-                            </div>
-                            <div
-                                class="flex items-center gap-3 bg-yellow-100/30 p-2 sm:p-3 rounded-lg border-2 border-transparent focus-within:border-amber-300 transition-colors">
-                                <input type="radio" name="q1-correct"
-                                    class="w-5 h-5 text-sky-600 focus:ring-sky-600 cursor-pointer">
-                                <input
-                                    class="appearance-none bg-transparent border-b-2 border-gray-300 w-full py-1 px-2 text-gray-700 focus:outline-none focus:border-sky-600 transition-all"
-                                    type="text" placeholder="Option C">
-                            </div>
-                            <div
-                                class="flex items-center gap-3 bg-yellow-100/30 p-2 sm:p-3 rounded-lg border-2 border-transparent focus-within:border-amber-300 transition-colors">
-                                <input type="radio" name="q1-correct"
-                                    class="w-5 h-5 text-sky-600 focus:ring-sky-600 cursor-pointer">
-                                <input
-                                    class="appearance-none bg-transparent border-b-2 border-gray-300 w-full py-1 px-2 text-gray-700 focus:outline-none focus:border-sky-600 transition-all"
-                                    type="text" placeholder="Option D">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div id="questions-container" class="space-y-6"></div>
 
                 <div class="mt-8 text-center">
-                    <button type="button"
+                    <button type="button" id="add-question-btn"
                         class="text-sky-600 font-bold hover:text-red-500 transition-colors flex items-center justify-center gap-2 w-full border-2 border-dashed border-sky-300 rounded-lg py-3 hover:border-red-400 hover:bg-red-50">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
@@ -228,12 +170,14 @@
                 </div>
             </div>
 
+            <p id="form-error" class="text-red-500 text-sm font-bold hidden"></p>
+
             <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                <button type="button"
-                    class="w-full sm:w-1/3 bg-white text-red-500 font-bold py-3 px-4 rounded-lg border-2 border-red-400 hover:bg-red-50 transition-all duration-300">
+                <a href="home-logedin.html"
+                    class="w-full sm:w-1/3 text-center bg-white text-red-500 font-bold py-3 px-4 rounded-lg border-2 border-red-400 hover:bg-red-50 transition-all duration-300">
                     Cancel
-                </button>
-                <button type="submit"
+                </a>
+                <button type="submit" id="publish-btn"
                     class="w-full sm:w-2/3 bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-4 rounded-lg shadow-md transition-all duration-300">
                     Publish Quiz
                 </button>
@@ -247,6 +191,8 @@
         </div>
     </footer>
 
+    <script src="source/api.js"></script>
+    <script src="source/quiz-create.js"></script>
     <script>
         const btn = document.getElementById('mobile-menu-button');
         const menu = document.getElementById('mobile-menu');
@@ -254,6 +200,13 @@
         btn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
         });
+
+        (async () => {
+            const user = await guardLoggedIn('singin_user.html');
+            if (user) {
+                initQuizCreate();
+            }
+        })();
     </script>
 </body>
 

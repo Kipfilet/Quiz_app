@@ -53,10 +53,10 @@
                     <div
                         class="flex items-center gap-2 text-sm font-bold text-sky-600 bg-sky-300/30 py-1.5 px-3 rounded-full">
                         <span
-                            class="w-6 h-6 bg-amber-300 text-white rounded-full flex items-center justify-center text-xs">U</span>
-                        User / Admin
+                            class="w-6 h-6 bg-amber-300 text-white rounded-full flex items-center justify-center text-xs" data-user-initial>U</span>
+                        <span data-user-name>User</span>
                     </div>
-                    <a href="home.html"
+                    <a href="#" data-logout
                         class="text-red-500 hover:text-red-400 font-bold transition-colors flex items-center gap-1">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
@@ -83,17 +83,17 @@
                 <div
                     class="flex items-center gap-2 text-sm font-bold text-sky-600 mb-4 px-3 py-2 bg-yellow-100 rounded-md">
                     <span
-                        class="w-6 h-6 bg-amber-300 text-white rounded-full flex items-center justify-center text-xs">U</span>
-                    Logged in as User/Admin
+                        class="w-6 h-6 bg-amber-300 text-white rounded-full flex items-center justify-center text-xs" data-user-initial>U</span>
+                    Logged in as <span data-user-name>User</span>
                 </div>
-                <a href="rules_logedin.html"
+                <a href="rules2.html"
                     class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Rules</a>
                 <a href="categories.html"
                     class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Categories</a>
                 <a href="leaderboard.html"
                     class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Leaderboard</a>
                 <hr class="my-2 border-gray-200">
-                <a href="login.html"
+                <a href="#" data-logout
                     class="block px-3 py-3 text-base font-bold text-red-500 hover:bg-red-400 hover:text-white rounded-md flex items-center gap-2 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
@@ -126,7 +126,7 @@
                     friends.
                 </p>
             </div>
-            <a href="#"
+            <a href="quiz-create.html"
                 class="w-full sm:w-auto bg-yellow-100 text-sky-600 hover:bg-white font-bold py-3 px-8 rounded-full shadow-md transition-all duration-300 text-center whitespace-nowrap">
                 + Create Quiz
             </a>
@@ -135,71 +135,13 @@
         <div>
             <div class="flex items-center justify-between mb-6">
                 <h2 class="text-xl sm:text-2xl font-bold text-gray-800">Play Existing Quizzes</h2>
-                <a href="#"
+                <a href="categories.html"
                     class="text-sky-600 hover:text-red-500 text-sm font-bold hover:underline transition-colors">View
                     all</a>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                <div
-                    class="bg-white p-5 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border-2 border-sky-300 flex flex-col h-full">
-                    <div class="flex-grow">
-                        <span
-                            class="inline-block bg-sky-300 text-sky-600 text-xs px-2 py-1 rounded-full font-bold mb-3">Science</span>
-                        <h3 class="text-lg font-bold text-gray-800 mb-2">The Solar System</h3>
-                        <p class="text-gray-600 text-sm mb-4 font-medium">Test your knowledge about planets, stars, and
-                            the vast universe.</p>
-                        <div class="text-xs text-gray-500 flex items-center gap-4 mb-4 font-medium">
-                            <span>15 Questions</span>
-                            <span>Medium</span>
-                        </div>
-                    </div>
-                    <button
-                        class="w-full bg-yellow-100 hover:bg-amber-300 text-sky-600 font-bold py-2 px-4 rounded-lg transition-colors duration-200">
-                        Play Now
-                    </button>
-                </div>
-
-                <div
-                    class="bg-white p-5 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border-2 border-amber-300 flex flex-col h-full">
-                    <div class="flex-grow">
-                        <span
-                            class="inline-block bg-amber-300 text-white text-xs px-2 py-1 rounded-full font-bold mb-3">History</span>
-                        <h3 class="text-lg font-bold text-gray-800 mb-2">Ancient Rome</h3>
-                        <p class="text-gray-600 text-sm mb-4 font-medium">How much do you know about gladiators,
-                            emperors, and the empire?</p>
-                        <div class="text-xs text-gray-500 flex items-center gap-4 mb-4 font-medium">
-                            <span>20 Questions</span>
-                            <span>Hard</span>
-                        </div>
-                    </div>
-                    <button
-                        class="w-full bg-yellow-100 hover:bg-amber-300 text-sky-600 font-bold py-2 px-4 rounded-lg transition-colors duration-200">
-                        Play Now
-                    </button>
-                </div>
-
-                <div
-                    class="bg-white p-5 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border-2 border-red-400 flex flex-col h-full">
-                    <div class="flex-grow">
-                        <span
-                            class="inline-block bg-red-400 text-white text-xs px-2 py-1 rounded-full font-bold mb-3">Pop
-                            Culture</span>
-                        <h3 class="text-lg font-bold text-gray-800 mb-2">90s Music Hits</h3>
-                        <p class="text-gray-600 text-sm mb-4 font-medium">Guess the lyrics and artists from the best
-                            decade of music.</p>
-                        <div class="text-xs text-gray-500 flex items-center gap-4 mb-4 font-medium">
-                            <span>10 Questions</span>
-                            <span>Easy</span>
-                        </div>
-                    </div>
-                    <button
-                        class="w-full bg-yellow-100 hover:bg-amber-300 text-sky-600 font-bold py-2 px-4 rounded-lg transition-colors duration-200">
-                        Play Now
-                    </button>
-                </div>
-
+            <div id="quiz-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <p class="text-gray-500 text-sm font-medium">Loading categories…</p>
             </div>
         </div>
 
@@ -210,6 +152,57 @@
             &copy; 2026 Quiz Trip. All rights reserved.
         </div>
     </footer>
+    <script src="source/api.js"></script>
+    <script>
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+
+        const badgeClasses = {
+            sky: { badge: 'bg-sky-300 text-sky-600', border: 'border-sky-300' },
+            red: { badge: 'bg-red-400 text-white', border: 'border-red-400' },
+            amber: { badge: 'bg-amber-300 text-white', border: 'border-amber-300' },
+        };
+
+        async function loadQuizCards() {
+            const container = document.getElementById('quiz-cards');
+            try {
+                const { categories } = await apiFetch('categories.php');
+                if (categories.length === 0) {
+                    container.innerHTML = '<p class="text-gray-500 text-sm font-medium">No categories yet.</p>';
+                    return;
+                }
+                container.innerHTML = categories.slice(0, 3).map((cat) => {
+                    const colors = badgeClasses[cat.color] || badgeClasses.sky;
+                    return `
+                        <div class="bg-white p-5 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border-2 ${colors.border} flex flex-col h-full">
+                            <div class="flex-grow">
+                                <span class="inline-block ${colors.badge} text-xs px-2 py-1 rounded-full font-bold mb-3">${cat.emoji || ''} ${cat.name}</span>
+                                <h3 class="text-lg font-bold text-gray-800 mb-2">${cat.name}</h3>
+                                <p class="text-gray-600 text-sm mb-4 font-medium">Test your knowledge with real questions from the database.</p>
+                                <div class="text-xs text-gray-500 flex items-center gap-4 mb-4 font-medium">
+                                    <span>${cat.question_count} Questions</span>
+                                </div>
+                            </div>
+                            <a href="rules2.html?category=${encodeURIComponent(cat.slug)}"
+                                class="w-full text-center bg-yellow-100 hover:bg-amber-300 text-sky-600 font-bold py-2 px-4 rounded-lg transition-colors duration-200">
+                                Play Now
+                            </a>
+                        </div>
+                    `;
+                }).join('');
+            } catch (err) {
+                container.innerHTML = '<p class="text-red-500 text-sm font-medium">Could not load categories.</p>';
+            }
+        }
+
+        (async () => {
+            const user = await guardLoggedIn('home.html');
+            if (user) {
+                loadQuizCards();
+            }
+        })();
+    </script>
 </body>
 
 </html>

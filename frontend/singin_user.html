@@ -26,7 +26,7 @@
     <div
         class="bg-white p-6 sm:p-8 rounded-xl shadow-lg w-full max-w-sm sm:max-w-md transition-all duration-300 border border-[#e7e7e7]">
         <div class="flex justify-center mb-6">
-            <a href="index.html" class="text-2xl font-extrabold text-sky-600 flex items-center gap-2">
+            <a href="home.html" class="text-2xl font-extrabold text-sky-600 flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -72,14 +72,18 @@
                 class="text-sky-600 hover:text-sky-700 font-bold transition-colors">Sign up</a>
         </p>
     </div>
+    <script src="source/api.js"></script>
     <script>
+        guardLoggedOut('home-logedin.html');
+
         const form = document.getElementById('login-form');
         const emailInput = document.getElementById('email');
         const passwordInput = document.getElementById('password');
         const emailError = document.getElementById('email-error');
         const passwordError = document.getElementById('password-error');
+        const submitButton = form.querySelector('button[type="submit"]');
 
-        form.addEventListener('submit', function (e) {
+        form.addEventListener('submit', async function (e) {
             e.preventDefault();
 
             emailInput.classList.remove('border-red-500', 'bg-red-50');
@@ -106,8 +110,26 @@
                 isValid = false;
             }
 
-            if (isValid) {
-                alert('Sign in successful!');
+            if (!isValid) {
+                return;
+            }
+
+            submitButton.disabled = true;
+            submitButton.textContent = 'Signing in...';
+
+            try {
+                await apiFetch('login.php', {
+                    method: 'POST',
+                    body: JSON.stringify({ email: emailInput.value, password: passwordInput.value }),
+                });
+                window.location.href = 'home-logedin.html';
+            } catch (err) {
+                passwordInput.classList.remove('border-sky-300');
+                passwordInput.classList.add('border-red-500', 'bg-red-50');
+                passwordError.textContent = err.message || 'Invalid email or password.';
+                passwordError.classList.remove('hidden');
+                submitButton.disabled = false;
+                submitButton.textContent = 'Sign in';
             }
         });
     </script>
