@@ -23,7 +23,7 @@
 </head>
 
 <body class="bg-[#f7f7f8] flex flex-col items-center min-h-screen px-4 sm:px-0 font-sans text-gray-800">
-    
+
     <nav class="fixed top-0 w-full bg-white shadow-md z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
@@ -136,6 +136,13 @@
     </div>
     <script src="source/api.js"></script>
     <script>
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+        
         guardLoggedOut('home-logedin.html');
 
         const form = document.getElementById('signup-form');
