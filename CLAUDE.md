@@ -11,7 +11,7 @@ Composer packages — everything is hand-rolled on purpose.
   `categories.html` / `categories_logout.html`,
   `leaderboard.html` / `leaderboard_logout.html`); each guards itself on load
   by calling `GET /api/me.php` and redirecting to its counterpart if the
-  session doesn't match. `singin_user.html` is the canonical login page
+  session doesn't match. `signin_user.html` is the canonical login page
   (`login_user.html` is a redirect stub kept for old links). `rules2.html` is
   shared by both logged-in and logged-out flows and swaps its own nav at
   runtime instead of having a duplicate file.

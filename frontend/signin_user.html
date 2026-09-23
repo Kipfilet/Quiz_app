@@ -23,6 +23,55 @@
 </head>
 
 <body class="bg-[#f7f7f8] flex items-center justify-center min-h-screen px-4 sm:px-0 font-sans text-gray-800">
+    <nav class="fixed top-0 w-full bg-white shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="home.html" class="text-xl sm:text-2xl font-extrabold text-sky-600 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-8 sm:w-8" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        Quiz Trip
+                    </a>
+                </div>
+
+                <div class="hidden md:flex gap-4 items-center absolute left-1/2 transform -translate-x-1/2">
+                    <a href="home.html"
+                        class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Home</a>
+                    <a href="categories_logout.html"
+                        class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Categories</a>
+                    <a href="leaderboard_logout.html"
+                        class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Leaderboard</a>
+                    <a href="rules2.html"
+                        class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Rules</a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-sky-600 focus:outline-none p-2">
+                        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-sky-300 shadow-lg absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="home.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Home</a>
+                <a href="rules2.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Rules</a>
+                <a href="categories_logout.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Categories</a>
+                <a href="leaderboard_logout.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Leaderboard</a>
+                <hr class="my-2 border-gray-200">
+            </div>
+        </div>
+    </nav>
     <div
         class="bg-white p-6 sm:p-8 rounded-xl shadow-lg w-full max-w-sm sm:max-w-md transition-all duration-300 border border-[#e7e7e7]">
         <div class="flex justify-center mb-6">
@@ -74,6 +123,13 @@
     </div>
     <script src="source/api.js"></script>
     <script>
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
         guardLoggedOut('home-logedin.html');
 
         const form = document.getElementById('login-form');
