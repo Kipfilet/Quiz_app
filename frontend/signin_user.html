@@ -37,7 +37,7 @@
                     </a>
                 </div>
 
-                <div class="hidden md:flex flex-1 justify-center gap-4 items-center">
+                <div class="hidden md:flex gap-4 items-center absolute left-1/2 transform -translate-x-1/2">
                     <a href="home.html"
                         class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Home</a>
                     <a href="categories_logout.html"
@@ -129,7 +129,7 @@
         btn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
         });
-        
+
         guardLoggedOut('home-logedin.html');
 
         const form = document.getElementById('login-form');
