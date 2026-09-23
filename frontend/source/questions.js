@@ -12,10 +12,14 @@ let questionMaxIndex = 0;
 let randomQuestionIndex = 0;
 let scoreDisplay = document.getElementById('score');
 let correctAnswers = 0
+const quizParams = new URLSearchParams(window.location.search);
+const quizCategory = quizParams.get('category');
+
 function fetchQuestions(){
-    fetch('source/questions.json')
-        .then(res => res.json())
-        .then(questions => {
+    const path = quizCategory ? `questions.php?category=${encodeURIComponent(quizCategory)}` : 'questions.php';
+    apiFetch(path)
+        .then(data => {
+            const questions = data.questions;
             console.log('Questions loaded:', questions);
             for (const question of questions) {
                 questionMaxIndex++;
@@ -23,7 +27,7 @@ function fetchQuestions(){
             }
             loadQuestions()
         }).catch(err => console.error('Error loading questions: ', err));
-        
+
 }
     
 function loadQuestions() {
@@ -150,5 +154,32 @@ function gameOver() {
     let totalQuestions = document.getElementById("totalQuestions");
     totalQuestions.innerHTML= correctAnswers;
 
-    
-}  
+    saveQuizAttempt(totalScore, correctAnswers, totalHearsUsed);
+}
+
+async function saveQuizAttempt(totalScore, correctAnswers, heartsUsed) {
+    const saveStatus = document.getElementById('saveStatus');
+    const returnHomeBtn = document.getElementById('returnHomeBtn');
+
+    const user = await getCurrentUser();
+    returnHomeBtn.onclick = () => {
+        window.location.href = user ? 'home-logedin.html' : 'home.html';
+    };
+
+    try {
+        await apiFetch('quiz_attempts.php', {
+            method: 'POST',
+            body: JSON.stringify({
+                score: totalScore,
+                correct_answers: correctAnswers,
+                hearts_used: heartsUsed,
+                category_slug: quizCategory,
+            }),
+        });
+        saveStatus.textContent = user
+            ? 'Your score has been saved to the leaderboard!'
+            : 'Sign in to save your score to the leaderboard next time.';
+    } catch (err) {
+        saveStatus.textContent = 'Could not save your score.';
+    }
+}

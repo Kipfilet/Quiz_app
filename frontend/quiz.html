@@ -11,15 +11,15 @@
 <body onload="fetchQuestions()">
     <div class="navbar bg-blue-500 shadow-sm w-screen">
         <div class="navbar-start  gap-2">
-            <a href="index.html"><img src="./images/logo.png" alt="logo" class="scale-40"></a>
+            <a href="home.html"><img src="./images/logo.png" alt="logo" class="scale-40"></a>
         </div>
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal gap-4 px-1">
-                <li><a href="#"
+                <li><a href="rules2.html"
                         class="text-xl text-white bg-blue-500 hover:bg-blue-600 p-2 rounded-2xl"><b>Play</b></a></li>
-                <li><a href="#"
+                <li><a href="leaderboard_logout.html" id="nav-leaderboard"
                         class="text-xl text-white bg-blue-500 hover:bg-blue-600 p-2 rounded-2xl"><b>Leaderboard</b></a></li>
-                <li><a href="#"
+                <li><a href="rules2.html"
                         class="text-xl text-white bg-blue-500 hover:bg-blue-600 p-2 rounded-2xl"><b>Rules</b></a></li>
             </ul>
         </div>
@@ -30,18 +30,12 @@
                     <img src="./images/pfp.png" class="size-10">
                 </div>
                 <ul tabindex="-1" class="menu menu-sm dropdown-content bg-blue-500 rounded-box z-1 mt-3 w-52 px-1">
-                    <li><a href="#"
+                    <li><a href="rules2.html"
                         class="text-xl lg:hidden text-white bg-blue-500 hover:bg-blue-600 p-2 lg:hidden rounded-xl"><b>Play</b></a></li>
-                    <li><a href="#"
+                    <li><a href="leaderboard_logout.html" id="nav-leaderboard-mobile"
                         class="text-xl lg:hidden text-white bg-blue-500 hover:bg-blue-600 p-2 lg:hidden rounded-xl"><b>Leaderboard</b></a></li>
-                    <li><a href="#"
+                    <li><a href="rules2.html"
                         class="text-xl lg:hidden text-white bg-blue-500 hover:bg-blue-600 p-2 lg:hidden rounded-xl"><b>Rules</b></a></li>
-                    <li><a href="#"
-                        class="text-xl  text-white bg-blue-500 hover:bg-blue-600 p-2 lg:hiddenrounded-xl"><b>Profile</b></a></li>
-                    <li><a href="#"
-                        class="text-xl  text-white bg-blue-500 hover:bg-blue-600 p-2 lg:hiddenrounded-xl"><b>Settings</b></a></li>
-                    
-                    
                 </ul>
             </div>
         </div>
@@ -92,13 +86,22 @@
                         <p class="text-xl"><b>Correct Answers: </b></p>
                         <p id="totalQuestions" class="text-xl text-right">0</p>
                     </div>
-                    <button onclick="window.location='/frontend/home.html'" class="btn mt-auto w-full h-13  bg-red-600 hover:bg-red-700 active:bg-red-800 rounded-2xl text-2xl text-white">Return to home</button>
+                    <p id="saveStatus" class="text-sm text-gray-500 text-center mt-2"></p>
+                    <button id="returnHomeBtn" class="btn mt-auto w-full h-13  bg-red-600 hover:bg-red-700 active:bg-red-800 rounded-2xl text-2xl text-white">Return to home</button>
                 </div>
             </div>
 
         </div>
     </div>
+    <script src="./source/api.js"></script>
     <script src="./source/questions.js">
+    </script>
+    <script>
+        getCurrentUser().then((user) => {
+            const href = user ? 'leaderboard.html' : 'leaderboard_logout.html';
+            document.getElementById('nav-leaderboard').href = href;
+            document.getElementById('nav-leaderboard-mobile').href = href;
+        });
     </script>
 </body>
 </html>
