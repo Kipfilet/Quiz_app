@@ -1,10 +1,12 @@
-// Builds the "Question Database" accordion on categories.html /
-// categories_logout.html from the real category + question data in the DB.
+// Builds the category picker on categories.html / categories_logout.html
+// from the real category data in the DB. Shows category name + question
+// count only (no questions or answers) — picking one starts that category's
+// quiz via rules2.html?category=<slug> -> quiz.html?category=<slug>.
 
-const accordionColors = {
-    sky: { border: 'border-sky-300', text: 'text-sky-700', bg: 'bg-sky-50', hover: 'hover:bg-sky-100', answer: 'text-sky-600' },
-    red: { border: 'border-red-400', text: 'text-red-500', bg: 'bg-red-50', hover: 'hover:bg-red-100', answer: 'text-red-500' },
-    amber: { border: 'border-amber-300', text: 'text-amber-600', bg: 'bg-yellow-100', hover: 'hover:bg-yellow-200', answer: 'text-amber-600' },
+const categoryCardColors = {
+    sky: { border: 'border-sky-300', badge: 'bg-sky-300 text-sky-700', button: 'bg-sky-600 hover:bg-sky-700 text-white' },
+    red: { border: 'border-red-400', badge: 'bg-red-400 text-white', button: 'bg-red-500 hover:bg-red-600 text-white' },
+    amber: { border: 'border-amber-300', badge: 'bg-amber-300 text-white', button: 'bg-amber-500 hover:bg-amber-600 text-white' },
 };
 
 function escapeHtml(str) {
@@ -13,71 +15,33 @@ function escapeHtml(str) {
     }[c]));
 }
 
-async function loadCategoryAccordion() {
-    const container = document.getElementById('accordion-container');
+async function loadCategoryPicker() {
+    const container = document.getElementById('category-grid');
 
     try {
-        const [{ categories }, { questions }] = await Promise.all([
-            apiFetch('categories.php'),
-            apiFetch('questions.php'),
-        ]);
+        const { categories } = await apiFetch('categories.php');
+        const playable = categories.filter((c) => c.question_count > 0);
 
-        const byCategory = new Map();
-        for (const q of questions) {
-            if (!q.category) continue;
-            if (!byCategory.has(q.category.id)) byCategory.set(q.category.id, []);
-            byCategory.get(q.category.id).push(q);
-        }
-
-        const populated = categories.filter((c) => byCategory.has(c.id));
-
-        if (populated.length === 0) {
-            container.innerHTML = '<p class="text-gray-500 text-sm font-medium text-center">No questions yet.</p>';
+        if (playable.length === 0) {
+            container.innerHTML = '<p class="text-gray-500 text-sm font-medium text-center col-span-full">No categories yet.</p>';
             return;
         }
 
-        container.innerHTML = populated.map((cat) => {
-            const colors = accordionColors[cat.color] || accordionColors.sky;
-            const catQuestions = byCategory.get(cat.id);
-
-            const questionsHtml = catQuestions.map((q, i) => `
-                <div>
-                    <p class="font-bold text-gray-800 mb-2">${i + 1}. ${escapeHtml(q.question)}</p>
-                    <ul class="text-gray-600 pl-4 space-y-1">
-                        ${['A', 'B', 'C', 'D'].map((letter) => {
-                            const isCorrect = letter === q.answer;
-                            const cls = isCorrect ? `font-bold ${colors.answer}` : '';
-                            return `<li${cls ? ` class="${cls}"` : ''}>${letter}) ${escapeHtml(q.options[letter])}${isCorrect ? ' ✓' : ''}</li>`;
-                        }).join('')}
-                    </ul>
-                </div>
-            `).join('');
-
+        container.innerHTML = playable.map((cat) => {
+            const colors = categoryCardColors[cat.color] || categoryCardColors.sky;
             return `
-                <div class="bg-white rounded-xl shadow-sm border-2 ${colors.border} overflow-hidden">
-                    <button
-                        class="w-full text-left px-6 py-4 font-bold text-xl ${colors.text} ${colors.bg} ${colors.hover} transition-colors flex justify-between items-center focus:outline-none accordion-btn">
-                        <span>${cat.emoji || ''} ${escapeHtml(cat.name)} (${catQuestions.length} Question${catQuestions.length === 1 ? '' : 's'})</span>
-                        <svg class="h-6 w-6 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-                    <div class="hidden px-6 py-4 bg-white border-t border-sky-100 max-h-96 overflow-y-auto space-y-6 accordion-content">
-                        ${questionsHtml}
-                    </div>
+                <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border-2 ${colors.border} p-6 flex flex-col">
+                    <span class="inline-block ${colors.badge} text-xs px-2 py-1 rounded-full font-bold mb-3 w-fit">${cat.emoji || ''} Category</span>
+                    <h3 class="text-lg font-bold text-gray-800 mb-1">${escapeHtml(cat.name)}</h3>
+                    <p class="text-gray-500 text-sm font-medium mb-4">${cat.question_count} Question${cat.question_count === 1 ? '' : 's'}</p>
+                    <a href="rules2.html?category=${encodeURIComponent(cat.slug)}"
+                        class="mt-auto w-full text-center font-bold py-2 px-4 rounded-lg transition-colors duration-200 ${colors.button}">
+                        Play this category
+                    </a>
                 </div>
             `;
         }).join('');
-
-        document.querySelectorAll('.accordion-btn').forEach((acc) => {
-            acc.addEventListener('click', function () {
-                const content = this.nextElementSibling;
-                const icon = this.querySelector('svg');
-                content.classList.toggle('hidden');
-                icon.classList.toggle('rotate-180');
-            });
-        });
     } catch (err) {
-        container.innerHTML = '<p class="text-red-500 text-sm font-medium text-center">Could not load the question database.</p>';
+        container.innerHTML = '<p class="text-red-500 text-sm font-medium text-center col-span-full">Could not load categories.</p>';
     }
 }

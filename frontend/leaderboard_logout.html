@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,18 +21,27 @@
     </script>
 </head>
 
-<body class="bg-yellow-100/30 font-sans text-gray-800">
+<body class="bg-[#f7f7f8] font-sans text-gray-900">
 
     <nav class="fixed top-0 w-full bg-white shadow-md z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
 
                 <div class="flex-shrink-0 flex items-center">
-                    <a class="text-xl sm:text-2xl font-extrabold text-sky-600 flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-8 sm:w-8" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    <a href="home.html" class="text-xl sm:text-2xl font-extrabold text-sky-600 flex items-center gap-2">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 w-6 sm:h-8 sm:w-8"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"
+                            />
                         </svg>
                         Quiz Trip
                     </a>
@@ -41,21 +49,36 @@
 
                 <div class="hidden md:flex gap-4 items-center">
                     <a href="home.html"
-                        class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Home</a>
+                        class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
+                        Home
+                    </a>
+
                     <a href="categories_logout.html"
-                        class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Categories</a>
-                    <a href="#" class="text-sky-600 border-b-2 border-sky-600 px-3 py-2 font-semibold">Leaderboard</a>
+                        class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
+                        Categories
+                    </a>
+
+                    <a href="leaderboard_logout.html"
+                        class="text-sky-600 border-b-2 border-sky-600 px-3 py-2 font-semibold">
+                        Leaderboard
+                    </a>
+
                     <a href="rules2.html"
-                        class="text-gray-600 hover:text-sky-600 px-3 py-2 font-medium transition-colors">Rules</a>
+                        class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
+                        Rules
+                    </a>
                 </div>
 
-                <div class="hidden md:flex items-center space-x-4">
+                <div class="hidden md:flex items-center gap-4">
                     <a href="signin_user.html"
-                        class="text-gray-600 hover:text-sky-600 font-medium transition-colors">Sign
-                        in</a>
+                        class="text-gray-900 hover:text-sky-600 font-medium transition-colors">
+                        Sign in
+                    </a>
+
                     <a href="signup_user.html"
-                        class="bg-sky-600 hover:opacity-90 text-white px-5 py-2 rounded-lg font-bold transition-all duration-300 shadow-md">Sign
-                        up</a>
+                        class="bg-sky-600 hover:bg-sky-700 text-white px-5 py-2 rounded-lg font-bold transition-all duration-300 shadow-md">
+                        Sign up
+                    </a>
                 </div>
 
                 <div class="md:hidden flex items-center">
@@ -69,20 +92,21 @@
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-sky-300 shadow-lg absolute w-full">
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-sky-600 shadow-lg absolute w-full">
             <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="home.html"
-                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Home</a>
+                <a href="home.html" class="block px-3 py-3 text-base font-medium text-gray-900 hover:bg-sky-50 rounded-md">Home</a>
                 <a href="categories_logout.html"
-                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Categories</a>
+                    class="block px-3 py-3 text-base font-medium text-gray-900 hover:bg-sky-50 rounded-md">Categories</a>
+                <a href="leaderboard_logout.html"
+                    class="block px-3 py-3 text-base font-medium text-sky-600 bg-sky-300/30 rounded-md">Leaderboard</a>
                 <a href="rules2.html"
-                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Rules</a>
+                    class="block px-3 py-3 text-base font-medium text-gray-900 hover:bg-sky-50 rounded-md">Rules</a>
                 <hr class="my-2 border-gray-200">
                 <a href="signin_user.html"
-                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-yellow-100 rounded-md">Sign
+                    class="block px-3 py-3 text-base font-medium text-gray-900 hover:bg-sky-50 rounded-md">Sign
                     in</a>
                 <a href="signup_user.html"
-                    class="block px-3 py-3 text-base font-medium text-white bg-sky-600 hover:opacity-90 rounded-md text-center mt-2">Sign
+                    class="block px-3 py-3 text-base font-medium text-white bg-sky-600 hover:bg-sky-700 rounded-md mt-2">Sign
                     up</a>
             </div>
         </div>

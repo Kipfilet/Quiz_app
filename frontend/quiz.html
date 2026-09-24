@@ -7,8 +7,57 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ["Inter", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.35); }
+            100% { transform: scale(1); }
+        }
+        .animate-pop { animation: pop 0.35s ease; }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+        .animate-shake { animation: shake 0.4s ease; }
+
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in { animation: fade-in-up 0.35s ease; }
+
+        @keyframes pulse-urgent {
+            0%, 100% { color: #dc2626; transform: scale(1); }
+            50% { color: #f87171; transform: scale(1.15); }
+        }
+        .timer-urgent { animation: pulse-urgent 0.6s ease-in-out infinite; }
+
+        .quiz-bg {
+            background-color: #f7f7f8;
+            background-image:
+                linear-gradient(135deg, rgba(224, 242, 254, 0.55) 0%, rgba(247, 247, 248, 0.15) 45%, rgba(255, 251, 235, 0.55) 100%),
+                url('images/quiz-bg-pattern.png');
+            background-size: cover, cover;
+            background-repeat: no-repeat, no-repeat;
+            background-position: center, center;
+            background-attachment: fixed, fixed;
+        }
+    </style>
 </head>
-<body onload="fetchQuestions()" class="bg-gray-100 min-h-screen">
+<body onload="fetchQuestions()" class="quiz-bg min-h-screen font-inter">
     
     <nav class="fixed top-0 w-full bg-white shadow-md z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,17 +65,89 @@
 
                 <div class="flex-shrink-0 flex items-center">
                     <a href="home.html" class="text-xl sm:text-2xl font-extrabold text-sky-600 flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-8 sm:w-8" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 w-6 sm:h-8 sm:w-8"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"
+                            />
                         </svg>
                         Quiz Trip
                     </a>
                 </div>
+
+                <div class="hidden md:flex gap-4 items-center">
+                    <a href="home.html"
+                        class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
+                        Home
+                    </a>
+
+                    <a href="categories_logout.html"
+                        class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
+                        Categories
+                    </a>
+
+                    <a href="leaderboard_logout.html"
+                        class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
+                        Leaderboard
+                    </a>
+
+                    <a href="rules2.html"
+                        class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
+                        Rules
+                    </a>
+                </div>
+
+                <div class="hidden md:flex items-center gap-4">
+                    <a href="signin_user.html"
+                        class="text-gray-900 hover:text-sky-600 font-medium transition-colors">
+                        Sign in
+                    </a>
+
+                    <a href="signup_user.html"
+                        class="bg-sky-600 hover:bg-sky-700 text-white px-5 py-2 rounded-lg font-bold transition-all duration-300 shadow-md">
+                        Sign up
+                    </a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-sky-600 focus:outline-none p-2">
+                        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-sky-600 shadow-lg absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="home.html" class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-sky-50 rounded-md">Home</a>
+                <a href="categories_logout.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-sky-50 rounded-md">Categories</a>
+                <a href="leaderboard_logout.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-sky-50 rounded-md">Leaderboard</a>
+                <a href="rules2.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-sky-50 rounded-md">Rules</a>
+                <hr class="my-2 border-gray-200">
+                <a href="signin_user.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-sky-50 rounded-md">Sign
+                    in</a>
+                <a href="signup_user.html"
+                    class="block px-3 py-3 text-base font-medium text-white bg-sky-600 hover:bg-sky-700 rounded-md mt-2">Sign
+                    up</a>
             </div>
         </div>
     </nav>
+
     <div class="pt-24 pb-10 px-4">
         <div id="difficultySelection">
             <div class="h-150 card bg-neutral-50 mx-auto w-full lg:w-[600px] shadow-xl rounded-2xl pb-20 absolute left-0 right-0 z-2">
@@ -49,7 +170,7 @@
                     </div>
                     <div class="mt-5 join font-bold gap-1">
                         <p id="timerText" class="text-xl"></p>
-                        <p id="timer" class="text-xl"><b>15</b></p>
+                        <p id="timer" class="text-xl transition-colors"><b>15</b></p>
                         <p class="text-xl"><b>s</b></p>
                     </div>
                     <div class="mt-5 join font-bold gap-1">
@@ -58,16 +179,16 @@
                     </div>
                 </div>
 
-                <div class="my-5 text-center text-wrap max-w-md mx-auto">
+                <div id="questionBlock" class="my-5 text-center text-wrap max-w-md mx-auto">
                     <h1 id="questionText" class="text-2xl font-semibold"></h1>
                 </div>
 
                 <div class="flex justify-center">
                     <div class="grid grid-cols-1 gap-4 w-full max-w-4xl justify-items-center">
-                        <button onclick="checkAnswer('A', this )" id="option1" class="btn text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-md w-full sm:w-2/3 shrink-0 h-16 rounded-xl"></button>
-                        <button onclick="checkAnswer('B', this )" id="option2" class="btn text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-md w-full sm:w-2/3 shrink-0 h-16 rounded-xl"></button>
-                        <button onclick="checkAnswer('C', this )" id="option3" class="btn text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-md w-full sm:w-2/3 shrink-0 h-16 rounded-xl"></button>
-                        <button onclick="checkAnswer('D', this )" id="option4" class="btn text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-md w-full sm:w-2/3 shrink-0 h-16 rounded-xl"></button>
+                        <button onclick="checkAnswer('A', this )" id="option1" class="btn text-white bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-md w-full sm:w-2/3 shrink-0 h-16 rounded-xl transition-colors duration-300"></button>
+                        <button onclick="checkAnswer('B', this )" id="option2" class="btn text-white bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-md w-full sm:w-2/3 shrink-0 h-16 rounded-xl transition-colors duration-300"></button>
+                        <button onclick="checkAnswer('C', this )" id="option3" class="btn text-white bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-md w-full sm:w-2/3 shrink-0 h-16 rounded-xl transition-colors duration-300"></button>
+                        <button onclick="checkAnswer('D', this )" id="option4" class="btn text-white bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-md w-full sm:w-2/3 shrink-0 h-16 rounded-xl transition-colors duration-300"></button>
                     </div>
                 </div>
 

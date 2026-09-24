@@ -12,6 +12,15 @@ function setDifficulty(difficultyOption){
     document.getElementById("difficultySelection").innerHTML = "";
     fetchQuestions(difficulty)
 }
+
+// Removes then re-adds an animation class so it replays even if the
+// element already had it (CSS animations don't restart on a no-op add).
+function retriggerAnimation(el, className) {
+    if (!el) return;
+    el.classList.remove(className);
+    void el.offsetWidth; // force a reflow so the browser notices the removal
+    el.classList.add(className);
+}
 let score = 0;
 let questionArray = [];
 let questionMaxIndex = 0;
@@ -48,30 +57,34 @@ function loadQuestions() {
             option2.textContent = randomQuestion.options.B;
             option3.textContent = randomQuestion.options.C;
             option4.textContent = randomQuestion.options.D;
+            retriggerAnimation(document.getElementById('questionBlock'), 'animate-fade-in');
             countdownNextQuestion(10, 'Time left: ',"timer");
     }
 
 async function checkAnswer(selectedOption, questionId) {
     if (selectedOption == questionArray[randomQuestionIndex].answer) {
-        questionId.classList.remove('bg-blue-500', 'hover:bg-blue-600', 'active:bg-blue-700');
-        questionId.classList.add('bg-green-500');  
+        questionId.classList.remove('bg-sky-600', 'hover:bg-sky-700', 'active:bg-sky-800');
+        questionId.classList.add('bg-green-500');
+        retriggerAnimation(questionId, 'animate-pop');
         if (questionArray[randomQuestionIndex].difficulty === 'easy') {
             score += 10;
         }
         else if (questionArray[randomQuestionIndex].difficulty === 'normal') {
             score += 15;
-        }  
+        }
         else if (questionArray[randomQuestionIndex].difficulty === 'hard') {
             score += 20;
         }
         scoreDisplay.textContent = score;
+        retriggerAnimation(scoreDisplay, 'animate-pop');
         correctAnswers++;
         disableButtons();
         showCorrectAnswer();
         await countdownNextQuestion(3, 'Next question in: ',"cooldown");
     } else {
-        questionId.classList.remove('bg-blue-500', 'hover:bg-blue-600', 'active:bg-blue-700');
+        questionId.classList.remove('bg-sky-600', 'hover:bg-sky-700', 'active:bg-sky-800');
         questionId.classList.add('bg-red-500');
+        retriggerAnimation(questionId, 'animate-shake');
         disableButtons();
         showCorrectAnswer();
         removeHeart();
@@ -93,14 +106,14 @@ function enableButtons() {
 function resetButtonColors() {
     for (let option of questionOptions) {
         option.classList.remove('bg-green-500', 'bg-red-500');
-        option.classList.add('bg-blue-500', 'hover:bg-blue-600', 'active:bg-blue-700');
+        option.classList.add('bg-sky-600', 'hover:bg-sky-700', 'active:bg-sky-800');
     }
 }
 function showCorrectAnswer() {
     let correctAnswer = questionArray[randomQuestionIndex].answer;
     for (let option of questionOptions) {
         if (option.textContent === questionArray[randomQuestionIndex].options[correctAnswer]) {
-            option.classList.remove('bg-blue-500', 'hover:bg-blue-600', 'active:bg-blue-700');
+            option.classList.remove('bg-sky-600', 'hover:bg-sky-700', 'active:bg-sky-800');
             option.classList.add('bg-green-500');
         }
     }
@@ -113,6 +126,7 @@ function countdownNextQuestion(countdownDuration, countdownExtraText, countdownT
     let timer = document.getElementById('timer');
     let timeLeft = countdownDuration;
     timer.textContent = timeLeft;
+    timer.classList.remove('timer-urgent');
     if (countdownUse) {
         clearInterval(countdownInterval);
     }
@@ -122,6 +136,11 @@ function countdownNextQuestion(countdownDuration, countdownExtraText, countdownT
         timeLeft--;
         timer.textContent = timeLeft;
         console.log('Countdown: ', timeLeft);
+        if (countdownType === 'timer' && timeLeft > 0 && timeLeft <= 3) {
+            timer.classList.add('timer-urgent');
+        } else {
+            timer.classList.remove('timer-urgent');
+        }
         if (timeLeft <= 0) {
             if(countdownType == "timer"){
                 removeHeart();
@@ -139,6 +158,7 @@ function countdownNextQuestion(countdownDuration, countdownExtraText, countdownT
 }
 let heartCount = 3
 function removeHeart() {
+    retriggerAnimation(heartContainer, 'animate-shake');
     if (heartCount > 1){
         heartContainer.children[heartCount - 1].ariaCurrent = "false";
         heartContainer.children[heartCount - 2].ariaCurrent = "true";
