@@ -184,95 +184,57 @@
 
     </footer>
 
-  <script src="source/api.js"></script>
-  <script>
-      const btn = document.getElementById('mobile-menu-button');
-      const menu = document.getElementById('mobile-menu');
+    <script src="source/api.js"></script>
+    <script>
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
 
-      if (btn && menu) {
-          btn.addEventListener('click', () => {
-              menu.classList.toggle('hidden');
-          });
-      }
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
 
-      // Check whether a category was passed to the Rules page
-      const params = new URLSearchParams(window.location.search);
-      const category = params.get('category');
+        guardLoggedOut('home-logedin.html');
 
-      if (category) {
-        sessionStorage.setItem(`rulesSeen_${category}`, 'true');
-      }
+        const form = document.getElementById('signup-form');
+        const usernameInput = document.getElementById('username');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const confirmInput = document.getElementById('confirm-password');
+        const formError = document.getElementById('form-error');
+        const submitButton = form.querySelector('button[type="submit"]');
 
-      // Button behavior
-      function startQuiz() {
-          if (category) {
-              // A category was selected, so go directly to that quiz
-              window.location.href =
-                  `quiz.html?category=${encodeURIComponent(category)}`;
-          } else {
-              // No category was selected, so send the user to Categories
-              window.location.href = 'categories.html';
-          }
-      }
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            formError.classList.add('hidden');
 
-      // Change button text depending on whether a category exists
-      const startButton = document.getElementById('start-quiz-button');
+            if (passwordInput.value !== confirmInput.value) {
+                formError.textContent = 'Passwords do not match.';
+                formError.classList.remove('hidden');
+                return;
+            }
 
-      if (startButton) {
-          startButton.textContent = category
-              ? 'Play quiz'
-              : 'Choose category';
-      }
+            submitButton.disabled = true;
+            submitButton.textContent = 'Creating account...';
 
-      (async () => {
-          const user = await getCurrentUser();
-
-          const setHref = (id, href) => {
-              const el = document.getElementById(id);
-              if (el) el.href = href;
-          };
-
-          setHref('nav-home', user ? 'home-logedin.html' : 'home.html');
-          setHref('nav-categories', user ? 'categories.html' : 'categories_logout.html');
-          setHref('nav-leaderboard', user ? 'leaderboard.html' : 'leaderboard_logout.html');
-
-          setHref('mobile-nav-home', user ? 'home-logedin.html' : 'home.html');
-          setHref('mobile-nav-categories', user ? 'categories.html' : 'categories_logout.html');
-          setHref('mobile-nav-leaderboard', user ? 'leaderboard.html' : 'leaderboard_logout.html');
-
-          if (user && document.getElementById('user-nav')) {
-              document.getElementById('guest-nav').classList.add('hidden');
-              document.getElementById('user-nav').classList.remove('hidden');
-              document.getElementById('mobile-signin').classList.add('hidden');
-              document.getElementById('mobile-signup').classList.add('hidden');
-              document.getElementById('mobile-guest-divider').classList.add('hidden');
-              document.getElementById('mobile-logout').classList.remove('hidden');
-
-              renderUserBadge(user);
-          } else if (document.getElementById('user-nav')) {
-              document.getElementById('user-nav').classList.add('hidden');
-          }
-
-          // If a category was selected, get its name
-          if (category) {
-              try {
-                  const { categories } = await apiFetch('categories.php');
-
-                  const match = categories.find(
-                      c => c.slug === category
-                  );
-
-                  if (match) {
-                      document.querySelector('header h1').textContent =
-                          `Before you start: ${match.name}`;
-                  }
-              } catch (e) {
-                  // Keep the generic heading if the category lookup fails
-                  console.error('Could not load category:', e);
-              }
-          }
-      })();
-  </script>
+            try {
+                await apiFetch('signup.php', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        username: usernameInput.value,
+                        email: emailInput.value,
+                        password: passwordInput.value,
+                        confirm_password: confirmInput.value,
+                    }),
+                });
+                window.location.href = 'home-logedin.html';
+            } catch (err) {
+                formError.textContent = err.message || 'Could not create your account.';
+                formError.classList.remove('hidden');
+                submitButton.disabled = false;
+                submitButton.textContent = 'Sign up';
+            }
+        });
+    </script>
 </body>
 
 </html>
