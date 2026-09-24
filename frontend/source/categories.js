@@ -1,7 +1,5 @@
 // Builds the category picker on categories.html / categories_logout.html
-// from the real category data in the DB. Shows category name + question
-// count only (no questions or answers) — picking one starts that category's
-// quiz via quiz.html?category=<slug>.
+// from the real category data in the DB.
 
 const categoryCardColors = {
     sky: {
@@ -9,11 +7,13 @@ const categoryCardColors = {
         badge: 'bg-sky-300 text-sky-700',
         button: 'bg-sky-600 hover:bg-sky-700 text-white'
     },
+
     red: {
         border: 'border-red-400',
         badge: 'bg-red-400 text-white',
         button: 'bg-red-500 hover:bg-red-600 text-white'
     },
+
     amber: {
         border: 'border-amber-300',
         badge: 'bg-amber-300 text-white',
@@ -31,21 +31,50 @@ function escapeHtml(str) {
     }[c]));
 }
 
+
+// Checks whether the user has already seen the rules
+// for this category.
+function startCategoryQuiz(slug) {
+
+    const rulesSeen = sessionStorage.getItem(`rulesSeen_${slug}`);
+
+    if (rulesSeen === 'true') {
+
+        // Rules were already seen → go directly to quiz
+        window.location.href =
+            `quiz.html?category=${encodeURIComponent(slug)}`;
+
+    } else {
+
+        // First time → show rules first
+        window.location.href =
+            `rules2.html?category=${encodeURIComponent(slug)}`;
+    }
+}
+
+
 async function loadCategoryPicker() {
+
     const container = document.getElementById('category-grid');
 
     try {
+
         const { categories } = await apiFetch('categories.php');
 
-        const playable = categories.filter((c) => c.question_count > 0);
+        const playable = categories.filter(
+            (c) => c.question_count > 0
+        );
 
         if (playable.length === 0) {
+
             container.innerHTML =
                 '<p class="text-gray-500 text-sm font-medium text-center col-span-full">No categories yet.</p>';
+
             return;
         }
 
         container.innerHTML = playable.map((cat) => {
+
             const colors =
                 categoryCardColors[cat.color] || categoryCardColors.sky;
 
@@ -64,17 +93,21 @@ async function loadCategoryPicker() {
                         ${cat.question_count} Question${cat.question_count === 1 ? '' : 's'}
                     </p>
 
-                    <a href="quiz.html?category=${encodeURIComponent(cat.slug)}"
+                    <a href="#"
+                        onclick="startCategoryQuiz('${encodeURIComponent(cat.slug)}'); return false;"
                         class="mt-auto w-full text-center font-bold py-2 px-4 rounded-lg transition-colors duration-200 ${colors.button}">
                         Play this category
                     </a>
 
                 </div>
             `;
+
         }).join('');
 
     } catch (err) {
+
         container.innerHTML =
             '<p class="text-red-500 text-sm font-medium text-center col-span-full">Could not load categories.</p>';
+
     }
 }
