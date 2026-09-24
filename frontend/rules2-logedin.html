@@ -1,0 +1,311 @@
+  <!DOCTYPE html>
+  <html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Quiz Trip - Rules</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    />
+    <link
+    <link
+        href="https://cdn.jsdelivr.net/npm/daisyui@5"
+        rel="stylesheet"
+        type="text/css"
+    />
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css"
+        rel="stylesheet"
+        type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ["Inter", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+
+  <body class="font-inter bg-[#f7f7f8]">
+    <nav class="fixed top-0 w-full bg-white shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="home.html" class="text-xl sm:text-2xl font-extrabold text-sky-600 flex items-center gap-2">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 w-6 sm:h-8 sm:w-8"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"
+                            />
+                        </svg>
+                        Quiz Trip
+                    </a>
+                </div>
+
+                <div class="hidden md:flex gap-4 items-center">
+                    <a href="home.html"
+                        class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
+                        Home
+                    </a>
+
+                    <a href="categories_logout.html"
+                        class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
+                        Categories
+                    </a>
+
+                    <a href="leaderboard_logout.html"
+                        class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
+                        Leaderboard
+                    </a>
+
+                    <a href="rules2.html"
+                        class="text-sky-600 border-b-2 border-sky-600 px-3 py-2 font-semibold">
+                        Rules
+                    </a>
+                </div>
+
+                <div class="hidden md:flex items-center gap-4">
+                    <a href="signin_user.html"
+                        class="text-gray-900 hover:text-sky-600 font-medium transition-colors">
+                        Sign in
+                    </a>
+
+                    <a href="signup_user.html"
+                        class="bg-sky-600 hover:bg-sky-700 text-white px-5 py-2 rounded-lg font-bold transition-all duration-300 shadow-md">
+                        Sign up
+                    </a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-sky-600 focus:outline-none p-2">
+                        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-sky-600 shadow-lg absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="home.html" class="block px-3 py-3 text-base font-medium text-gray-900 hover:bg-sky-50 rounded-md">Home</a>
+                <a href="categories_logout.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-900 hover:bg-sky-50 rounded-md">Categories</a>
+                <a href="leaderboard_logout.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-900 hover:bg-sky-50 rounded-md">Leaderboard</a>
+                <a href="rules2.html"
+                    class="block px-3 py-3 text-base font-medium text-sky-900 bg-sky-300/30 rounded-md">Rules</a>
+                <hr class="my-2 border-gray-200">
+                <a href="signin_user.html"
+                    class="block px-3 py-3 text-base font-medium text-gray-900 hover:bg-sky-50 rounded-md">Sign
+                    in</a>
+                <a href="signup_user.html"
+                    class="block px-3 py-3 text-base font-medium text-white bg-sky-600 hover:bg-sky-700 rounded-md mt-2">Sign
+                    up</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="px-4 sm:px-5 pt-32   pb-12">
+      <main class="w-full max-w-[760px] mx-auto">
+
+        <header class="mb-18 sm:mb-10 text-center">
+          <p class="text-sm font-semibold text-[#6b6b6b]">
+            QUIZ RULES
+          </p>
+          <h1 class="text-3xl sm:text-[38px] leading-tight font-bold tracking-[-0.035em] mt-1">
+            Before you start
+          </h1>
+          <p class="mt-3 text-[15px] sm:text-[16px] leading-7 text-[#737373] max-w-[600px] mx-auto px-2 sm:px-0">
+            Take a moment to understand how the quiz works. Your score depends on both accuracy and question difficulty.
+          </p>
+        </header>
+
+        <section class=" bg-white border border-[#e7e7e7] rounded-2xl overflow-hidden shadow-md">
+
+          <div class="px-5 sm:px-7 py-6 sm:py-7 border-b border-[#ededed]">
+            <div class="flex flex-col sm:flex-row gap-2 sm:gap-8">
+              <div class="sm:w-28 shrink-0">
+                <p class="text-sm font-semibold text-[#999]">01</p>
+              </div>
+              <div class="flex-1">
+                <h2 class="text-lg font-semibold">You have three lives</h2>
+                <p class="mt-2 text-[15px] leading-6 text-[#737373]">
+                  You begin every quiz with three hearts. Each incorrect answer removes one heart.
+                </p>
+                <div class="flex justify-start items-center gap-2 mt-3">
+                  <div class="mask mask-heart w-8 h-8 bg-red-600"></div>
+                  <div class="mask mask-heart w-8 h-8 bg-red-600"></div>
+                  <div class="mask mask-heart w-8 h-8 bg-red-600"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-5 sm:px-7 py-6 sm:py-7 border-b border-[#ededed]">
+            <div class="flex flex-col sm:flex-row gap-2 sm:gap-8">
+              <div class="sm:w-28 shrink-0">
+                <p class="text-sm font-semibold text-[#999]">02</p>
+              </div>
+              <div>
+                <h2 class="text-lg font-semibold">Earn points for correct answers</h2>
+                <p class="mt-2 text-[15px] leading-6 text-[#737373]">
+                  Every correct answer increases your score. The number of points depends on the difficulty of the
+                  question.
+                </p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span class="px-3 py-1.5 rounded-lg bg-[#f3f3f3] text-sm font-medium">Easy · 10 pts</span>
+                  <span class="px-3 py-1.5 rounded-lg bg-[#f3f3f3] text-sm font-medium">Normal · 15 pts</span>
+                  <span class="px-3 py-1.5 rounded-lg bg-[#f3f3f3] text-sm font-medium">Hard · 20 pts</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-5 sm:px-7 py-6 sm:py-7 border-b border-[#ededed]">
+            <div class="flex flex-col sm:flex-row gap-2 sm:gap-8">
+              <div class="sm:w-28 shrink-0">
+                <p class="text-sm font-semibold text-[#999]">03</p>
+              </div>
+              <div>
+                <h2 class="text-lg font-semibold">Questions have different difficulty levels</h2>
+                <p class="mt-2 text-[15px] leading-6 text-[#737373]">
+                  Questions are divided into three difficulty levels: Easy, Normal, and Hard. Harder questions reward more
+                  points.
+                </p>
+                <div class="mt-4 flex flex-wrap items-center gap-4 sm:gap-6 text-sm">
+                  <span class="font-semibold text-[#22a35a]">Easy</span>
+                  <span class="font-semibold text-[#d59b00]">Normal</span>
+                  <span class="font-semibold text-[#e05252]">Hard</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-5 sm:px-7 py-6 sm:py-7">
+            <div class="flex flex-col sm:flex-row gap-2 sm:gap-8">
+              <div class="sm:w-28 shrink-0">
+                <p class="text-sm font-semibold text-[#999]">04</p>
+              </div>
+              <div>
+                <h2 class="text-lg font-semibold">Losing all your lives ends the quiz</h2>
+                <p class="mt-2 text-[15px] leading-6 text-[#737373]">
+                  If you answer incorrectly three times, all your hearts will be gone and the quiz will end.
+                </p>
+                <p class="mt-4 text-sm font-medium text-[#e05252]">
+                  No hearts left means game over.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="mt-10 flex flex-col items-center text-center">
+          <p class="text-lg font-semibold">Ready to test yourself?</p>
+          <p class="mt-1 text-sm text-[#858585]">Make every answer count.</p>
+          <button onclick="startQuiz()"
+            class="mb-18 mt-5 w-full sm:w-auto px-10 py-3.5 rounded-xl bg-sky-600 text-base font-bold text-white hover:bg-sky-700 active:scale-[0.98] transition-all duration-150 shadow-sm">
+              Start quiz
+          </button>
+        </div>
+      </main>
+    </div>
+
+    <footer class="bg-white border-t border-sky-300 mt-8 sm:mt-12 py-6 sm:py-8">
+
+      <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-xs sm:text-sm font-medium">
+
+          &copy; 2026 Quiz Trip. All rights reserved.
+
+      </div>
+
+    </footer>
+
+    <script src="source/api.js"></script>
+    <script>
+      const btn = document.getElementById('mobile-menu-button');
+      const menu = document.getElementById('mobile-menu');
+
+      if (btn && menu) {
+        btn.addEventListener('click', () => {
+          menu.classList.toggle('hidden');
+        });
+      }
+
+      const params = new URLSearchParams(window.location.search);
+      const category = params.get('category');
+
+      function startQuiz() {
+        window.location.href = category ? `quiz.html?category=${encodeURIComponent(category)}` : 'quiz.html';
+      }
+
+      (async () => {
+        const user = await getCurrentUser();
+
+        // Nav is static markup on this page (no per-user IDs to toggle) —
+        // only update the pieces that actually exist here.
+        const setHref = (id, href) => {
+          const el = document.getElementById(id);
+          if (el) el.href = href;
+        };
+        setHref('nav-home', user ? 'home-logedin.html' : 'home.html');
+        setHref('nav-categories', user ? 'categories.html' : 'categories_logout.html');
+        setHref('nav-leaderboard', user ? 'leaderboard.html' : 'leaderboard_logout.html');
+        setHref('mobile-nav-home', user ? 'home-logedin.html' : 'home.html');
+        setHref('mobile-nav-categories', user ? 'categories.html' : 'categories_logout.html');
+        setHref('mobile-nav-leaderboard', user ? 'leaderboard.html' : 'leaderboard_logout.html');
+
+        if (user && document.getElementById('user-nav')) {
+          document.getElementById('guest-nav').classList.add('hidden');
+          document.getElementById('user-nav').classList.remove('hidden');
+          document.getElementById('mobile-signin').classList.add('hidden');
+          document.getElementById('mobile-signup').classList.add('hidden');
+          document.getElementById('mobile-guest-divider').classList.add('hidden');
+          document.getElementById('mobile-logout').classList.remove('hidden');
+          renderUserBadge(user);
+        } else if (document.getElementById('user-nav')) {
+          document.getElementById('user-nav').classList.add('hidden');
+        }
+
+        if (category) {
+          try {
+            const { categories } = await apiFetch('categories.php');
+            const match = categories.find((c) => c.slug === category);
+            if (match) {
+              document.querySelector('header h1').textContent = `Before you start: ${match.name}`;
+            }
+          } catch (e) {
+            // keep the generic heading if this fails
+          }
+        }
+      })();
+    </script>
+  </body>
+
+  </html>
