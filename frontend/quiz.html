@@ -18,8 +18,46 @@
             },
         };
     </script>
+    <style>
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.35); }
+            100% { transform: scale(1); }
+        }
+        .animate-pop { animation: pop 0.35s ease; }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+        .animate-shake { animation: shake 0.4s ease; }
+
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in { animation: fade-in-up 0.35s ease; }
+
+        @keyframes pulse-urgent {
+            0%, 100% { color: #dc2626; transform: scale(1); }
+            50% { color: #f87171; transform: scale(1.15); }
+        }
+        .timer-urgent { animation: pulse-urgent 0.6s ease-in-out infinite; }
+
+        .quiz-bg {
+            background-color: #f7f7f8;
+            background-image:
+                linear-gradient(135deg, rgba(224, 242, 254, 0.55) 0%, rgba(247, 247, 248, 0.15) 45%, rgba(255, 251, 235, 0.55) 100%),
+                url('images/quiz-bg-pattern.png');
+            background-size: cover, cover;
+            background-repeat: no-repeat, no-repeat;
+            background-position: center, center;
+            background-attachment: fixed, fixed;
+        }
+    </style>
 </head>
-<body onload="fetchQuestions()" class="bg-[#f7f7f8] min-h-screen font-inter">
+<body onload="fetchQuestions()" class="quiz-bg min-h-screen font-inter">
     
     <nav class="fixed top-0 w-full bg-white shadow-md z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -111,7 +149,7 @@
     </nav>
 
     <div class="pt-24 pb-10 px-4">
-        <div class="card bg-neutral-50 mx-auto w-full lg:w-[600px] shadow-xl rounded-2xl pb-10 relative">
+        <div class="card bg-neutral-50 mx-auto w-full lg:w-[600px] shadow-xl rounded-2xl pb-10 relative animate-fade-in">
             <div class="card-body">
                 <div class="flex justify-between">
                     <div id="heartContainer" class="rating rating-xl flex justify-center gap-2 mt-5">
@@ -121,7 +159,7 @@
                     </div>
                     <div class="mt-5 join font-bold gap-1">
                         <p id="timerText" class="text-xl"></p>
-                        <p id="timer" class="text-xl"><b>15</b></p>
+                        <p id="timer" class="text-xl transition-colors"><b>15</b></p>
                         <p class="text-xl"><b>s</b></p>
                     </div>
                     <div class="mt-5 join font-bold gap-1">
@@ -130,16 +168,16 @@
                     </div>
                 </div>
 
-                <div class="my-5 text-center text-wrap max-w-md mx-auto">
+                <div id="questionBlock" class="my-5 text-center text-wrap max-w-md mx-auto">
                     <h1 id="questionText" class="text-2xl font-semibold"></h1>
                 </div>
 
                 <div class="flex justify-center">
                     <div class="grid grid-cols-1 gap-4 w-full max-w-4xl justify-items-center">
-                        <button onclick="checkAnswer('A', this )" id="option1" class="btn text-white bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-md w-full sm:w-2/3 shrink-0 h-16 rounded-xl"></button>
-                        <button onclick="checkAnswer('B', this )" id="option2" class="btn text-white bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-md w-full sm:w-2/3 shrink-0 h-16 rounded-xl"></button>
-                        <button onclick="checkAnswer('C', this )" id="option3" class="btn text-white bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-md w-full sm:w-2/3 shrink-0 h-16 rounded-xl"></button>
-                        <button onclick="checkAnswer('D', this )" id="option4" class="btn text-white bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-md w-full sm:w-2/3 shrink-0 h-16 rounded-xl"></button>
+                        <button onclick="checkAnswer('A', this )" id="option1" class="btn text-white bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-md w-full sm:w-2/3 shrink-0 h-16 rounded-xl transition-colors duration-300"></button>
+                        <button onclick="checkAnswer('B', this )" id="option2" class="btn text-white bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-md w-full sm:w-2/3 shrink-0 h-16 rounded-xl transition-colors duration-300"></button>
+                        <button onclick="checkAnswer('C', this )" id="option3" class="btn text-white bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-md w-full sm:w-2/3 shrink-0 h-16 rounded-xl transition-colors duration-300"></button>
+                        <button onclick="checkAnswer('D', this )" id="option4" class="btn text-white bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-md w-full sm:w-2/3 shrink-0 h-16 rounded-xl transition-colors duration-300"></button>
                     </div>
                 </div>
 

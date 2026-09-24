@@ -229,14 +229,10 @@
         <div class="mt-10 flex flex-col items-center text-center">
           <p class="text-lg font-semibold">Ready to test yourself?</p>
           <p class="mt-1 text-sm text-[#858585]">Make every answer count.</p>
-          <!-- <button onclick="startQuiz()" 
-            class="mt-5 w-full sm:w-auto px-10 py-3.5 rounded-xl bg-sky-600 text-base font-medium text-white font-semibold hover:bg-sky-700 active:scale-[0.98] transition-all duration-150 shadow-sm">
-            <b>Choose a quiz</b>  
-          </button> -->
-          <a href="categories.html"
+          <button onclick="startQuiz()"
             class="mb-18 mt-5 w-full sm:w-auto px-10 py-3.5 rounded-xl bg-sky-600 text-base font-bold text-white hover:bg-sky-700 active:scale-[0.98] transition-all duration-150 shadow-sm">
-              Choose a quiz
-          </a>
+              Start quiz
+          </button>
         </div>
       </main>
     </div>
@@ -272,14 +268,20 @@
       (async () => {
         const user = await getCurrentUser();
 
-        document.getElementById('nav-home').href = user ? 'home-logedin.html' : 'home.html';
-        document.getElementById('nav-categories').href = user ? 'categories.html' : 'categories_logout.html';
-        document.getElementById('nav-leaderboard').href = user ? 'leaderboard.html' : 'leaderboard_logout.html';
-        document.getElementById('mobile-nav-home').href = user ? 'home-logedin.html' : 'home.html';
-        document.getElementById('mobile-nav-categories').href = user ? 'categories.html' : 'categories_logout.html';
-        document.getElementById('mobile-nav-leaderboard').href = user ? 'leaderboard.html' : 'leaderboard_logout.html';
+        // Nav is static markup on this page (no per-user IDs to toggle) —
+        // only update the pieces that actually exist here.
+        const setHref = (id, href) => {
+          const el = document.getElementById(id);
+          if (el) el.href = href;
+        };
+        setHref('nav-home', user ? 'home-logedin.html' : 'home.html');
+        setHref('nav-categories', user ? 'categories.html' : 'categories_logout.html');
+        setHref('nav-leaderboard', user ? 'leaderboard.html' : 'leaderboard_logout.html');
+        setHref('mobile-nav-home', user ? 'home-logedin.html' : 'home.html');
+        setHref('mobile-nav-categories', user ? 'categories.html' : 'categories_logout.html');
+        setHref('mobile-nav-leaderboard', user ? 'leaderboard.html' : 'leaderboard_logout.html');
 
-        if (user) {
+        if (user && document.getElementById('user-nav')) {
           document.getElementById('guest-nav').classList.add('hidden');
           document.getElementById('user-nav').classList.remove('hidden');
           document.getElementById('mobile-signin').classList.add('hidden');
@@ -287,7 +289,7 @@
           document.getElementById('mobile-guest-divider').classList.add('hidden');
           document.getElementById('mobile-logout').classList.remove('hidden');
           renderUserBadge(user);
-        } else {
+        } else if (document.getElementById('user-nav')) {
           document.getElementById('user-nav').classList.add('hidden');
         }
 
