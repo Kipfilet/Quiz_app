@@ -264,6 +264,10 @@
       const params = new URLSearchParams(window.location.search);
       const category = params.get('category');
 
+      if (category) {
+        sessionStorage.setItem(`rulesSeen_${category}`, 'true');
+      }
+
       // Button behavior
       function startQuiz() {
           if (category) {
