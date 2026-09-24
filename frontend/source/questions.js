@@ -7,11 +7,6 @@ let questionOptions = [
     document.getElementById('option3'),
     document.getElementById('option4')
 ];
-function setDifficulty(difficultyOption){
-    difficulty = difficultyOption;
-    document.getElementById("difficultySelection").innerHTML = "";
-    fetchQuestions(difficulty)
-}
 
 // Removes then re-adds an animation class so it replays even if the
 // element already had it (CSS animations don't restart on a no-op add).
@@ -38,10 +33,10 @@ function fetchQuestions(diff){
             const questions = data.questions;
             console.log('Questions loaded:', questions);
             for (const question of questions) {
-                if (question.difficulty = diff || diff=="all"){
-                    questionMaxIndex++;
-                    questionArray.push(question);
-                }
+               
+                questionMaxIndex++;
+                questionArray.push(question);
+              
             }
             loadQuestions()
         }).catch(err => console.error('Error loading questions: ', err));
