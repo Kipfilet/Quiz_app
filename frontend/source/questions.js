@@ -7,9 +7,6 @@ let questionOptions = [
     document.getElementById('option3'),
     document.getElementById('option4')
 ];
-function setDifficulty(difficultyOption){
-    difficulty = difficultyOption;
-}
 
 // Removes then re-adds an animation class so it replays even if the
 // element already had it (CSS animations don't restart on a no-op add).
@@ -28,15 +25,18 @@ let correctAnswers = 0
 const quizParams = new URLSearchParams(window.location.search);
 const quizCategory = quizParams.get('category');
 
-function fetchQuestions(){
+function fetchQuestions(diff){
     const path = quizCategory ? `questions.php?category=${encodeURIComponent(quizCategory)}` : 'questions.php';
     apiFetch(path)
         .then(data => {
+            questionArray = []
             const questions = data.questions;
             console.log('Questions loaded:', questions);
             for (const question of questions) {
+               
                 questionMaxIndex++;
                 questionArray.push(question);
+              
             }
             loadQuestions()
         }).catch(err => console.error('Error loading questions: ', err));
