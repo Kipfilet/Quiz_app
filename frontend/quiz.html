@@ -28,6 +28,17 @@
         </div>
     </nav>
     <div class="pt-24 pb-10 px-4">
+        <div id="difficultySelection">
+            <div class="h-150 card bg-neutral-50 mx-auto w-full lg:w-[600px] shadow-xl rounded-2xl pb-20 absolute left-0 right-0 z-2">
+                <div class="card-body flex justify-center">
+                    <h1 class="text-center text-4xl "><b>Choose a difficulty</b></h1>
+                    <button onclick="setDifficulty('hard')" class="btn text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-md w-full sm:w-2/3 shrink-0 h-16 rounded-xl mx-auto">Hard</button>
+                    <button onclick="setDifficulty('normal')" class="btn text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-md w-full sm:w-2/3 shrink-0 h-16 rounded-xl mx-auto">Normal</button>
+                    <button onclick="setDifficulty('easy')" class="btn text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-md w-full sm:w-2/3 shrink-0 h-16 rounded-xl mx-auto">Easy</button>
+                    <button onclick="setDifficulty('all')" class="btn text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-md w-full sm:w-2/3 shrink-0 h-16 rounded-xl mx-auto">All</button>
+                </div>
+            </div>
+        </div>
         <div class="card bg-neutral-50 mx-auto w-full lg:w-[600px] shadow-xl rounded-2xl pb-10 relative">
             <div class="card-body">
                 <div class="flex justify-between">

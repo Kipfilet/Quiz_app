@@ -9,6 +9,8 @@ let questionOptions = [
 ];
 function setDifficulty(difficultyOption){
     difficulty = difficultyOption;
+    document.getElementById("difficultySelection").innerHTML = "";
+    fetchQuestions(difficulty)
 }
 let score = 0;
 let questionArray = [];
@@ -19,15 +21,18 @@ let correctAnswers = 0
 const quizParams = new URLSearchParams(window.location.search);
 const quizCategory = quizParams.get('category');
 
-function fetchQuestions(){
+function fetchQuestions(diff){
     const path = quizCategory ? `questions.php?category=${encodeURIComponent(quizCategory)}` : 'questions.php';
     apiFetch(path)
         .then(data => {
+            questionArray = []
             const questions = data.questions;
             console.log('Questions loaded:', questions);
             for (const question of questions) {
-                questionMaxIndex++;
-                questionArray.push(question);
+                if (question.difficulty = diff || diff=="all"){
+                    questionMaxIndex++;
+                    questionArray.push(question);
+                }
             }
             loadQuestions()
         }).catch(err => console.error('Error loading questions: ', err));
