@@ -48,7 +48,7 @@
             <div class="flex justify-between h-16 items-center">
 
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="home.html" class="text-xl sm:text-2xl font-extrabold text-sky-600 flex items-center gap-2">
+                    <a href="home-logedin.html" class="text-xl sm:text-2xl font-extrabold text-sky-600 flex items-center gap-2">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             class="h-6 w-6 sm:h-8 sm:w-8"
@@ -68,22 +68,22 @@
                 </div>
 
                 <div class="hidden md:flex gap-4 items-center">
-                    <a href="home.html"
+                    <a href="home-logedin.html"
                         class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
                         Home
                     </a>
 
-                    <a href="categories_logout.html"
+                    <a href="categories.html"
                         class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
                         Categories
                     </a>
 
-                    <a href="leaderboard_logout.html"
+                    <a href="leaderboard.html"
                         class="text-gray-900 hover:text-sky-600 px-3 py-2 font-medium transition-colors">
                         Leaderboard
                     </a>
 
-                    <a href="rules2.html"
+                    <a href="rules2-logedin.html"
                         class="text-sky-600 border-b-2 border-sky-600 px-3 py-2 font-semibold">
                         Rules
                     </a>
@@ -114,12 +114,12 @@
 
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-sky-600 shadow-lg absolute w-full">
             <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="home.html" class="block px-3 py-3 text-base font-medium text-gray-900 hover:bg-sky-50 rounded-md">Home</a>
-                <a href="categories_logout.html"
+                <a href="home-logedin.html" class="block px-3 py-3 text-base font-medium text-gray-900 hover:bg-sky-50 rounded-md">Home</a>
+                <a href="categories.html"
                     class="block px-3 py-3 text-base font-medium text-gray-900 hover:bg-sky-50 rounded-md">Categories</a>
-                <a href="leaderboard_logout.html"
+                <a href="leaderboard.html"
                     class="block px-3 py-3 text-base font-medium text-gray-900 hover:bg-sky-50 rounded-md">Leaderboard</a>
-                <a href="rules2.html"
+                <a href="rules2-logedinhtml"
                     class="block px-3 py-3 text-base font-medium text-sky-900 bg-sky-300/30 rounded-md">Rules</a>
                 <hr class="my-2 border-gray-200">
                 <a href="signin_user.html"
@@ -249,62 +249,67 @@
 
     <script src="source/api.js"></script>
     <script>
-      const btn = document.getElementById('mobile-menu-button');
-      const menu = document.getElementById('mobile-menu');
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
 
-      if (btn && menu) {
-        btn.addEventListener('click', () => {
-          menu.classList.toggle('hidden');
-        });
-      }
-
-      const params = new URLSearchParams(window.location.search);
-      const category = params.get('category');
-
-      function startQuiz() {
-        window.location.href = category ? `quiz.html?category=${encodeURIComponent(category)}` : 'quiz.html';
-      }
-
-      (async () => {
-        const user = await getCurrentUser();
-
-        // Nav is static markup on this page (no per-user IDs to toggle) —
-        // only update the pieces that actually exist here.
-        const setHref = (id, href) => {
-          const el = document.getElementById(id);
-          if (el) el.href = href;
-        };
-        setHref('nav-home', user ? 'home-logedin.html' : 'home.html');
-        setHref('nav-categories', user ? 'categories.html' : 'categories_logout.html');
-        setHref('nav-leaderboard', user ? 'leaderboard.html' : 'leaderboard_logout.html');
-        setHref('mobile-nav-home', user ? 'home-logedin.html' : 'home.html');
-        setHref('mobile-nav-categories', user ? 'categories.html' : 'categories_logout.html');
-        setHref('mobile-nav-leaderboard', user ? 'leaderboard.html' : 'leaderboard_logout.html');
-
-        if (user && document.getElementById('user-nav')) {
-          document.getElementById('guest-nav').classList.add('hidden');
-          document.getElementById('user-nav').classList.remove('hidden');
-          document.getElementById('mobile-signin').classList.add('hidden');
-          document.getElementById('mobile-signup').classList.add('hidden');
-          document.getElementById('mobile-guest-divider').classList.add('hidden');
-          document.getElementById('mobile-logout').classList.remove('hidden');
-          renderUserBadge(user);
-        } else if (document.getElementById('user-nav')) {
-          document.getElementById('user-nav').classList.add('hidden');
+        if (btn && menu) {
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
         }
 
-        if (category) {
-          try {
-            const { categories } = await apiFetch('categories.php');
-            const match = categories.find((c) => c.slug === category);
-            if (match) {
-              document.querySelector('header h1').textContent = `Before you start: ${match.name}`;
+        const params = new URLSearchParams(window.location.search);
+        const category = params.get('category');
+
+        (async () => {
+            const user = await getCurrentUser();
+
+            // If logged in, send them to the logged-in Rules page
+            if (user) {
+                const target = category
+                    ? `rules2-logedin.html?category=${encodeURIComponent(category)}`
+                    : 'rules2-logedin.html';
+
+                window.location.href = target;
+                return;
             }
-          } catch (e) {
-            // keep the generic heading if this fails
-          }
-        }
-      })();
+
+            // User is logged out, so they can stay on this page
+
+            // Remember that the user has seen the rules for this category
+            if (category) {
+                sessionStorage.setItem(`rulesSeen_${category}`, 'true');
+            }
+
+            // Start quiz
+            window.startQuiz = function () {
+                if (category) {
+                    window.location.href =
+                        `quiz.html?category=${encodeURIComponent(category)}`;
+                } else {
+                    window.location.href = 'categories_logout.html';
+                }
+            };
+
+            // Update category title
+            if (category) {
+                try {
+                    const { categories } = await apiFetch('categories.php');
+
+                    const match = categories.find(
+                        c => c.slug === category
+                    );
+
+                    if (match) {
+                        document.querySelector('header h1').textContent =
+                            `Before you start: ${match.name}`;
+                    }
+
+                } catch (e) {
+                    console.error('Could not load category:', e);
+                }
+            }
+        })();
     </script>
   </body>
 
