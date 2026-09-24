@@ -229,9 +229,11 @@
         <div class="mt-10 flex flex-col items-center text-center">
           <p class="text-lg font-semibold">Ready to test yourself?</p>
           <p class="mt-1 text-sm text-[#858585]">Make every answer count.</p>
-          <button onclick="startQuiz()"
-            class="mb-18 mt-5 w-full sm:w-auto px-10 py-3.5 rounded-xl bg-sky-600 text-base font-bold text-white hover:bg-sky-700 active:scale-[0.98] transition-all duration-150 shadow-sm">
-              Start quiz
+          <button
+              id="start-quiz-button"
+              onclick="startQuiz()"
+              class="mb-18 mt-5 w-full sm:w-auto px-10 py-3.5 rounded-xl bg-sky-600 text-base font-bold text-white hover:bg-sky-700 active:scale-[0.98] transition-all duration-150 shadow-sm">
+              Choose category
           </button>
         </div>
       </main>
@@ -247,66 +249,91 @@
 
     </footer>
 
-    <script src="source/api.js"></script>
-    <script>
+  <script src="source/api.js"></script>
+  <script>
       const btn = document.getElementById('mobile-menu-button');
       const menu = document.getElementById('mobile-menu');
 
       if (btn && menu) {
-        btn.addEventListener('click', () => {
-          menu.classList.toggle('hidden');
-        });
+          btn.addEventListener('click', () => {
+              menu.classList.toggle('hidden');
+          });
       }
 
+      // Check whether a category was passed to the Rules page
       const params = new URLSearchParams(window.location.search);
       const category = params.get('category');
 
+      // Button behavior
       function startQuiz() {
-        window.location.href = category ? `quiz.html?category=${encodeURIComponent(category)}` : 'quiz.html';
+          if (category) {
+              // A category was selected, so go directly to that quiz
+              window.location.href =
+                  `quiz.html?category=${encodeURIComponent(category)}`;
+          } else {
+              // No category was selected, so send the user to Categories
+              window.location.href = 'categories.html';
+          }
+      }
+
+      // Change button text depending on whether a category exists
+      const startButton = document.getElementById('start-quiz-button');
+
+      if (startButton) {
+          startButton.textContent = category
+              ? 'Play quiz'
+              : 'Choose category';
       }
 
       (async () => {
-        const user = await getCurrentUser();
+          const user = await getCurrentUser();
 
+          const setHref = (id, href) => {
+              const el = document.getElementById(id);
+              if (el) el.href = href;
+          };
 
-        // Nav is static markup on this page (no per-user IDs to toggle) —
-        // only update the pieces that actually exist here.
-        const setHref = (id, href) => {
-          const el = document.getElementById(id);
-          if (el) el.href = href;
-        };
-        setHref('nav-home', user ? 'home-logedin.html' : 'home.html');
-        setHref('nav-categories', user ? 'categories.html' : 'categories_logout.html');
-        setHref('nav-leaderboard', user ? 'leaderboard.html' : 'leaderboard_logout.html');
-        setHref('mobile-nav-home', user ? 'home-logedin.html' : 'home.html');
-        setHref('mobile-nav-categories', user ? 'categories.html' : 'categories_logout.html');
-        setHref('mobile-nav-leaderboard', user ? 'leaderboard.html' : 'leaderboard_logout.html');
+          setHref('nav-home', user ? 'home-logedin.html' : 'home.html');
+          setHref('nav-categories', user ? 'categories.html' : 'categories_logout.html');
+          setHref('nav-leaderboard', user ? 'leaderboard.html' : 'leaderboard_logout.html');
 
-        if (user && document.getElementById('user-nav')) {
-          document.getElementById('guest-nav').classList.add('hidden');
-          document.getElementById('user-nav').classList.remove('hidden');
-          document.getElementById('mobile-signin').classList.add('hidden');
-          document.getElementById('mobile-signup').classList.add('hidden');
-          document.getElementById('mobile-guest-divider').classList.add('hidden');
-          document.getElementById('mobile-logout').classList.remove('hidden');
-          renderUserBadge(user);
-        } else if (document.getElementById('user-nav')) {
-          document.getElementById('user-nav').classList.add('hidden');
-        }
+          setHref('mobile-nav-home', user ? 'home-logedin.html' : 'home.html');
+          setHref('mobile-nav-categories', user ? 'categories.html' : 'categories_logout.html');
+          setHref('mobile-nav-leaderboard', user ? 'leaderboard.html' : 'leaderboard_logout.html');
 
-        if (category) {
-          try {
-            const { categories } = await apiFetch('categories.php');
-            const match = categories.find((c) => c.slug === category);
-            if (match) {
-              document.querySelector('header h1').textContent = `Before you start: ${match.name}`;
-            }
-          } catch (e) {
-            // keep the generic heading if this fails
+          if (user && document.getElementById('user-nav')) {
+              document.getElementById('guest-nav').classList.add('hidden');
+              document.getElementById('user-nav').classList.remove('hidden');
+              document.getElementById('mobile-signin').classList.add('hidden');
+              document.getElementById('mobile-signup').classList.add('hidden');
+              document.getElementById('mobile-guest-divider').classList.add('hidden');
+              document.getElementById('mobile-logout').classList.remove('hidden');
+
+              renderUserBadge(user);
+          } else if (document.getElementById('user-nav')) {
+              document.getElementById('user-nav').classList.add('hidden');
           }
-        }
+
+          // If a category was selected, get its name
+          if (category) {
+              try {
+                  const { categories } = await apiFetch('categories.php');
+
+                  const match = categories.find(
+                      c => c.slug === category
+                  );
+
+                  if (match) {
+                      document.querySelector('header h1').textContent =
+                          `Before you start: ${match.name}`;
+                  }
+              } catch (e) {
+                  // Keep the generic heading if the category lookup fails
+                  console.error('Could not load category:', e);
+              }
+          }
       })();
-    </script>
+  </script>
   </body>
 
   </html>
